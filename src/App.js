@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import React from 'react';
+import HomeBoxList from './components/HomeBoxList';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <Main />
       <Footer />
+      <HomeBoxList />
     </>
   );
 }
