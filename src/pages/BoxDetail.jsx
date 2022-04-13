@@ -1,5 +1,8 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function BoxDetail() {
-  return <div>BoxDetail page</div>;
+  const { boite } = useParams();
+
+  return <div>Detail of the box number {boite}</div>;
 }

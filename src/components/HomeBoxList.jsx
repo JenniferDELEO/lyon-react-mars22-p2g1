@@ -2,6 +2,7 @@
 // import React, { useState } from 'react';
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
+import { Link } from 'react-router-dom';
 
 const quantiteParBoite = [];
 
@@ -17,8 +18,8 @@ function HomeBoxList() {
     <>
       <h2>Liste des boîtes :</h2>
       <ul>
-        {boxList.map((box, i) => (
-          <li key={i}>{box.adresse }  boîte numéro : {box.boite}
+        {boxList.map((box, boite) => (
+          <li key={boite}> <Link to={`/BoxDetail/${box.boite}`}> {box.adresse } </Link> boîte numéro : {box.boite}
             <br /> Quantité de livres : {quantiteParBoite[box.boite]}
           </li>
         ))}
