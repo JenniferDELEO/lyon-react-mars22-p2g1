@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Popup from '../components/Popup';
 import BalMedium from '../assets/BAL_medium.png';
+import Mapsection from '../components/Mapmodule';
 
 export default function Home() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -14,6 +15,9 @@ export default function Home() {
 
   return (
     <div>
+      <div>
+        <Mapsection />
+      </div>
       <h1>Home Page</h1>
       <button type="submit" onClick={() => setButtonPopup(true)}>
         Open popup
