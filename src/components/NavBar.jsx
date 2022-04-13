@@ -1,37 +1,38 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import './NavBar.css';
-
-const getActiveLinkStyle = ({ isActive }) => {
-  if (isActive) return { color: 'orange' };
-  return { color: 'black' };
-};
+import HomeLogo from '../assets/home_logo.png';
+import SearchLogo from '../assets/search_logo.png';
+import UserLogo from '../assets/user_logo.png';
+import FormLogo from '../assets/form_logo.png';
 
 export default function NavBar() {
   return (
-    <nav>
-      <ul className="flex">
-        <li className="flex-auto w-32">
-          <NavLink to="/" style={getActiveLinkStyle}>
-            Accueil
-          </NavLink>
-        </li>
-        <li className="flex-auto w-32">
-          <NavLink to="/search" style={getActiveLinkStyle}>
-            Recherche
-          </NavLink>
-        </li>
-        <li className="flex-auto w-32">
-          <NavLink to="/form" style={getActiveLinkStyle}>
-            Formulaire et contact
-          </NavLink>
-        </li>
-        <li className="flex-auto w-32">
-          <NavLink to="/myprofile" style={getActiveLinkStyle}>
-            Mon Profil
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <div>
+      <nav>
+        <ul className="flex justify-between absolute bottom-0">
+          <li className="flex-auto w-12">
+            <Link to="/">
+              <img src={HomeLogo} alt="navigation vers accueil" />
+            </Link>
+          </li>
+          <li className="flex-auto w-12">
+            <Link to="/search">
+              <img src={SearchLogo} alt="navigation vers recherche" />
+            </Link>
+          </li>
+          <li className="flex-auto w-12">
+            <Link to="/myprofile">
+              <img src={UserLogo} alt="navigation vers mon profil" />
+            </Link>
+          </li>
+          <li className="flex-auto w-12">
+            <Link to="/contact">
+              <img src={FormLogo} alt="navigation vers contact" />
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }
