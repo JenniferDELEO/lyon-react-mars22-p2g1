@@ -1,5 +1,8 @@
 import React from 'react';
+import HomeBoxList from '../components/HomeBoxList';
 
 export default function Home() {
-  return <div>Home page</div>;
+  return (
+    <HomeBoxList />
+  );
 }
