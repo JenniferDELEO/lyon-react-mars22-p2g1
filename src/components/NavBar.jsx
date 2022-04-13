@@ -10,7 +10,7 @@ export default function NavBar() {
   return (
     <div>
       <nav>
-        <ul className="flex justify-between absolute bottom-0">
+        <ul className="flex justify-between">
           <li className="flex-auto w-12">
             <Link to="/">
               <img src={HomeLogo} alt="navigation vers accueil" />
