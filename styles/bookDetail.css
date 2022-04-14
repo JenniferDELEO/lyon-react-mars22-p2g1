@@ -1,0 +1,23 @@
+h1 {
+  position: absolute;
+  width: 400px;
+  height: 98px;
+  left: 21px;
+  top: 0px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+
+  /* or 111% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* Background-primaire */
+  color: #f2f2f2;
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+}

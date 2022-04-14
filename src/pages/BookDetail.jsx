@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+// import bookDetail.css
 
 export default function BookDetail() {
   const entree = 9781781101063;
