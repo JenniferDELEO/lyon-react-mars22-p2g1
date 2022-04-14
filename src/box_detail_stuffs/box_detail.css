@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rating {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    overflow: hidden;
+  }
+  
+  .rating a,
+  .rating label {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.4s;
+  }
+  .rating label:hover ~ label,
+  .rating input:focus ~ label,
+  .rating label:hover,
+  .rating a:hover,
+  .rating a:hover ~ a,
+  .rating a:focus,
+  .rating a:focus ~ a {
+    color: orange;
+    cursor: pointer;
+  }
+  
+  .rating2 {
+    direction: rtl;
+  }
+  
+  .rating2 a {
+    float: none;
+  }
+  
