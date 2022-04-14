@@ -13,19 +13,19 @@ for (let i = 0; i < bookList.length; i += 1) {
   const index = parseFloat(bookList[i].boite);
   quantiteParBoite[index] += 1;
 }
+
 function HomeBoxList() {
   return (
-    <>
+    <div className="boxlist">
       <h2>Liste des boîtes :</h2>
       <ul>
-        {boxList.map((box, boite) => (
-          <li key={boite}> <Link to={`/BoxDetail/${box.boite}`}> {box.adresse } </Link> boîte numéro : {box.boite}
+        {boxList.slice(0, 3).map((box) => (
+          <p> <Link to={`/BoxDetail/${box.boite}`}> {box.adresse } </Link> boîte numéro : {box.boite}
             <br /> Quantité de livres : {quantiteParBoite[box.boite]}
-          </li>
+          </p>
         ))}
       </ul>
-
-    </>
+    </div>
   );
 }
 
