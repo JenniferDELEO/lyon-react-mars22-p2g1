@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-container {
+  background-color: rgba(27, 158, 178, 1);
+  padding: 8px 0;
+}
+
+.list-navbar-container {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.image-navigation {
+  width: 24px;
+}
+
+.link-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}

@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.app-container {
+  position: static;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
