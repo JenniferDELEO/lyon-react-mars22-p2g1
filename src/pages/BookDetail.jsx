@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-// import bookDetail.css
 
 export default function BookDetail() {
   const entree = 9781781101063;
@@ -15,29 +14,29 @@ export default function BookDetail() {
   }, []);
 
   return (
-    <div className="Bookdetail">
+    <div className="bookdetail">
       {book && (
         <div>
-          <h1>{book.title}</h1>
-          <p>Auteur : {book.authors[0]}</p>
-          <p>Date de publication : {book.publishedDate.slice(0, 4)}</p>
-          <p>{book.pageCount} pages</p>
-          <img src={book.imageLinks.thumbnail} alt={book.title} />
-          <p>
-            <strong>Résumé :</strong> {book.description}
-          </p>
-          <p>ISBN (13 chiffres): {book.industryIdentifiers[1].identifier}</p>
+          <div className="fondtitre">
+            <h1>{book.title}</h1>
+          </div>
+          <div className="containerTop">
+            <img src={book.imageLinks.thumbnail} alt={book.title} />
+            <div className="containerTopRight">
+              <h3>Avis des lecteurs :</h3>
+              <p>{book.pageCount} pages</p>
+              <p>Année de publication : {book.publishedDate.slice(0, 4)}</p>
+              <p>ISBN13: {book.industryIdentifiers[1].identifier}</p>
+            </div>
+          </div>
+          <h2>Auteur : {book.authors[0]}</h2>
+          <div className="resume">
+            <p>
+              <strong>Résumé :</strong> {book.description}
+            </p>
+          </div>
         </div>
       )}
     </div>
   );
 }
-
-/*  const ISBN13fromAPI = null;
-   for (let i = 0; i < book.industryIdentifiers.length; i++) {
-     if (book.industryIdentifiers[i].type === 'ISBN_13') {
-      ISBN13fromAPI = book.industryIdentifiers[i].identifier;
-     }
-    console.log(ISBN13fromAPI);
-   }
-*/
