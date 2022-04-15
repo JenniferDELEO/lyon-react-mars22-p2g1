@@ -11,3 +11,12 @@
 .welcome p {
   margin-top: 24px;
 }
+
+.bal-popup-content {
+  margin-top: 48px;
+}
+
+.map-navigation {
+  width: 16px;
+  margin-right: 16px;
+}
