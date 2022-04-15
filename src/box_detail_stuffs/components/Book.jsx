@@ -20,7 +20,6 @@ export default function Book({
   const [showPopup, setShowPopup] = useState(false);
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
-
   let actionBg = '';
   if (isBorrow) { actionBg = { color: 'flex items-center bg-green-400 h-40', size: 'flex bg-white w-5/6 h-36 transition-all duration-500 rounded-lg', btn: 'bg-green-400 hover:bg-green-500 border-black text-xs border text-black font-bold py-0.3 px-0.7 rounded' }; }
   if (isDelete) { actionBg = { color: 'flex items-center bg-red-400 h-40', size: 'flex bg-white w-5/6 h-36 transition-all duration-500 rounded-lg', btn: 'bg-red-400 hover:bg-red-500 border-black border text-xs text-black font-bold py-0.3 px-0.7 rounded' }; }
