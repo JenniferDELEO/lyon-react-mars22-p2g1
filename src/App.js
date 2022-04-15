@@ -2,7 +2,6 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-// import React, { useEffect, useState } from 'react';
 import NavBar from './components/NavBar';
 import { useEffect, useState } from 'react';
 
