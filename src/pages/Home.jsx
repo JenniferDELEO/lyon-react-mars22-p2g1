@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div>
-      <div>
+      <div className="mapContainer">
         <Mapsection />
       </div>
       <h1>Home Page</h1>
