@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { MapContainer as LeafletMap, Marker, TileLayer } from 'react-leaflet';
 import { geolocated } from 'react-geolocated';
 
@@ -6,7 +6,7 @@ const DEFAULT_LATITUDE = 45.764043;
 const DEFAULT_LANGITUDE = 4.835659;
 
 function Map() {
-  const latitude = this.props.coords
+ const latitude = this.props.coords
     ? this.props.coords.latitude
     : DEFAULT_LANGITUDE;
   const longitude = this.props.coords
@@ -30,4 +30,4 @@ export default geolocated({
     enableHighAccuracy: false,
   },
   userDecisionTimeout: 10000,
-})(Map);
+})(Map); */
