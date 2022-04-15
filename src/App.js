@@ -10,6 +10,7 @@ function App() {
   const controlNavbar = () => {
     if (window.scrollY > 50) {
       setShow(false);
+      if (window.location.href) setShow(true);
     } else setShow(true);
   };
 

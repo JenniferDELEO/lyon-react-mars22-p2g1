@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../styles/NavBar.css';
 import HomeLogo from '../assets/home_logo.png';
 import SearchLogo from '../assets/search_logo.png';
@@ -11,22 +11,8 @@ const getActiveLinkStyle = ({ isActive }) => ({
 });
 
 export default function NavBar() {
-  const [show, setShow] = useState(true);
-  const controlNavbar = () => {
-    if (window.scrollY > 50) {
-      setShow(false);
-    } else setShow(true);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', controlNavbar);
-    return () => {
-      window.removeEventListener('scroll', controlNavbar);
-    };
-  }, []);
-
   return (
-    <nav className={`${show && 'navbar-container'}`}>
+    <nav className="navbar-container">
       <ul className="list-navbar-container">
         <li className="home-navigation">
           <NavLink
