@@ -82,7 +82,6 @@ export default function BoxDetail() {
           notFound={notFound}
           change={changeForm}
           showForm={displayForm}
-          // eslint-disable-next-line react/jsx-no-bind
           fetchBook={addBook}
         /> : ''}
       <div>
