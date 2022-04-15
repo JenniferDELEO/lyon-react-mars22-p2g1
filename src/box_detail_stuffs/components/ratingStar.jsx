@@ -1,5 +1,4 @@
-export default function RatingStar() {
-  const rate = Math.floor(Math.random() * (6));
+export default function RatingStar({ rate }) {
   if (rate === 5) {
     return (
       <div className="text-lg pb-5 flex">
