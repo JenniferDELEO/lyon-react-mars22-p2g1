@@ -2,15 +2,15 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import NavBar from './components/NavBar';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [show, setShow] = useState(true);
   const controlNavbar = () => {
     if (window.scrollY > 50) {
       setShow(false);
-      if (window.location.href) setShow(true);
     } else setShow(true);
   };
 
@@ -26,7 +26,7 @@ function App() {
       <div className="header">
         <Header />
       </div>
-      <div className={`${show && 'navbar'}`}>
+      <div className={`navbar-bottom ${show && 'navbar'}`}>
         <NavBar />
       </div>
       <div className="main">

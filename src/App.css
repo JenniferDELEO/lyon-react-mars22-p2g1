@@ -1,5 +1,23 @@
 .app-container {
-  position: static;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  order: 1;
+}
+
+.navbar-bottom {
+  order: 4;
+}
+
+.main {
+  order: 2;
+}
+
+.footer {
+  order: 3;
 }
 
 .navbar {
