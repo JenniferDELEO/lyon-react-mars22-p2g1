@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-// import React, { useState } from 'react';
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
