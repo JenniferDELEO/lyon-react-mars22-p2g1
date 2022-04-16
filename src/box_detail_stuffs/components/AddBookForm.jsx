@@ -8,41 +8,56 @@ export default function AddBookForm({
   titleValue,
   isbnValue,
   authorValue,
-  fetchBook
+  fetchBook,
+  rate,
+  condition,
+  status
 }) {
+  const getRateFive = () => rate(5);
+  const getRateFour = () => rate(4);
+  const getRateThree = () => rate(3);
+  const getRateTwo = () => rate(2);
+  const getRateOne = () => rate(1);
+
   return (
-    <div className="text-center flex justify-center h-96 transition-opacity popup-bg">
-      <form className="mb-5 flex text-sm flex-col items-center place-content-around transition-opacity popup">
-        <p className="quit-btn cursor-pointer" onClick={showForm}>X</p>
+    <div className="transition-opacity popup-bg z-50">
+      <form className="flex text-xs flex-col h-2/5 items-center justify-between popup">
+        <p className="quit-btn cursor-pointer self-end mr-2 mt-1" onClick={showForm}>X</p>
+        {!status && notFound ? (
+          <>
+            <p className="text-red-500 animate-pulse underline text-xxs">INTROUVABLE</p>
+            <p className="text-red-500 animate-pulse text-xxs">↓ Merci de rentrer le livre a la main ↓</p>
+          </>) : ('')}
         { notFound ? (
           <>
-            <p>Auteur</p>
+            <p className="underline">Auteur</p>
             <input className="border w-2/3" value={authorValue} onChange={author} type="text" placeholder="auteur du livre" />
-            <p>Titre</p>
+            <p className="underline">Titre</p>
             <input className="border w-2/3" value={titleValue} onChange={title} type="text" placeholder="titre du livre" />
           </>
         ) :
           (
             <>
-              <p>ISBN</p>
+              <p className="underline">ISBN</p>
               <input className="border w-2/3" value={isbnValue} onChange={isbn} type="text" placeholder="entrer un isbn" />
             </>
           )}
-        <p>etat</p>
-        <select className="w-2/5">
+        <p className="underline">etat</p>
+        <select onChange={condition} className="w-2/5">
           <option value="2">bon</option>
           <option value="1">mauvais</option>
           <option value="3">excellent</option>
         </select>
-        <div className="rating rating2">
-          <a href="#5">★</a>
-          <a href="#4">★</a>
-          <a href="#3">★</a>
-          <a href="#2">★</a>
-          <a href="#1">★</a>
+        <p className="underline">note</p>
+        <div className="rating rating2 m-2">
+          <a href="#5" onClick={getRateFive}>★</a>
+          <a href="#4" onClick={getRateFour}>★</a>
+          <a href="#3" onClick={getRateThree}>★</a>
+          <a href="#2" onClick={getRateTwo}>★</a>
+          <a href="#1" onClick={getRateOne}>★</a>
         </div>
         <button type="button" onClick={fetchBook} className="bg-blue-500 hover:bg-blue-700 border-black border text-white font-bold py-1 px-3 rounded">ajouter</button>
-        <p onClick={change} className="underline text-xs text-slate-500 cursor-pointer">saisie manuelle</p>
+        <p onClick={change} className="underline text-xxs text-slate-500 cursor-pointer mb-5">{ notFound ? 'requete ISBN' : 'saisie manuelle'}</p>
       </form>
     </div>
   );

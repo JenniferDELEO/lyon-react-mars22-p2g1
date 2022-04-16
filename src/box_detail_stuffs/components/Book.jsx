@@ -22,9 +22,9 @@ export default function Book({
   const [titlePopup, setTitlePopup] = useState('');
 
   let actionBg = '';
-  if (isBorrow) { actionBg = { color: 'flex items-center bg-green-400 h-40', size: 'flex bg-white w-5/6 h-36 transition-all duration-500 rounded-lg', btn: 'bg-green-400 hover:bg-green-500 border-black text-xs border text-black font-bold py-0.3 px-0.7 rounded' }; }
-  if (isDelete) { actionBg = { color: 'flex items-center bg-red-400 h-40', size: 'flex bg-white w-5/6 h-36 transition-all duration-500 rounded-lg', btn: 'bg-red-400 hover:bg-red-500 border-black border text-xs text-black font-bold py-0.3 px-0.7 rounded' }; }
-  if (!isBorrow && !isDelete) { actionBg = { color: 'flex items-center bg-slate-200 h-40', size: 'flex bg-white h-36 w-full transition-all duration-500' }; }
+  if (isBorrow) { actionBg = { color: 'flex items-center bg-green-400 h-40', size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg', btn: 'animate-bounce bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center' }; }
+  if (isDelete) { actionBg = { color: 'flex items-center bg-red-400 h-40', size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg', btn: 'animate-bounce bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center' }; }
+  if (!isBorrow && !isDelete) { actionBg = { color: 'flex items-center bg-slate-200 h-40', size: 'flex bg-white h-38 w-full transition-all duration-500' }; }
 
   function abortAction() {
     setIsBorrow(false);
@@ -36,6 +36,7 @@ export default function Book({
     setAuthorPopup(auteur);
     setTitlePopup(titre);
     setIsBorrow(true);
+    console.log(booksList);
   }
   function deleteAction() {
     setAuthorPopup(auteur);
@@ -46,9 +47,8 @@ export default function Book({
 
   function setNewBooksList() {
     setShowPopup(true);
-    let newList = booksList.slice();
-    newList.find((book) => book.titre === titre).out = true;
-    newList = newList.filter((book) => book.out !== true);
+    const newList = booksList.slice();
+    newList.find((book) => book.titre === titre).outOfStock = true;
     liftUp(newList);
     setIsDelete(false);
     setIsBorrow(false);
@@ -65,7 +65,7 @@ export default function Book({
           }
           alt="book-cover"
         />
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between z-0">
           <div className="ml-5 flex flex-col justify-around leading-10">
             <p className="font-black text-sm underline">{titre.slice(0, 40)}</p>
             <p className="text-xs">{auteur.slice(0, 23)}</p>
@@ -79,7 +79,7 @@ export default function Book({
             <div className="mr-5 flex flex-col items-center justify-center">
               <RatingStar rate={parseFloat(note)} />
               <img
-                className="w-4 h-4 self-center mb-5 cursor-pointer"
+                className="w-5 h-5 self-center mb-5 cursor-pointer"
                 src="https://cdn-icons-png.flaticon.com/512/3143/3143542.png"
                 alt="delete-img"
                 onClick={deleteAction}
@@ -93,8 +93,8 @@ export default function Book({
               </button>
             </div>) : (
               <div className="flex flex-col justify-center mr-5">
-                <button type="button" onClick={setNewBooksList} className={actionBg.btn}>{ isBorrow ? 'OK' : 'OK'}</button>
-                <p className="text-center text-xs underline mt-2 cursor-pointer" onClick={abortAction}>annuler</p>
+                <button type="button" onClick={setNewBooksList} className={actionBg.btn}>OK</button>
+                <p className="text-center text-xxs underline mt-2 cursor-pointer" onClick={abortAction}>annuler</p>
               </div>)}
         </div>
         {showPopup ? (

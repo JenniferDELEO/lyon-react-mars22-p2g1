@@ -48,7 +48,6 @@
   }
 
   .popup {
-    height: 60%;
     width: 50%;
     position: absolute;
     left: 25%;
@@ -63,10 +62,19 @@
   .quit-btn {
     color: red;
     font-size: 1.2em;
-    position: relative;
-    left: 43%;
   }
 
   .small {
-    height: 30%;
+    left: 15%;
+    right: 15%;
+    width: 70%;
+    height: 10%;
+  }
+
+  .text-xxs {
+    font-size: 0.6rem;
+  }
+
+  .h-38 {
+    height: 9.5rem;
   }

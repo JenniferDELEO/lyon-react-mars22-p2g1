@@ -13,18 +13,38 @@ export default function BoxDetail() {
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [notFound, setBookNotFound] = useState(false);
-  const [isbn, setIsbn] = useState('');
+  const [isbn, setIsbn] = useState('9782070360598');
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [starRate, setStarRate] = useState(3);
+  const [condition, setCondition] = useState(2);
+  const [requestStatus, setRequestStatus] = useState(true);
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
   const handleTitleChange = (e) => setTitle(e.target.value);
+
   const displayForm = () => setAddBookForm(!addBookForm);
-  const changeForm = () => setBookNotFound(!notFound);
+
+  const handleConditionChange = (e) => setCondition(e.target.value);
+
+  function changeForm() {
+    setBookNotFound(!notFound);
+    setRequestStatus(true);
+  }
+
+  function abortPopup() {
+    setRequestStatus(true);
+    setBookNotFound(false);
+    setAddBookForm(false);
+    setShowPopup(false);
+    setTitlePopup('');
+    setAuthorPopup('');
+  }
 
   function addBook() {
+    console.log('after click', books[0]);
     if (!notFound && isbn) {
       axios
         .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
@@ -36,39 +56,70 @@ export default function BoxDetail() {
           }
           const newBookByIsbn = {
             titre: data.items[0].volumeInfo.title,
+            editions: data.items[0].volumeInfo.publisher,
             auteur: data.items[0].volumeInfo.authors[0],
             datePublication: data.items[0].volumeInfo.publishedDate.slice(0, 4),
             picture: img || null,
             nbrPages: data.items[0].volumeInfo.pageCount,
-            note: 4,
-            etat: 2,
+            note: starRate || 2,
+            etat: condition || 2,
             boite: 5,
             ISBN: isbn,
-            borrowed: false,
-            deleted: false,
-            out: false
+            toBorrow: false,
+            toDelete: false,
+            outOfStock: false
           };
           setAuthorPopup(newBookByIsbn.auteur);
           setTitlePopup(newBookByIsbn.titre);
+          setShowPopup(true);
+          setBookNotFound(false);
+          setAddBookForm(false);
           const newBooksList = books.slice();
           newBooksList.unshift(newBookByIsbn);
           setBooks(newBooksList);
-          setShowPopup(true);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          setRequestStatus(false);
+          setBookNotFound(true);
         });
+    }
+    if (notFound && title && author) {
+      const titleCap = title.charAt(0).toUpperCase() + title.slice(1);
+      let auteur = author.split(' ');
+      auteur = auteur.map((x) => x.charAt(0).toUpperCase() + x.slice(1));
+      const authorCap = auteur.join().replace(',', ' ');
+      const newBook = {
+        titre: titleCap,
+        editions: null,
+        auteur: authorCap,
+        datePublication: null,
+        picture: null,
+        nbrPages: null,
+        note: starRate,
+        etat: condition,
+        boite: 5,
+        ISBN: isbn,
+        toBorrow: false,
+        toDelete: false,
+        outOfStock: false
+      };
+      setAuthorPopup(authorCap);
+      setTitlePopup(titleCap);
+      setShowPopup(true);
+      setBookNotFound(false);
+      setAddBookForm(false);
+      const newBooksList = books.slice();
+      newBooksList.unshift(newBook);
+      setBooks(newBooksList);
     }
     setTitle('');
     setAuthor('');
     setIsbn('');
-    setAddBookForm(!addBookForm);
   }
 
   return (
     <div>
       <BoxHeader
-        quantity={books.length}
         form={displayForm}
       />
       {addBookForm ?
@@ -80,10 +131,17 @@ export default function BoxDetail() {
           isbnValue={isbn}
           authorValue={author}
           notFound={notFound}
+          // eslint-disable-next-line react/jsx-no-bind
           change={changeForm}
-          showForm={displayForm}
+          // eslint-disable-next-line react/jsx-no-bind
+          showForm={abortPopup}
           // eslint-disable-next-line react/jsx-no-bind
           fetchBook={addBook}
+          rate={setStarRate}
+          condition={handleConditionChange}
+          status={requestStatus}
+          // eslint-disable-next-line react/jsx-no-bind
+          popupAbort={abortPopup}
         /> : ''}
       <div>
         {showPopup ? (
@@ -91,12 +149,13 @@ export default function BoxDetail() {
             titre={titlePopup}
             auteur={authorPopup}
             popup="depot"
-            close={() => setShowPopup(false)}
+            // eslint-disable-next-line react/jsx-no-bind
+            close={abortPopup}
           />
         ) : (
           ''
         )}
-        {books.map((book) => (
+        {books.filter((book) => book.outOfStock === false).map((book) => (
           <Book
             picture={book.picture}
             titre={book.titre}
