@@ -19,8 +19,18 @@
   background-color: #fff;
 }
 
-.popup-inner .close-btn {
+.close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgba(14, 86, 103, 1);
+  border: 1px solid rgba(14, 86, 103, 1);
+  cursor: pointer;
+  font-weight: 200;
+  color: white;
+  font-size: large;
+  text-align: center;
 }
