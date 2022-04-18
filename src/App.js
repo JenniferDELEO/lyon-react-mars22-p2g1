@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [show, setShow] = useState(true);
   const controlNavbar = () => {
-    if (document.documentElement.scrollTop > 80) {
+    if (document.documentElement.scrollTop > 80 && window.innerWidth < 650) {
       setShow(false);
     } else setShow(true);
   };

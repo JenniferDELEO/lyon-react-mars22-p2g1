@@ -29,6 +29,7 @@
 @media screen and (min-width: 650px) {
   .header {
     order: 2;
+    margin-top: 75px;
   }
 
   .navbar-fixed {
@@ -44,6 +45,6 @@
   }
 
   .navbar {
-    position: initial;
+    top: 0;
   }
 }
