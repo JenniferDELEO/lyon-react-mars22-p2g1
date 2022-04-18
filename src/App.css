@@ -8,7 +8,7 @@
   order: 1;
 }
 
-.navbar-bottom {
+.navbar-fixed {
   order: 4;
 }
 
@@ -24,4 +24,26 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+@media screen and (min-width: 650px) {
+  .header {
+    order: 2;
+  }
+
+  .navbar-fixed {
+    order: 1;
+  }
+
+  .main {
+    order: 3;
+  }
+
+  .footer {
+    order: 4;
+  }
+
+  .navbar {
+    position: initial;
+  }
 }

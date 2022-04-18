@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 function App() {
   const [show, setShow] = useState(true);
   const controlNavbar = () => {
-    if (window.scrollY > 50) {
+    if (document.documentElement.scrollTop > 80) {
       setShow(false);
     } else setShow(true);
   };
@@ -25,7 +25,7 @@ function App() {
       <div className="header">
         <Header />
       </div>
-      <div className={`navbar-bottom ${show && 'navbar'}`}>
+      <div className={`navbar-fixed ${show && 'navbar'}`}>
         <NavBar />
       </div>
       <div className="main">

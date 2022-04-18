@@ -13,6 +13,7 @@ const getActiveLinkStyle = ({ isActive }) => ({
 export default function NavBar() {
   return (
     <nav className="navbar-container">
+      <h1 className="page-title">La boite à livre Lyon</h1>
       <ul className="list-navbar-container">
         <li className="home-navigation">
           <NavLink
