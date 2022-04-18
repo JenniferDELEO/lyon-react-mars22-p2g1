@@ -1,91 +1,14 @@
 import React from 'react';
 import PopupDisplay from '../components/PopupDisplay';
+import HomeBookSelection from '../components/Home_BookSelection';
+import HomeBoxList from '../components/Home_BoxList';
 
 export default function Home() {
   return (
-    <div>
+    <>
       <PopupDisplay />
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-      <p>Some content</p>
-    </div>
+      <HomeBoxList />
+      <HomeBookSelection />
+    </>
   );
 }

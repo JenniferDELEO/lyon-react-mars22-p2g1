@@ -1,0 +1,31 @@
+.fondtitre {
+  position: absolute;
+  width: 442px;
+  height: 98px;
+  left: -7px;
+  top: 0px;
+
+  /* Background-secondaire */
+  background: #1b9eb2;
+  border: 0.8px solid #000000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+h1 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+
+  /* or 111% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* Background-primaire */
+  color: #f2f2f2;
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+}
