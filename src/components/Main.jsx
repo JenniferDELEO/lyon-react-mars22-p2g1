@@ -5,6 +5,7 @@ import Search from '../pages/Search';
 import Form from '../pages/Form';
 import MyProfile from '../pages/MyProfile';
 import BoxDetail from '../pages/BoxDetail';
+import BookDetail from '../pages/BookDetail';
 
 export default function Main() {
   return (
