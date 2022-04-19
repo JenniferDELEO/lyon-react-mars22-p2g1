@@ -1,5 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import livresDB from '../ressources/livresDB.json';
+
+console.log(livresDB);
 
 export default function BookDetail() {
   const entree = 9781781101063;
