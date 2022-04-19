@@ -21,7 +21,7 @@ function HomeBoxList() {
         {boxList.slice(0, 3).map((box) => (
           <p>
             {' '}
-            <Link to={`/BoxDetail/${box.boite}`}> {box.adresse} </Link> boîte
+            <Link to={`/BoxDetail/${box.boite}`}> {box.adresse}</Link> boîte
             numéro : {box.boite}
             <br />
             {quantiteParBoite[box.boite]} livres
