@@ -9,7 +9,6 @@ body {
 }
 
 main {
-  padding: 32px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
