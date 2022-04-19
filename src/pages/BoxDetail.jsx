@@ -2,12 +2,14 @@ import '../box_detail_stuffs/box_detail.css';
 import Book from '../box_detail_stuffs/components/Book';
 import booksDataBase from '../box_detail_stuffs/books_database.json';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import AddBookForm from '../box_detail_stuffs/components/AddBookForm';
 import BoxHeader from '../box_detail_stuffs/components/BoxHeaders';
 import axios from 'axios';
 import Popup from '../box_detail_stuffs/components/Popup';
 
 export default function BoxDetail() {
+  const num = useParams();
   const [books, setBooks] = useState(booksDataBase);
   const [addBookForm, setAddBookForm] = useState(false);
   const [author, setAuthor] = useState('');
@@ -24,9 +26,7 @@ export default function BoxDetail() {
   const handleIsbnChange = (e) => setIsbn(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
   const handleTitleChange = (e) => setTitle(e.target.value);
-
   const displayForm = () => setAddBookForm(!addBookForm);
-
   const handleConditionChange = (e) => setCondition(e.target.value);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function BoxDetail() {
             isbn: _isbn,
             to_borrow: null,
             to_delete: null,
-            out_of_stock: null
+            out_of_stock: null,
           };
           setAuthorPopup(newBook.author);
           setTitlePopup(newBook.title);
@@ -94,7 +94,9 @@ export default function BoxDetail() {
         .catch(() => {
           console.log('not in database, requesting googleBooks..');
           axios
-            .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${_isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`)
+            .get(
+              `https://www.googleapis.com/books/v1/volumes?q=isbn:${_isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`
+            )
             .then((response) => response.data)
             .then((data) => {
               let img = '';
@@ -105,7 +107,10 @@ export default function BoxDetail() {
                 title: data.items[0].volumeInfo.title,
                 editions: data.items[0].volumeInfo.publisher,
                 author: data.items[0].volumeInfo.authors[0],
-                publication_year: data.items[0].volumeInfo.publishedDate.slice(0, 4),
+                publication_year: data.items[0].volumeInfo.publishedDate.slice(
+                  0,
+                  4
+                ),
                 picture: img || null,
                 pages_nbr: data.items[0].volumeInfo.pageCount,
                 note: starRate || 2,
@@ -114,7 +119,7 @@ export default function BoxDetail() {
                 isbn: _isbn,
                 to_borrow: false,
                 to_delete: false,
-                out_of_stock: false
+                out_of_stock: false,
               };
               console.log(newBook);
               setAuthorPopup(newBook.author);
@@ -155,7 +160,7 @@ export default function BoxDetail() {
         isbn: _isbn,
         to_borrow: false,
         to_delete: false,
-        out_of_stock: false
+        out_of_stock: false,
       };
       setAuthorPopup(authorCap);
       setTitlePopup(titleCap);
@@ -178,10 +183,8 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader
-        form={displayForm}
-      />
-      {addBookForm ?
+      <BoxHeader form={displayForm} />
+      {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
           author={handleAuthorChange}
@@ -201,7 +204,10 @@ export default function BoxDetail() {
           status={requestStatus}
           // eslint-disable-next-line react/jsx-no-bind
           popupAbort={abortPopup}
-        /> : ''}
+        />
+      ) : (
+        ''
+      )}
       <div>
         {showPopup ? (
           <Popup
@@ -214,19 +220,21 @@ export default function BoxDetail() {
         ) : (
           ''
         )}
-        {books.map((book) => (
-          <Book
-            picture={book.picture}
-            titre={book.title}
-            auteur={book.author}
-            note={book.note}
-            etat={book.cond}
-            borrowState={book.to_borrow}
-            deleteState={book.to_delete}
-            liftUp={setBooks}
-            booksList={books}
-          />
-        ))}
+        {books
+          .filter((book) => book.box_number === parseFloat(num.boite))
+          .map((book) => (
+            <Book
+              picture={book.picture}
+              titre={book.title}
+              auteur={book.author}
+              note={book.note}
+              etat={book.cond}
+              borrowState={book.to_borrow}
+              deleteState={book.to_delete}
+              liftUp={setBooks}
+              booksList={books}
+            />
+          ))}
       </div>
     </div>
   );
