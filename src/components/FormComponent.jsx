@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
-import '../styles/FormComponent.css';
 import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../styles/FormComponent.css';
 
 function FormComponent() {
   const form = useRef();
@@ -22,13 +24,27 @@ function FormComponent() {
           console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          console.error(error.text);
         }
       );
-    alert('Merci pour votre message');
+    setName('');
+    setMail('');
+    setMessage('');
+    toast(
+      'Merci pour votre message. Notre équipe vous répondra dès que possible !',
+      {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
   };
   return (
-    <div>
+    <div className="form-section">
       <h2 className="form-title">Votre message :</h2>
       <form ref={form} className="form-component" onSubmit={sendEmail}>
         <label htmlFor="name">Votre nom * :</label>
@@ -39,9 +55,9 @@ function FormComponent() {
           onChange={(event) => setName(event.target.value)}
           required
         />
-        <label htmlFor="mail">Votre mail * :</label>
+        <label htmlFor="mail">Votre email * :</label>
         <input
-          type="text"
+          type="email"
           name="mail"
           value={mail}
           onChange={(event) => setMail(event.target.value)}
@@ -52,14 +68,16 @@ function FormComponent() {
           rows="15"
           cols="40"
           type="text"
+          name="message"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           required
         />
-        <button type="submit" className="btn-form" onClick={sendEmail}>
+        <button type="submit" className="btn-form">
           Envoyer
         </button>
       </form>
+      <ToastContainer className="toast-container" />
     </div>
   );
 }

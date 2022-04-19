@@ -1,3 +1,7 @@
+.form-section {
+  margin: 0 80px;
+}
+
 .form-title {
   text-decoration: underline;
   margin: 32px;
@@ -10,6 +14,7 @@
 
 .form-component label {
   margin: 16px 0;
+  font-weight: bold;
 }
 
 .form-component input,
@@ -28,8 +33,15 @@
   display: block;
   background-color: rgba(27, 158, 178, 1);
   border: 1px solid rgba(27, 158, 178, 1);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 8px;
   color: white;
   cursor: pointer;
+  width: 75px;
+}
+
+@media screen and (min-width: 650px) {
+  .toast-container {
+    width: 500px;
+  }
 }
