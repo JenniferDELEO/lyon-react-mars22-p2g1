@@ -44,10 +44,9 @@ export default function BoxDetail() {
   }
 
   function addBook() {
-    console.log('after click', books[0]);
     if (!notFound && isbn) {
       axios
-        .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+        .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`)
         .then((response) => response.data)
         .then((data) => {
           let img = '';
