@@ -11,11 +11,12 @@ import Popup from '../components/Popup';
 
 export default function BoxDetail() {
   const num = useParams();
+  const [booksOut, setBooksOut] = useState(false);
   const [books, setBooks] = useState(booksDataBase);
   const [addBookForm, setAddBookForm] = useState(false);
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
-  const [boxNumber] = useState(2);
+  const [boxNumber] = useState(num);
   const [notFound, setBookNotFound] = useState(false);
   const [_isbn, setIsbn] = useState('2253167444');
   const [authorPopup, setAuthorPopup] = useState('');
@@ -41,7 +42,7 @@ export default function BoxDetail() {
       .catch((error) => {
         console.log(error);
       });
-  }, [addBookForm]);
+  }, [addBookForm, booksOut]);
 
   function changeForm() {
     setBookNotFound(!notFound);
@@ -68,17 +69,18 @@ export default function BoxDetail() {
             editions: data[0][0].editions,
             author: data[0][0].author,
             publication_year: data[0][0].publication_year,
+            synopsis: data[0][0].synopsis,
             picture: data[0][0].picture,
             pages_nbr: data[0][0].pages_nbr,
             note: starRate,
             cond: condition,
-            box_number: 5,
+            box_number: parseFloat(boxNumber.boite),
             isbn: _isbn,
             to_borrow: null,
             to_delete: null,
             out_of_stock: null,
           };
-          console.log('num boite -> ', boxNumber);
+          console.log('num boite -> ', typeof boxNumber.boite);
           setAuthorPopup(newBook.author);
           setTitlePopup(newBook.title);
           setShowPopup(true);
@@ -118,7 +120,7 @@ export default function BoxDetail() {
                 pages_nbr: data.items[0].volumeInfo.pageCount,
                 note: starRate || 2,
                 cond: condition || 2,
-                box_number: 5,
+                box_number: parseFloat(boxNumber.boite),
                 isbn: _isbn,
                 to_borrow: false,
                 to_delete: false,
@@ -158,7 +160,7 @@ export default function BoxDetail() {
         pages_nbr: null,
         note: starRate,
         cond: condition,
-        box_number: 5,
+        box_number: parseFloat(boxNumber.boite),
         isbn: _isbn,
         to_borrow: false,
         to_delete: false,
@@ -185,7 +187,7 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader form={displayForm} />
+      <BoxHeader displayForm={displayForm} boxNumber={boxNumber.boite} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
@@ -224,8 +226,10 @@ export default function BoxDetail() {
         )}
         {books
           .filter((book) => book.box_number === parseFloat(num.boite))
+          .filter((book) => book.out_of_stock === 0)
           .map((book) => (
             <Book
+              id={book.id}
               picture={book.picture}
               titre={book.title}
               auteur={book.author}
@@ -233,9 +237,8 @@ export default function BoxDetail() {
               etat={book.cond}
               borrowState={book.to_borrow}
               deleteState={book.to_delete}
-              liftUp={setBooks}
               isbn={book.isbn}
-              booksList={books}
+              booksOut={setBooksOut}
             />
           ))}
       </div>

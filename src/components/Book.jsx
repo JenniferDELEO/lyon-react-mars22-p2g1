@@ -2,6 +2,7 @@ import { useState } from 'react';
 import RatingStar from './ratingStar';
 import Popup from './Popup';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Book({
   picture,
@@ -11,9 +12,8 @@ export default function Book({
   note,
   borrowState,
   deleteState,
-  booksList,
-  liftUp,
-  isbn,
+  id,
+  booksOut,
 }) {
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
@@ -51,12 +51,13 @@ export default function Book({
   }
 
   function borrowAction() {
+    console.log(id);
     setPopupContent('borrow');
     setAuthorPopup(auteur);
     setTitlePopup(titre);
     setIsBorrow(true);
-    console.log(booksList);
   }
+
   function deleteAction() {
     setAuthorPopup(auteur);
     setTitlePopup(titre);
@@ -65,10 +66,17 @@ export default function Book({
   }
 
   function setNewBooksList() {
+    axios
+      .put(`http://localhost:5000/books/update/${id}`)
+      .then((response) => {
+        console.log(response);
+        booksOut(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    booksOut(false);
     setShowPopup(true);
-    const newList = booksList.slice();
-    newList.find((book) => book.titre === titre).outOfStock = true;
-    liftUp(newList);
     setIsDelete(false);
     setIsBorrow(false);
   }
@@ -93,7 +101,7 @@ export default function Book({
               <p className="ml-3">{conditionColor[etat]}</p>
             </div>
             <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={`/bookdetail/${isbn}`}>detail</Link>
+              <Link to={`/bookdetail/${id}`}>detail</Link>
             </em>
           </div>
           {!isBorrow && !isDelete ? (

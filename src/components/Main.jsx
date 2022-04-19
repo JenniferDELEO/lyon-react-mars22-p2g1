@@ -16,7 +16,7 @@ export default function Main() {
         <Route path="/form" element={<Form />} />
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/boxdetail/:boite" element={<BoxDetail />} />
-        <Route path="/bookdetail/:isbn" element={<BookDetail />} />
+        <Route path="/bookdetail/:id" element={<BookDetail />} />
       </Routes>
     </main>
   );
