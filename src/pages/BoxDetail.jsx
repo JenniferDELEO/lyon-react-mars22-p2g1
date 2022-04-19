@@ -13,13 +13,12 @@ export default function BoxDetail() {
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [notFound, setBookNotFound] = useState(false);
-  const [_isbn, setIsbn] = useState('9782070360598');
+  const [_isbn, setIsbn] = useState('9782070572670');
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [starRate, setStarRate] = useState(3);
   const [condition, setCondition] = useState(2);
-  const [boxNumber, setBoxNumber] = useState(5);
   const [requestStatus, setRequestStatus] = useState(true);
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
@@ -71,7 +70,7 @@ export default function BoxDetail() {
             pages_nbr: data[0][0].pages_nbr,
             note: starRate,
             cond: condition,
-            box_number: boxNumber,
+            box_number: 5,
             isbn: _isbn,
             to_borrow: null,
             to_delete: null,
@@ -111,7 +110,7 @@ export default function BoxDetail() {
                 pages_nbr: data.items[0].volumeInfo.pageCount,
                 note: starRate || 2,
                 cond: condition || 2,
-                box_number: boxNumber,
+                box_number: 5,
                 isbn: _isbn,
                 to_borrow: false,
                 to_delete: false,
@@ -152,7 +151,7 @@ export default function BoxDetail() {
         pages_nbr: null,
         note: starRate,
         cond: condition,
-        box_number: boxNumber,
+        box_number: 5,
         isbn: _isbn,
         to_borrow: false,
         to_delete: false,
