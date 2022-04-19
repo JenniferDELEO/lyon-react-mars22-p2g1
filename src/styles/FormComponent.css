@@ -1,0 +1,28 @@
+.form-title {
+  text-decoration: underline;
+  margin: 32px;
+}
+
+.form-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-component label {
+  margin: 16px 0;
+}
+
+.form-component input,
+.form-component textarea {
+  border: 1px solid rgba(27, 158, 178, 1);
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.form-component textarea {
+  resize: none;
+}
+
+.btn-form {
+  margin: 16px auto;
+}
