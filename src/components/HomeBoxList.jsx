@@ -1,6 +1,7 @@
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
+import '../styles/Home_lists.css';
 
 const quantiteParBoite = [];
 
@@ -14,8 +15,8 @@ for (let i = 0; i < bookList.length; i += 1) {
 
 function HomeBoxList() {
   return (
-    <div className="BookList">
-      <h2 className="bookListTitle">Liste des boîtes :</h2>
+    <div className="boxList">
+      <h2>Liste des boîtes : </h2>
       <ul>
         {boxList.slice(0, 3).map((box) => (
           <p>
