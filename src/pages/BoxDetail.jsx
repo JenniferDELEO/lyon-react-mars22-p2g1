@@ -1,7 +1,7 @@
 import '../box_detail_stuffs/box_detail.css';
 import Book from '../box_detail_stuffs/components/Book';
-import booksDataBase from '../box_detail_stuffs/books_database';
-import { useState } from 'react';
+import booksDataBase from '../box_detail_stuffs/books_database.json';
+import { useEffect, useState } from 'react';
 import AddBookForm from '../box_detail_stuffs/components/AddBookForm';
 import BoxHeader from '../box_detail_stuffs/components/BoxHeaders';
 import axios from 'axios';
@@ -13,12 +13,13 @@ export default function BoxDetail() {
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [notFound, setBookNotFound] = useState(false);
-  const [isbn, setIsbn] = useState('9782070360598');
+  const [_isbn, setIsbn] = useState('9782070360598');
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [starRate, setStarRate] = useState(3);
   const [condition, setCondition] = useState(2);
+  const [boxNumber, setBoxNumber] = useState(5);
   const [requestStatus, setRequestStatus] = useState(true);
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
@@ -28,6 +29,18 @@ export default function BoxDetail() {
   const displayForm = () => setAddBookForm(!addBookForm);
 
   const handleConditionChange = (e) => setCondition(e.target.value);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/books/all_books')
+      .then((response) => response.data)
+      .then((data) => {
+        setBooks(data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [addBookForm]);
 
   function changeForm() {
     setBookNotFound(!notFound);
@@ -44,42 +57,85 @@ export default function BoxDetail() {
   }
 
   function addBook() {
-    if (!notFound && isbn) {
+    if (!notFound && _isbn) {
       axios
-        .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`)
+        .get(`http://localhost:5000/books/isbn=${_isbn}`)
         .then((response) => response.data)
         .then((data) => {
-          let img = '';
-          if (data.items[0].volumeInfo.imageLinks) {
-            img = data.items[0].volumeInfo.imageLinks.smallThumbnail;
-          }
-          const newBookByIsbn = {
-            titre: data.items[0].volumeInfo.title,
-            editions: data.items[0].volumeInfo.publisher,
-            auteur: data.items[0].volumeInfo.authors[0],
-            datePublication: data.items[0].volumeInfo.publishedDate.slice(0, 4),
-            picture: img || null,
-            nbrPages: data.items[0].volumeInfo.pageCount,
-            note: starRate || 2,
-            etat: condition || 2,
-            boite: 5,
-            ISBN: isbn,
-            toBorrow: false,
-            toDelete: false,
-            outOfStock: false
+          const newBook = {
+            title: data[0][0].title,
+            editions: data[0][0].editions,
+            author: data[0][0].author,
+            publication_year: data[0][0].publication_year,
+            picture: data[0][0].picture,
+            pages_nbr: data[0][0].pages_nbr,
+            note: starRate,
+            cond: condition,
+            box_number: boxNumber,
+            isbn: _isbn,
+            to_borrow: null,
+            to_delete: null,
+            out_of_stock: null
           };
-          setAuthorPopup(newBookByIsbn.auteur);
-          setTitlePopup(newBookByIsbn.titre);
+          setAuthorPopup(newBook.author);
+          setTitlePopup(newBook.title);
           setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
-          const newBooksList = books.slice();
-          newBooksList.unshift(newBookByIsbn);
-          setBooks(newBooksList);
+          console.log('requesting database..');
+          axios
+            .post('http://localhost:5000/post_books', newBook)
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch(() => {
-          setRequestStatus(false);
-          setBookNotFound(true);
+          console.log('not in database, requesting googleBooks..');
+          axios
+            .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${_isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`)
+            .then((response) => response.data)
+            .then((data) => {
+              let img = '';
+              if (data.items[0].volumeInfo.imageLinks) {
+                img = data.items[0].volumeInfo.imageLinks.smallThumbnail;
+              }
+              const newBook = {
+                title: data.items[0].volumeInfo.title,
+                editions: data.items[0].volumeInfo.publisher,
+                author: data.items[0].volumeInfo.authors[0],
+                publication_year: data.items[0].volumeInfo.publishedDate.slice(0, 4),
+                picture: img || null,
+                pages_nbr: data.items[0].volumeInfo.pageCount,
+                note: starRate || 2,
+                cond: condition || 2,
+                box_number: boxNumber,
+                isbn: _isbn,
+                to_borrow: false,
+                to_delete: false,
+                out_of_stock: false
+              };
+              console.log(newBook);
+              setAuthorPopup(newBook.author);
+              setTitlePopup(newBook.title);
+              setShowPopup(true);
+              setBookNotFound(false);
+              setAddBookForm(false);
+              axios
+                .post('http://localhost:5000/post_books', newBook)
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            })
+            .catch(() => {
+              setRequestStatus(false);
+              setBookNotFound(true);
+            });
         });
     }
     if (notFound && title && author) {
@@ -88,28 +144,33 @@ export default function BoxDetail() {
       auteur = auteur.map((x) => x.charAt(0).toUpperCase() + x.slice(1));
       const authorCap = auteur.join().replace(',', ' ');
       const newBook = {
-        titre: titleCap,
+        title: titleCap,
         editions: null,
-        auteur: authorCap,
-        datePublication: null,
+        author: authorCap,
+        publication_year: null,
         picture: null,
-        nbrPages: null,
+        pages_nbr: null,
         note: starRate,
-        etat: condition,
-        boite: 5,
-        ISBN: isbn,
-        toBorrow: false,
-        toDelete: false,
-        outOfStock: false
+        cond: condition,
+        box_number: boxNumber,
+        isbn: _isbn,
+        to_borrow: false,
+        to_delete: false,
+        out_of_stock: false
       };
       setAuthorPopup(authorCap);
       setTitlePopup(titleCap);
       setShowPopup(true);
       setBookNotFound(false);
       setAddBookForm(false);
-      const newBooksList = books.slice();
-      newBooksList.unshift(newBook);
-      setBooks(newBooksList);
+      axios
+        .post('http://localhost:5000/post_books', newBook)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     setTitle('');
     setAuthor('');
@@ -127,7 +188,7 @@ export default function BoxDetail() {
           author={handleAuthorChange}
           isbn={handleIsbnChange}
           titleValue={title}
-          isbnValue={isbn}
+          isbnValue={_isbn}
           authorValue={author}
           notFound={notFound}
           // eslint-disable-next-line react/jsx-no-bind
@@ -154,15 +215,15 @@ export default function BoxDetail() {
         ) : (
           ''
         )}
-        {books.filter((book) => book.outOfStock === false).map((book) => (
+        {books.map((book) => (
           <Book
             picture={book.picture}
-            titre={book.titre}
-            auteur={book.auteur}
+            titre={book.title}
+            auteur={book.author}
             note={book.note}
-            etat={book.etat}
-            borrowState={book.toBorrow}
-            deleteState={book.toDelete}
+            etat={book.cond}
+            borrowState={book.to_borrow}
+            deleteState={book.to_delete}
             liftUp={setBooks}
             booksList={books}
           />
