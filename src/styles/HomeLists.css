@@ -1,0 +1,41 @@
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 1OOvh;
+}
+main {
+  background-color: #f2f2f2;
+}
+
+.boxList {
+  text-align: center;
+  background-color: #f2f2f2;
+}
+.boxList h2 {
+  color: #1b9eb2;
+}
+.boxList p {
+  background-color: #ffffff;
+  margin: 1vh;
+  border-radius: 10px;
+  padding: 5px;
+}
+/* --------------------- Futur carousel --------- */
+
+.bookSelection {
+}
+
+.bookSelection h2 {
+  color: #1b9eb2;
+  text-align: center;
+}
+.bookSelection img {
+  height: 150px;
+  width: 100px;
+  margin: 10px;
+}
+.carousel {
+  display: flex;
+  flex: 2 1 auto;
+}

@@ -1,7 +1,7 @@
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
-import '../styles/Home_lists.css';
+import '../styles/HomeLists.css';
 
 const quantiteParBoite = [];
 
@@ -23,7 +23,8 @@ function HomeBoxList() {
             {' '}
             <Link to={`/BoxDetail/${box.boite}`}> {box.adresse} </Link> boîte
             numéro : {box.boite}
-            <br /> Quantité de livres : {quantiteParBoite[box.boite]}
+            <br />
+            {quantiteParBoite[box.boite]} livres
           </p>
         ))}
       </ul>
