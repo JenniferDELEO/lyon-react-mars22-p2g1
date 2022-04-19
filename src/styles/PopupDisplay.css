@@ -1,0 +1,22 @@
+.button-acces {
+  border-radius: 20px;
+  background-color: rgba(14, 86, 103, 1);
+  border: 1px solid rgba(14, 86, 103, 1);
+  cursor: pointer;
+  color: white;
+  margin-top: 32px;
+  padding: 4px 16px;
+}
+
+.welcome p {
+  margin-top: 24px;
+}
+
+.bal-popup-content {
+  margin-top: 48px;
+}
+
+.map-navigation {
+  width: 16px;
+  margin-right: 16px;
+}
