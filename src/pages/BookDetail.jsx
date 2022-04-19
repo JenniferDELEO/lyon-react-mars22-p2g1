@@ -1,18 +1,6 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import book from '../ressources/books_database.json';
 
 export default function BookDetail() {
-  const entree = 9781781101063;
-  const [book, setBook] = useState();
-  React.useEffect(() => {
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${entree}`)
-      .then((answer) => answer.data.items)
-      .then((bookInfo) => {
-        setBook(bookInfo[0].volumeInfo);
-      });
-  }, []);
-
   return (
     <div className="bookdetail">
       {book && (

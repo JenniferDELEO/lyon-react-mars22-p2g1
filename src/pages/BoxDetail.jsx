@@ -1,12 +1,13 @@
-import '../box_detail_stuffs/box_detail.css';
-import Book from '../box_detail_stuffs/components/Book';
-import booksDataBase from '../box_detail_stuffs/books_database.json';
+import '../styles/box_detail.css';
+import '../styles/index.css';
+import Book from '../components/Book';
+import booksDataBase from '../ressources/books_database.json';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AddBookForm from '../box_detail_stuffs/components/AddBookForm';
-import BoxHeader from '../box_detail_stuffs/components/BoxHeaders';
+import AddBookForm from '../components/AddBookForm';
+import BoxHeader from '../components/BoxHeaders';
 import axios from 'axios';
-import Popup from '../box_detail_stuffs/components/Popup';
+import Popup from '../components/Popup';
 
 export default function BoxDetail() {
   const num = useParams();
@@ -14,8 +15,9 @@ export default function BoxDetail() {
   const [addBookForm, setAddBookForm] = useState(false);
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
+  const [boxNumber] = useState(2);
   const [notFound, setBookNotFound] = useState(false);
-  const [_isbn, setIsbn] = useState('9782070572670');
+  const [_isbn, setIsbn] = useState('2253167444');
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
   const [showPopup, setShowPopup] = useState(false);
@@ -76,6 +78,7 @@ export default function BoxDetail() {
             to_delete: null,
             out_of_stock: null,
           };
+          console.log('num boite -> ', boxNumber);
           setAuthorPopup(newBook.author);
           setTitlePopup(newBook.title);
           setShowPopup(true);
@@ -121,7 +124,6 @@ export default function BoxDetail() {
                 to_delete: false,
                 out_of_stock: false,
               };
-              console.log(newBook);
               setAuthorPopup(newBook.author);
               setTitlePopup(newBook.title);
               setShowPopup(true);
@@ -232,6 +234,7 @@ export default function BoxDetail() {
               borrowState={book.to_borrow}
               deleteState={book.to_delete}
               liftUp={setBooks}
+              isbn={book.isbn}
               booksList={books}
             />
           ))}
