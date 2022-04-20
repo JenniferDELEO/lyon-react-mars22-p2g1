@@ -13,7 +13,7 @@ export default function Main() {
   return (
     <main className="main-container">
       <img src={Books} alt="library" className="img-left img-desktop" />
-      <div>
+      <div className='"main-routes'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
