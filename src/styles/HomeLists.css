@@ -1,7 +1,9 @@
 main {
   background-color: #f2f2f2;
   padding: 2rem;
+  height: 90vh;
 }
+
 .boxList {
   text-align: center;
   background-color: #f2f2f2;
@@ -27,7 +29,7 @@ main {
   border-radius: 10px;
 }
 
-.bookSelection h2 {
+h2 {
   color: #1b9eb2;
   text-align: center;
 }
