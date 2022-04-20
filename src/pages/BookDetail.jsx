@@ -1,8 +1,6 @@
 import React from 'react';
 import livresDB from '../ressources/livresDB.json';
 
-console.log(livresDB[0].titre);
-
 export default function BookDetail() {
   const book = livresDB[0];
 
