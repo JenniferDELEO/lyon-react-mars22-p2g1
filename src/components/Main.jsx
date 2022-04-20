@@ -6,14 +6,13 @@ import Form from '../pages/Form';
 import MyProfile from '../pages/MyProfile';
 import BoxDetail from '../pages/BoxDetail';
 import BookDetail from '../pages/BookDetail';
-import Books from '../assets/books.jpg';
 import '../styles/Main.css';
 
 export default function Main() {
   return (
     <main className="main-container">
-      <img src={Books} alt="library" className="img-left img-desktop" />
-      <div className='"main-routes'>
+      <div className="img-left img-desktop" />
+      <div className="routes-container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
@@ -23,7 +22,7 @@ export default function Main() {
           <Route path="/bookdetail" element={<BookDetail />} />
         </Routes>
       </div>
-      <img src={Books} alt="library" className="img-right img-desktop" />
+      <div className="img-right img-desktop" />
     </main>
   );
 }
