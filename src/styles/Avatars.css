@@ -1,7 +1,11 @@
 .Avatars {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+}
+h2 {
+  text-decoration: underline;
 }
 .avatar {
   display: flex;

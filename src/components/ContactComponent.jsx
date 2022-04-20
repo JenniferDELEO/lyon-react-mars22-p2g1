@@ -9,41 +9,44 @@ import '../styles/Avatars.css';
 
 function ContactComponent() {
   return (
-    <div className="Avatars">
-      <div className="Jen avatar">
-        <Link to="//github.com/JenniferDELEO">
-          {' '}
-          <img src={Woman} alt="Jen" />{' '}
-        </Link>{' '}
-        Jennifer De Léo
+    <>
+      <h2>Notre équipe</h2>
+      <div className="Avatars">
+        <div className="Jen avatar">
+          <Link to="//github.com/JenniferDELEO">
+            {' '}
+            <img src={Woman} alt="Jen" />{' '}
+          </Link>{' '}
+          Jennifer De Léo
+        </div>
+        <div className="Adrien avatar">
+          <Link to="//github.com/01adrien">
+            {' '}
+            <img src={Adrien} alt="Adrien" />
+          </Link>{' '}
+          Adrien Gaucher
+        </div>
+        <div className="Gaspard avatar">
+          <Link to="//github.com/GaspardMzt">
+            {' '}
+            <img src={Gaspard} alt="Gaspard" />{' '}
+          </Link>
+          Gaspard Mazataud
+        </div>
+        <div className="Clement avatar">
+          <Link to="//github.com/ClemMoFr">
+            <img src={Clement} alt="Clement" />
+          </Link>{' '}
+          Clément Moreno
+        </div>
+        <div className="Pierre avatar">
+          <Link to="//github.com/PiDartevelle">
+            <img src={Pierre} alt="Pierre" />
+          </Link>{' '}
+          Pierre Dartevelle
+        </div>
       </div>
-      <div className="Adrien avatar">
-        <Link to="//github.com/01adrien">
-          {' '}
-          <img src={Adrien} alt="Adrien" />
-        </Link>{' '}
-        Adrien Gaucher
-      </div>
-      <div className="Gaspard avatar">
-        <Link to="//github.com/GaspardMzt">
-          {' '}
-          <img src={Gaspard} alt="Gaspard" />{' '}
-        </Link>
-        Gaspard Mazataud
-      </div>
-      <div className="Clement avatar">
-        <Link to="//github.com/ClemMoFr">
-          <img src={Clement} alt="Clement" />
-        </Link>{' '}
-        Clément Moreno
-      </div>
-      <div className="Pierre avatar">
-        <Link to="//github.com/PiDartevelle">
-          <img src={Pierre} alt="Pierre" />
-        </Link>{' '}
-        Pierre Dartevelle
-      </div>
-    </div>
+    </>
   );
 }
 
