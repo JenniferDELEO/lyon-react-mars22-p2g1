@@ -1,7 +1,7 @@
 import '../styles/Popup.css';
 import React from 'react';
 
-function Popup({ trigger, children, setTrigger }) {
+function PopupHome({ trigger, children, setTrigger }) {
   return trigger ? (
     <div className="popup">
       <div className="popup-inner">
@@ -20,4 +20,4 @@ function Popup({ trigger, children, setTrigger }) {
   );
 }
 
-export default Popup;
+export default PopupHome;

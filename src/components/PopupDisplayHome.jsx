@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Popup from './PopupHome';
+import PopupHome from './PopupHome';
 import BalMedium from '../assets/BAL-medium.png';
 import MapNavigation from '../assets/map-navigation.png';
 import '../styles/PopupDisplay.css';
 import { Link } from 'react-router-dom';
 
-function PopupDisplay() {
+function PopupDisplayHome() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [timedPopup, setTimedPopup] = useState(false);
 
@@ -17,11 +17,10 @@ function PopupDisplay() {
 
   return (
     <div>
-      <h1>Home Page</h1>
-      <button type="submit" onClick={() => setButtonPopup(true)}>
+      <button type="button" onClick={() => setButtonPopup(true)}>
         Open popup
       </button>
-      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+      <PopupHome trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1>Bonjour et bienvenue !</h1>
         <div className="welcome">
           <p>
@@ -48,8 +47,8 @@ function PopupDisplay() {
             Accéder à La Boîte à Lire
           </button>
         </div>
-      </Popup>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+      </PopupHome>
+      <PopupHome trigger={buttonPopup} setTrigger={setButtonPopup}>
         <div className="bal-popup">
           <h1>Boîte ...</h1>
           <p>
@@ -74,9 +73,7 @@ function PopupDisplay() {
                 </ul>
               </div>
             </div>
-
             <img src={BalMedium} alt="BAL medium" />
-
             <button
               type="button"
               onClick={() => setTimedPopup(false)}
@@ -86,9 +83,9 @@ function PopupDisplay() {
             </button>
           </div>
         </div>
-      </Popup>
+      </PopupHome>
     </div>
   );
 }
 
-export default PopupDisplay;
+export default PopupDisplayHome;

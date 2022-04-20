@@ -14,12 +14,12 @@
 .popup-inner {
   position: relative;
   padding: 32px;
-  width: 90%;
+  width: 100%;
   max-width: 640px;
   background-color: rgba(27, 158, 178, 1);
   color: white;
-  border-radius: 10px;
   text-align: center;
+  border-radius: 20px;
 }
 
 .close-btn {
