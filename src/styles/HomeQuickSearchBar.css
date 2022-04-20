@@ -1,14 +1,32 @@
-#quickSearch {
+.HomeQuickSearchBar input {
   width: 60vw;
   height: 2em;
   border-width: 2px;
   border-style: solid;
-  border-radius: 2em;
-  font-size: 0.9em;
-  text-align: center; /* mettre un padding-left pour le text ? : 3% ? */
+  border-radius: 0.7em;
+  font-size: 1em;
+  text-align: center;
+  padding-right: 45px; /*to avoid the search text superposes on book icon: */
+}
 
+.HomeQuickSearchBar {
+  position: relative;
+}
+
+.buttForm {
+  position: absolute;
+  width: 30px;
+  height: 2em;
+  top: 50%;
+  right: 1px;
+  transform: translate(-50%, -50%);
   background-image: url(../assets/HomeQuickSearchBarIcon.png);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 97%; /* plutôt faire un padding en partant de la droite ? */
+  background-position: center;
+  cursor: pointer;
+}
+
+.buttForm:hover {
+  background-image: url(../assets/HomeQuickSearchBarIcon_hover.png);
 }
