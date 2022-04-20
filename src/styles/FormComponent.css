@@ -1,5 +1,5 @@
 .form-section {
-  margin: 0 80px;
+  margin: 0 10%;
 }
 
 .form-title {
@@ -41,7 +41,7 @@
 }
 
 @media screen and (min-width: 650px) {
-  .toast-container {
-    width: 500px;
+  .form-section {
+    margin: 0;
   }
 }

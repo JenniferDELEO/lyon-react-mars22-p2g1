@@ -1,0 +1,25 @@
+.img-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  .main-container {
+    display: flex;
+    flex-direction: row;
+    margin: 32px auto;
+    padding: 32px 0;
+    justify-content: center;
+  }
+
+  .img-desktop {
+    display: initial;
+    width: 200px;
+    height: 90vh;
+    z-index: 0;
+    margin: 0 auto;
+  }
+
+  .img-right {
+    transform: scaleX(-1);
+  }
+}

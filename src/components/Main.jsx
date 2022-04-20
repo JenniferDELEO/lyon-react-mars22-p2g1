@@ -6,18 +6,24 @@ import Form from '../pages/Form';
 import MyProfile from '../pages/MyProfile';
 import BoxDetail from '../pages/BoxDetail';
 import BookDetail from '../pages/BookDetail';
+import Books from '../assets/books.jpg';
+import '../styles/Main.css';
 
 export default function Main() {
   return (
-    <main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/form" element={<Form />} />
-        <Route path="/myprofile" element={<MyProfile />} />
-        <Route path="/boxDetail/:boite" element={<BoxDetail />} />
-        <Route path="/bookdetail" element={<BookDetail />} />
-      </Routes>
+    <main className="main-container">
+      <img src={Books} alt="library" className="img-left img-desktop" />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/boxDetail/:boite" element={<BoxDetail />} />
+          <Route path="/bookdetail" element={<BookDetail />} />
+        </Routes>
+      </div>
+      <img src={Books} alt="library" className="img-right img-desktop" />
     </main>
   );
 }
