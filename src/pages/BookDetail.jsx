@@ -1,4 +1,4 @@
-import book from '../ressources/books_database.json';
+import book from '../ressources/livresDB.json';
 
 export default function BookDetail() {
   return (

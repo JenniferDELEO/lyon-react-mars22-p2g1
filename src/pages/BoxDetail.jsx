@@ -1,7 +1,6 @@
 import '../styles/box_detail.css';
 import '../styles/index.css';
 import Book from '../components/Book';
-import booksDataBase from '../ressources/books_database.json';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AddBookForm from '../components/AddBookForm';
@@ -12,11 +11,11 @@ import Popup from '../components/Popup';
 export default function BoxDetail() {
   const num = useParams();
   const [booksOut, setBooksOut] = useState(false);
-  const [booksList, setBooksList] = useState(booksDataBase);
+  const [booksList, setBooksList] = useState([]);
   const [addBookForm, setAddBookForm] = useState(false);
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
-  const [boxNumber] = useState(num);
+  const [boxNumber] = useState(num.boite);
   const [notFound, setBookNotFound] = useState(false);
   const [_isbn, setIsbn] = useState();
   const [authorPopup, setAuthorPopup] = useState('');
@@ -34,10 +33,10 @@ export default function BoxDetail() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/books/all_books')
+      .get(`http://localhost:5000/books/boxId/${boxNumber}`)
       .then((response) => response.data)
       .then((data) => {
-        setBooksList(data[0]);
+        setBooksList(data);
       })
       .catch((error) => {
         console.log(error);
@@ -61,26 +60,26 @@ export default function BoxDetail() {
   function addBook() {
     if (!notFound && _isbn) {
       axios
-        .get(`http://localhost:5000/books/isbn=${_isbn}`)
+        .get(`http://localhost:5000/books/isbn/${_isbn}`)
         .then((response) => response.data)
         .then((data) => {
+          console.log(data);
           const newBook = {
-            title: data[0][0].title,
-            editions: data[0][0].editions,
-            author: data[0][0].author,
-            publication_year: data[0][0].publication_year,
-            synopsis: data[0][0].synopsis,
-            picture: data[0][0].picture,
-            pages_nbr: data[0][0].pages_nbr,
+            title: data.title,
+            editions: data.editions,
+            author: data.author,
+            publication_year: data.publication_year,
+            synopsis: data.synopsis,
+            picture: data.picture,
+            pages_nbr: data.pages_nbr,
             note: starRate,
             cond: condition,
-            box_number: parseFloat(boxNumber.boite),
+            box_number: parseFloat(boxNumber),
             isbn: _isbn,
             to_borrow: null,
             to_delete: null,
             out_of_stock: 0,
           };
-          console.log('num boite -> ', typeof boxNumber.boite);
           setAuthorPopup(newBook.author);
           setTitlePopup(newBook.title);
           setShowPopup(true);
@@ -88,7 +87,7 @@ export default function BoxDetail() {
           setAddBookForm(false);
           console.log('requesting database..');
           axios
-            .post('http://localhost:5000/post_books', newBook)
+            .post('http://localhost:5000/book', newBook)
             .then((response) => {
               console.log(response);
             })
@@ -97,53 +96,8 @@ export default function BoxDetail() {
             });
         })
         .catch(() => {
-          console.log('not in database, requesting googleBooks..');
-          axios
-            .get(
-              `https://www.googleapis.com/books/v1/volumes?q=isbn:${_isbn}&idAIzaSyBR5ULsTVhH932FKKrw-3qTq1FgTKKHccM`
-            )
-            .then((response) => response.data)
-            .then((data) => {
-              let img = '';
-              if (data.items[0].volumeInfo.imageLinks) {
-                img = data.items[0].volumeInfo.imageLinks.smallThumbnail;
-              }
-              const newBook = {
-                title: data.items[0].volumeInfo.title,
-                editions: data.items[0].volumeInfo.publisher,
-                author: data.items[0].volumeInfo.authors[0],
-                publication_year: data.items[0].volumeInfo.publishedDate.slice(
-                  0,
-                  4
-                ),
-                picture: img || null,
-                pages_nbr: data.items[0].volumeInfo.pageCount,
-                note: starRate || 2,
-                cond: condition || 2,
-                box_number: parseFloat(boxNumber.boite),
-                isbn: _isbn,
-                to_borrow: false,
-                to_delete: false,
-                out_of_stock: 0,
-              };
-              setAuthorPopup(newBook.author);
-              setTitlePopup(newBook.title);
-              setShowPopup(true);
-              setBookNotFound(false);
-              setAddBookForm(false);
-              axios
-                .post('http://localhost:5000/post_books', newBook)
-                .then((response) => {
-                  console.log(response);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            })
-            .catch(() => {
-              setRequestStatus(false);
-              setBookNotFound(true);
-            });
+          setRequestStatus(false);
+          setBookNotFound(true);
         });
     }
     if (notFound && title && author) {
@@ -160,7 +114,7 @@ export default function BoxDetail() {
         pages_nbr: null,
         note: starRate,
         cond: condition,
-        box_number: parseFloat(boxNumber.boite),
+        box_number: parseFloat(boxNumber),
         isbn: _isbn,
         to_borrow: false,
         to_delete: false,
@@ -172,7 +126,7 @@ export default function BoxDetail() {
       setBookNotFound(false);
       setAddBookForm(false);
       axios
-        .post('http://localhost:5000/post_books', newBook)
+        .post('http://localhost:5000/book', newBook)
         .then((response) => {
           console.log(response);
         })
@@ -187,7 +141,7 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} boxNumber={boxNumber.boite} />
+      <BoxHeader displayForm={displayForm} boxNumber={boxNumber} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
