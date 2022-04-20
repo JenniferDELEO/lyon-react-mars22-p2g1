@@ -1,13 +1,14 @@
-input {
-  background-image: url(../assets/HomeQuickSearchBarIcon.png);
-  background-repeat: no-repeat;
-  text-indent: 20px;
+#quickSearch {
   width: 60vw;
   height: 2em;
   border-width: 2px;
   border-style: solid;
   border-radius: 2em;
   font-size: 0.9em;
-  text-align: center;
-  /*background-image: url(PSD/loupe.png);*/
+  text-align: center; /* mettre un padding-left pour le text ? : 3% ? */
+
+  background-image: url(../assets/HomeQuickSearchBarIcon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 97%; /* plutôt faire un padding en partant de la droite ? */
 }
