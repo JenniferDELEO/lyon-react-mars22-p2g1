@@ -12,13 +12,13 @@ import Popup from '../components/Popup';
 export default function BoxDetail() {
   const num = useParams();
   const [booksOut, setBooksOut] = useState(false);
-  const [books, setBooks] = useState(booksDataBase);
+  const [booksList, setBooksList] = useState(booksDataBase);
   const [addBookForm, setAddBookForm] = useState(false);
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [boxNumber] = useState(num);
   const [notFound, setBookNotFound] = useState(false);
-  const [_isbn, setIsbn] = useState('2253167444');
+  const [_isbn, setIsbn] = useState();
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
   const [showPopup, setShowPopup] = useState(false);
@@ -37,7 +37,7 @@ export default function BoxDetail() {
       .get('http://localhost:5000/books/all_books')
       .then((response) => response.data)
       .then((data) => {
-        setBooks(data[0]);
+        setBooksList(data[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -78,7 +78,7 @@ export default function BoxDetail() {
             isbn: _isbn,
             to_borrow: null,
             to_delete: null,
-            out_of_stock: null,
+            out_of_stock: 0,
           };
           console.log('num boite -> ', typeof boxNumber.boite);
           setAuthorPopup(newBook.author);
@@ -124,7 +124,7 @@ export default function BoxDetail() {
                 isbn: _isbn,
                 to_borrow: false,
                 to_delete: false,
-                out_of_stock: false,
+                out_of_stock: 0,
               };
               setAuthorPopup(newBook.author);
               setTitlePopup(newBook.title);
@@ -164,7 +164,7 @@ export default function BoxDetail() {
         isbn: _isbn,
         to_borrow: false,
         to_delete: false,
-        out_of_stock: false,
+        out_of_stock: 0,
       };
       setAuthorPopup(authorCap);
       setTitlePopup(titleCap);
@@ -198,7 +198,7 @@ export default function BoxDetail() {
           authorValue={author}
           notFound={notFound}
           // eslint-disable-next-line react/jsx-no-bind
-          change={changeForm}
+          changeForm={changeForm}
           // eslint-disable-next-line react/jsx-no-bind
           showForm={abortPopup}
           // eslint-disable-next-line react/jsx-no-bind
@@ -224,7 +224,7 @@ export default function BoxDetail() {
         ) : (
           ''
         )}
-        {books
+        {booksList
           .filter((book) => book.box_number === parseFloat(num.boite))
           .filter((book) => book.out_of_stock === 0)
           .map((book) => (

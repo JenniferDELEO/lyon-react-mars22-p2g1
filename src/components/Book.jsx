@@ -51,7 +51,6 @@ export default function Book({
   }
 
   function borrowAction() {
-    console.log(id);
     setPopupContent('borrow');
     setAuthorPopup(auteur);
     setTitlePopup(titre);
@@ -87,7 +86,7 @@ export default function Book({
           className="ml-1"
           src={
             picture === null || picture === 'None'
-              ? 'http://books.google.com/books/content?id=a5kNrgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api'
+              ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
               : picture
           }
           alt="book-cover"

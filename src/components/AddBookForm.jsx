@@ -1,6 +1,6 @@
 export default function AddBookForm({
   notFound,
-  change,
+  changeForm,
   showForm,
   title,
   author,
@@ -21,7 +21,7 @@ export default function AddBookForm({
 
   return (
     <div className="transition-opacity popup-bg z-50">
-      <form className="flex text-xs flex-col popup">
+      <form className="flex text-xs flex-col place-content-between popup">
         <p
           className="quit-btn cursor-pointer self-end mr-2 mt-1"
           onClick={showForm}
@@ -67,7 +67,7 @@ export default function AddBookForm({
               value={isbnValue}
               onChange={isbn}
               type="text"
-              placeholder="entrer un isbn"
+              placeholder="9782221123300"
             />
           </>
         )}
@@ -103,7 +103,7 @@ export default function AddBookForm({
           ajouter
         </button>
         <p
-          onClick={change}
+          onClick={changeForm}
           className="underline text-xxs text-slate-500 cursor-pointer mb-5"
         >
           {notFound ? 'requete ISBN' : 'saisie manuelle'}
