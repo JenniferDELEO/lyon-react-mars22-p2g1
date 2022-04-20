@@ -12,21 +12,12 @@ function FormComponent() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        'service_4if9eu4',
-        'template_xmbjes5',
-        form.current,
-        '0TYQA1GenX3etokSV'
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.error(error.text);
-        }
-      );
+    emailjs.sendForm(
+      'service_4if9eu4',
+      'template_xmbjes5',
+      form.current,
+      '0TYQA1GenX3etokSV'
+    );
     setName('');
     setMail('');
     setMessage('');
