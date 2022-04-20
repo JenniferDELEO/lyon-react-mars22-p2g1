@@ -3,7 +3,7 @@ import bookList from '../ressources/livresDB.json';
 
 function HomeBookSelection() {
   return (
-    <>
+    <div className="wrapper">
       <h2>Sélection du mois :</h2>
       <div className="bookSelection">
         <div className="carousel">
@@ -17,7 +17,7 @@ function HomeBookSelection() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default HomeBookSelection;

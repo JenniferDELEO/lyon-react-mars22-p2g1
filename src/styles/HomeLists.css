@@ -2,37 +2,48 @@ main {
   background-color: #f2f2f2;
   padding: 2rem;
   height: 90vh;
+  display: flex;
+  align-items: center;
 }
 
 .boxList {
   text-align: center;
   background-color: #f2f2f2;
   margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .boxList h2 {
   color: #1b9eb2;
+  margin-top: 2rem;
 }
 .boxList p {
   background-color: #ffffff;
   margin: 1vh;
   border-radius: 10px;
   padding: 5px;
+  max-width: 50vw;
 }
 .boxList a {
   text-decoration: none;
 }
-/* --------------------- Futur carousel --------- */
+/* --------------------- Futur carousel? --------- */
 
 .bookSelection {
   background-color: #ffffff;
   padding: 1rem;
   border-radius: 10px;
+  margin: 1vh;
+  max-width: 60vw;
 }
 
 h2 {
+  margin-top: 2rem;
   color: #1b9eb2;
   text-align: center;
 }
+
 .bookSelection img {
   height: 150px;
   width: 100px;
@@ -40,7 +51,13 @@ h2 {
 }
 .carousel {
   display: flex;
-  flex: 2 1 auto;
+  justify-content: center;
+  align-items: center;
+}
+.carousel p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 649px) {
