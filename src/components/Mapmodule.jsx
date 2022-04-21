@@ -6,7 +6,7 @@ import '../styles/Map.css';
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
   return (
-    <LeafletMap className="map" center={lyonPosition} zoom={16}>
+    <LeafletMap className="map" center={lyonPosition} zoom={14}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
