@@ -1,0 +1,45 @@
+.img-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  .main-container {
+    display: flex;
+    flex-direction: row;
+    margin: 32px;
+    margin-top: 60px;
+    padding: 32px;
+    justify-content: space-around;
+  }
+
+  .img-desktop {
+    background-image: url(../assets/books.jpg);
+    display: initial;
+    width: 200px;
+    z-index: 0;
+    padding: 32px;
+    background-size: cover;
+    background-position: 75%;
+    position: fixed;
+    height: 90vh;
+  }
+
+  .img-right {
+    transform: scaleX(-1);
+    right: 80px;
+    top: 60px;
+  }
+
+  .img-left {
+    left: 80px;
+    top: 60px;
+  }
+
+  .main-routes {
+    margin: 150px;
+  }
+
+  .routes-container {
+    width: 60%;
+  }
+}

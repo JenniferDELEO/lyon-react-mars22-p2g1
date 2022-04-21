@@ -59,7 +59,7 @@ export default function NavBar() {
         </li>
         <li className="contact-navigation">
           <NavLink
-            to="/contact"
+            to="/form"
             className="link-navigation"
             style={getActiveLinkStyle}
           >

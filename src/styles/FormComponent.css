@@ -1,0 +1,47 @@
+.form-section {
+  margin: 0 10%;
+}
+
+.form-title {
+  text-decoration: underline;
+  margin: 32px;
+}
+
+.form-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-component label {
+  margin: 16px 0;
+  font-weight: bold;
+}
+
+.form-component input,
+.form-component textarea {
+  border: 1px solid rgba(27, 158, 178, 1);
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.form-component textarea {
+  resize: none;
+}
+
+.btn-form {
+  margin: 16px auto;
+  display: block;
+  background-color: rgba(27, 158, 178, 1);
+  border: 1px solid rgba(27, 158, 178, 1);
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  width: 75px;
+}
+
+@media screen and (min-width: 650px) {
+  .form-section {
+    margin: 0;
+  }
+}
