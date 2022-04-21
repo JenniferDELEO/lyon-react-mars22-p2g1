@@ -20,17 +20,3 @@ function Map() {
 }
 
 export default Map;
-
-/* const dataPoints = coordsData;
-const list = [];
-for (let i = 0; i < dataPoints.length; i++) {
-  const latdata = dataPoints[i].coords[0];
-  const longdata = dataPoints[i].coords[1];
-  list.push({ lat: latdata, long: longdata });
-}
-console.log(list);
-
-console.log(dataPoints[i].coords[0]);
-console.log(dataPoints[i].coords[1]);
-
-<Marker position={bal1}> </Marker>: */
