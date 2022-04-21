@@ -9,6 +9,7 @@ import axios from 'axios';
 import Popup from '../components/Popup';
 
 export default function BoxDetail() {
+  console.log(process.env.REACT_APP_API_URL);
   const num = useParams();
   const [booksOut, setBooksOut] = useState(false);
   const [booksList, setBooksList] = useState([]);
@@ -33,7 +34,7 @@ export default function BoxDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/books/boxId/${boxNumber}`)
+      .get(`${process.env.REACT_APP_API_URL}books/boxId/${boxNumber}`)
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
@@ -60,7 +61,7 @@ export default function BoxDetail() {
   function addBook() {
     if (!notFound && _isbn) {
       axios
-        .get(`http://localhost:5000/books/isbn/${_isbn}`)
+        .get(`${process.env.REACT_APP_API_URL}books/isbn/${_isbn}`)
         .then((response) => response.data)
         .then((data) => {
           console.log(data);
@@ -86,7 +87,7 @@ export default function BoxDetail() {
           setBookNotFound(false);
           setAddBookForm(false);
           axios
-            .post('http://localhost:5000/book', newBook)
+            .post(`${process.env.REACT_APP_API_URL}book`, newBook)
             .then((response) => {
               console.log(response);
             })
@@ -126,7 +127,7 @@ export default function BoxDetail() {
       setBookNotFound(false);
       setAddBookForm(false);
       axios
-        .post('http://localhost:5000/book', newBook)
+        .post(`${process.env.REACT_APP_API_URL}book`, newBook)
         .then((response) => {
           console.log(response);
         })
