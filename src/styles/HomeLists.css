@@ -35,7 +35,33 @@ main {
   height: 50px;
 }
 /* --------------------- Futur carousel? --------- */
+h2 {
+  margin-top: 2rem;
+  color: #1b9eb2;
+  text-align: center;
+}
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  scrollbar-arrow-color: black;
+  width: 90vw;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.carouselItems {
+  justify-content: center;
+  align-items: center;
+}
+.bookSelection img {
+  height: 150px;
+  width: 100px;
+  margin: 5px;
+  padding-right: 0.5rem;
+}
+/*
 .bookSelection {
   background-color: #ffffff;
   padding: 1rem;
@@ -43,11 +69,7 @@ main {
   margin: 1vh;
   max-width: 60vw;
 }
-h2 {
-  margin-top: 2rem;
-  color: #1b9eb2;
-  text-align: center;
-}
+
 .bookSelection img {
   height: 150px;
   width: 100px;
@@ -62,7 +84,9 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}*/
+/* -------------- MEDIA QUERIES ----------------- */
+
 @media screen and (max-width: 649px) {
   div.header {
     background-color: #1b9eb2;
@@ -78,5 +102,8 @@ h2 {
   }
   .boxlist p {
     justify-content: space-around;
+  }
+  .container {
+    width: fit-content;
   }
 }
