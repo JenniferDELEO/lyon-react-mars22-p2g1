@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import coordsData from '../ressources/coordsBAL.json';
+import '../styles/Map.css';
 
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
