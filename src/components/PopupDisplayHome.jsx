@@ -53,7 +53,7 @@ function PopupDisplayHome() {
           <h1>Boîte ...</h1>
           <p>
             {' '}
-            <Link to="/https://www.google.fr/maps/@45.5256143,5.2922127,15z">
+            <Link to="//www.google.fr/maps/@45.5256143,5.2922127,15z">
               <img
                 alt="navigation to google maps"
                 src={MapNavigation}

@@ -5,14 +5,14 @@ function HomeBookSelection() {
   return (
     <div className="bookSelection">
       <h2>Sélection du mois :</h2>
-      <ul>
+      <div className="carousel">
         {bookList.slice(0, 10).map((book) => (
           <p>
             {' '}
             {book.note === 5 ? <img src={book.picture} alt="preview" /> : null}
           </p>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
