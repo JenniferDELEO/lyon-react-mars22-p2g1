@@ -66,7 +66,7 @@ export default function Book({
 
   function setNewBooksList() {
     axios
-      .put(`http://localhost:5000/books/id/${id}`)
+      .put(`http://localhost:5000/books/${id}`)
       .then(() => {
         booksOut(true);
       })
