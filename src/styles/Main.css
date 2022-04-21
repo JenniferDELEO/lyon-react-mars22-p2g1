@@ -2,6 +2,12 @@
   display: none;
 }
 
+.routes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (min-width: 650px) {
   .main-container {
     display: flex;
