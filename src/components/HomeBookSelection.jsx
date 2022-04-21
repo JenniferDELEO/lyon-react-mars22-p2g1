@@ -9,7 +9,7 @@ function HomeBookSelection() {
       <div className="bookSelection">
         <div className="carouselContainer">
           {bookList.slice(0, 10).map((book) => (
-            <p className="carouselItems">
+            <p className="carouselItems" key={book.ISBN}>
               {' '}
               {book.note === 5 ? (
                 <img src={book.picture} alt="preview" />

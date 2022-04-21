@@ -21,7 +21,7 @@ function HomeBoxList() {
       <ul>
         {boxList.slice(0, 3).map((box) => (
           <Link to={`/BoxDetail/${box.boite}`}>
-            <p>
+            <p key={box.boite}>
               {' '}
               <img src={BookBox} alt="boite a livre" /> {box.adresse}, {box.CP}
               <br />
