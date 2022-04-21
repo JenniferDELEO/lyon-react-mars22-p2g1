@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupDisplayHome from '../components/PopupDisplayHome';
-import HomeBookSelection from '../components/Home_BookSelection';
-import HomeBoxList from '../components/Home_BoxList';
+import HomeBookSelection from '../components/HomeBookSelection';
+import HomeBoxList from '../components/HomeBoxList';
 import Mapsection from '../components/Mapmodule';
 
 export default function Home() {
