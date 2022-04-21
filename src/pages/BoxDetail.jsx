@@ -103,7 +103,7 @@ export default function BoxDetail() {
       setBookNotFound(false);
       setAddBookForm(false);
       axios
-        .post(`${process.env.REACT_APP_API_URL}book`, newBook)
+        .post(`${process.env.REACT_APP_API_URL}books`, newBook)
         .then((response) => {
           console.log(response);
         })
