@@ -9,7 +9,6 @@ import axios from 'axios';
 import Popup from '../components/Popup';
 
 export default function BoxDetail() {
-  console.log(process.env.REACT_APP_API_URL);
   const num = useParams();
   const [booksOut, setBooksOut] = useState(false);
   const [booksList, setBooksList] = useState([]);
@@ -34,7 +33,7 @@ export default function BoxDetail() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}books/boxId/${boxNumber}`)
+      .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}/books`)
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
@@ -61,39 +60,16 @@ export default function BoxDetail() {
   function addBook() {
     if (!notFound && _isbn) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}books/isbn/${_isbn}`)
+        .get(
+          `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`
+        )
         .then((response) => response.data)
         .then((data) => {
-          console.log(data);
-          const newBook = {
-            title: data.title,
-            editions: data.editions,
-            author: data.author,
-            publication_year: data.publication_year,
-            synopsis: data.synopsis,
-            picture: data.picture,
-            pages_nbr: data.pages_nbr,
-            note: starRate,
-            cond: condition,
-            box_number: parseFloat(boxNumber),
-            isbn: _isbn,
-            to_borrow: null,
-            to_delete: null,
-            out_of_stock: 0,
-          };
-          setAuthorPopup(newBook.author);
-          setTitlePopup(newBook.title);
+          setAuthorPopup(data[0]);
+          setTitlePopup(data[1]);
           setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
-          axios
-            .post(`${process.env.REACT_APP_API_URL}book`, newBook)
-            .then((response) => {
-              console.log(response);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
         })
         .catch(() => {
           console.log('not in DB and googleBooks..');
