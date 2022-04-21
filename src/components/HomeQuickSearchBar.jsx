@@ -3,9 +3,9 @@ import '../styles/HomeQuickSearchBar.css';
 
 export default function HomeQuickSearchBar() {
   const [userQuickSearch, setuserQuickSearch] = useState('');
-  const handleQuickSearchChange = (e) => setuserQuickSearch(e.target.value);
-  const handleSubmit = () => {
-    alert('Lancement de la recherche rapide');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Lancement de la recherche : ${userQuickSearch}`);
   };
 
   return (
@@ -14,13 +14,14 @@ export default function HomeQuickSearchBar() {
         <input
           type="text"
           id="quickSearch"
-          name="quickSearch"
-          placeholder="Que voulez-vous lire aujourd'hui ?"
+          placeholder="Une envie de lecture ?"
           required="required"
           value={userQuickSearch}
-          onChange={handleQuickSearchChange}
+          onChange={(e) => setuserQuickSearch(e.target.value)}
         />
-        <div type="submit" className="buttForm" />
+        <button type="submit">
+          <div className="iconBookQuickSearchBar" />
+        </button>
       </form>
     </div>
   );
