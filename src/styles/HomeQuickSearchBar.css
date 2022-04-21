@@ -2,25 +2,25 @@
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 1em;
 }
 
 .HomeQuickSearchBar input {
   width: 60vw;
   height: 2em;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 0.7em;
   font-size: 0.9em;
   text-align: center;
   padding-right: 45px; /*to avoid that the search text superposes on book icon: */
+  border: 1px solid rgba(27, 158, 178, 1);
+  border-radius: 0.7em;
 }
 
-.iconBookQuickSearchBar {
+.IconBookQuickSearchBar {
   position: absolute;
-  width: 2em;
+  width: 30px;
   height: 2em;
   top: 50%;
-  right: 20vw;
+  right: 15%;
   transform: translate(-50%, -50%);
   background-image: url(../assets/HomeQuickSearchBarIcon.png);
   background-repeat: no-repeat;
@@ -29,12 +29,22 @@
   cursor: pointer;
 }
 
-.iconBookQuickSearchBar:hover {
+.IconBookQuickSearchBar:hover {
   background-image: url(../assets/HomeQuickSearchBarIcon_hover.png);
 }
 
-button {
-  /* to hide the button hitself and only display the book icon */
+.HomeQuickSearchBar button {
+  /* to hide the button hitself : so only display the book icon */
   background: transparent;
   border: 1px solid transparent;
+}
+
+@media screen and (min-width: 650px) {
+  .HomeQuickSearchBar input {
+    width: 30vw;
+  }
+
+  .IconBookQuickSearchBar {
+    right: 23%;
+  }
 }

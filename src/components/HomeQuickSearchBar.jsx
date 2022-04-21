@@ -20,7 +20,7 @@ export default function HomeQuickSearchBar() {
           onChange={(e) => setuserQuickSearch(e.target.value)}
         />
         <button type="submit">
-          <div className="iconBookQuickSearchBar" />
+          <div className="IconBookQuickSearchBar" />
         </button>
       </form>
     </div>
