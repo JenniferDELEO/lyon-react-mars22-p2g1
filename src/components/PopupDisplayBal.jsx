@@ -35,7 +35,6 @@ function PopupDisplayBal() {
               </p>
             </>
           ))}
-
           <div className="bal-popup-content">
             <div>
               <p>23 livres</p>
@@ -48,13 +47,13 @@ function PopupDisplayBal() {
               </div>
             </div>
             <img src={BalMedium} alt="BAL medium" />
-            <button
-              type="button"
-              onClick={() => setButtonPopup(false)}
-              className="button-acces"
-            >
-              Accéder au contenu
-            </button>
+            {Coordbal.slice(0, 1).map((box) => (
+              <Link to={`/BoxDetail/${box.boite}`}>
+                <button type="button" className="button-acces">
+                  Accéder au contenu
+                </button>
+              </Link>
+            ))}
           </div>
         </div>
       </PopupHome>
