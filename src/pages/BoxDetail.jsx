@@ -85,7 +85,6 @@ export default function BoxDetail() {
           setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
-          console.log('requesting database..');
           axios
             .post('http://localhost:5000/book', newBook)
             .then((response) => {
@@ -96,6 +95,7 @@ export default function BoxDetail() {
             });
         })
         .catch(() => {
+          console.log('not in DB and googleBooks..');
           setRequestStatus(false);
           setBookNotFound(true);
         });
@@ -178,23 +178,20 @@ export default function BoxDetail() {
         ) : (
           ''
         )}
-        {booksList
-          .filter((book) => book.box_number === parseFloat(num.boite))
-          .filter((book) => book.out_of_stock === 0)
-          .map((book) => (
-            <Book
-              id={book.id}
-              picture={book.picture}
-              titre={book.title}
-              auteur={book.author}
-              note={book.note}
-              etat={book.cond}
-              borrowState={book.to_borrow}
-              deleteState={book.to_delete}
-              isbn={book.isbn}
-              booksOut={setBooksOut}
-            />
-          ))}
+        {booksList.map((book) => (
+          <Book
+            id={book.id}
+            picture={book.picture}
+            titre={book.title}
+            auteur={book.author}
+            note={book.note}
+            etat={book.cond}
+            borrowState={book.to_borrow}
+            deleteState={book.to_delete}
+            isbn={book.isbn}
+            booksOut={setBooksOut}
+          />
+        ))}
       </div>
     </div>
   );
