@@ -1,5 +1,6 @@
 import React from 'react';
 import livresDB from '../ressources/livresDB.json';
+import '../styles/bookDetail.css';
 
 export default function BookDetail() {
   const book = livresDB[0];
@@ -7,24 +8,31 @@ export default function BookDetail() {
   return (
     <div className="bookdetail">
       {book && (
-        <div>
-          <div className="fondtitre">
+        <div className="mainContainerBookDetail">
+          <div className="titleContainer">
             <h1>{book.titre}</h1>
           </div>
-          <div className="containerTop">
-            <img src={book.picture} alt={book.titre} />
-            <div className="containerTopRight">
-              <h3>Avis des lecteurs :</h3>
+          <div className="carateristicsContainer">
+            <div className="imageContainer">
+              <img src={book.picture} alt={book.titre} />
+            </div>
+
+            <div className="informationContainer">
+              <h3>Avis des lecteurs : </h3> <p>★★★</p>
               <p>{book.nbrPages} pages</p>
               <p>Année de publication : {book.datePublication}</p>
-              <p>ISBN13: {book.ISBN}</p>
+              <p>ISBN: {book.ISBN}</p>
             </div>
           </div>
-          <h2>Auteur : {book.auteur}</h2>
-          <div className="resume">
-            <p>
-              <strong>Résumé :</strong> {book.resume}
-            </p>
+
+          <div className="bottomContainer">
+            <h2>Auteur : {book.auteur}</h2>
+            <div className="synopsisContainer">
+              <p>
+                <strong>Résumé :</strong> {book.resume}
+              </p>
+            </div>
+            <button type="submit">Vérifier disponibilité</button>
           </div>
         </div>
       )}
