@@ -27,14 +27,14 @@ export default function Book({
   if (isBorrow) {
     actionBg = {
       color: 'flex items-center bg-green-400 h-40',
-      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg',
+      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
       btn: 'animate-bounce bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (isDelete) {
     actionBg = {
       color: 'flex items-center bg-red-400 h-40',
-      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg',
+      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
       btn: 'animate-bounce bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
     };
   }
@@ -66,7 +66,7 @@ export default function Book({
 
   function setNewBooksList() {
     axios
-      .put(`http://localhost:5000/books/id/${id}`)
+      .put(`http://localhost:5000/books/${id}`)
       .then(() => {
         booksOut(true);
       })

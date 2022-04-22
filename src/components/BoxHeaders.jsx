@@ -1,7 +1,7 @@
 export default function BoxHeader({ displayForm, boxNumber }) {
   return (
     <div>
-      <div className="text-center flex flex-col justify-around text-white color-bg rounded-b-xl h-32">
+      <div className="text-center flex flex-col justify-around text-white color-bg rounded-xl h-32">
         <h1 className="text-3xl underline before:content-['📚'] after:content-['📚']">
           Boite à livres N° {boxNumber}
         </h1>
