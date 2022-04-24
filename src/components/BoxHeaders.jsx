@@ -11,7 +11,7 @@ export default function BoxHeader({ displayForm, boxNumber }) {
         <button
           type="button"
           onClick={displayForm}
-          className="color-bg hover:bg-blue-700 text-1xl text-white font-bold py-2 px-6 rounded m-5 border-black border"
+          className="color-bg hover:bg-blue-700 text-1xl text-white font-bold py-2 px-6 rounded m-5 border-black border transition-all duration-1000"
         >
           deposer un livre
         </button>

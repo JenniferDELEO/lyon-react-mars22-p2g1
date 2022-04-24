@@ -38,9 +38,7 @@ export default function BoxDetail() {
       .then((data) => {
         setBooksList(data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => {});
   }, [addBookForm, booksOut]);
 
   function changeForm() {
@@ -72,7 +70,6 @@ export default function BoxDetail() {
           setAddBookForm(false);
         })
         .catch(() => {
-          console.log('not in DB and googleBooks..');
           setRequestStatus(false);
           setBookNotFound(true);
         });

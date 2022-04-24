@@ -99,7 +99,7 @@ export default function Book({
               <p className="ml-3">{conditionColor[etat]}</p>
             </div>
             <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={`/bookdetail/${id}`}>detail</Link>
+              <Link to={'/bookdetail'}>detail</Link>
             </em>
           </div>
           {!isBorrow && !isDelete ? (
@@ -112,7 +112,7 @@ export default function Book({
                 onClick={deleteAction}
               />
               <button
-                className="color-bg border-black border text-xs hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+                className="color-bg border-black border text-xs hover:bg-blue-700 text-white transition-all duration-1000 font-bold py-1 px-2 rounded"
                 type="button"
                 onClick={borrowAction}
               >
