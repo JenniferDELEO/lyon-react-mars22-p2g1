@@ -66,7 +66,7 @@ export default function Book({
 
   function setNewBooksList() {
     axios
-      .put(`http://localhost:5000/books/${id}`)
+      .put(`${process.env.REACT_APP_API_URL}books/${id}`)
       .then(() => {
         booksOut(true);
       })
@@ -104,7 +104,7 @@ export default function Book({
           </div>
           {!isBorrow && !isDelete ? (
             <div className="mr-5 flex flex-col items-center justify-center">
-              <RatingStar rate={parseFloat(note)} />
+              <RatingStar rate={parseFloat(note)} id={id} id2={titre} />
               <img
                 className="w-5 h-5 self-center mb-5 cursor-pointer"
                 src="https://cdn-icons-png.flaticon.com/512/3143/3143542.png"
