@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';

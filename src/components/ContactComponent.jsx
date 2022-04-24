@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Adrien from '../assets/adrien.png';
 import Woman from '../assets/woman.png';

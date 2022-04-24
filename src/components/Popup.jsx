@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 export default function Popup({
   popup, close, auteur, titre
 }) {
