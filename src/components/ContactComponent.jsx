@@ -13,34 +13,34 @@ function ContactComponent() {
       <h2>Notre équipe</h2>
       <div className="Avatars">
         <div className="Jen avatar">
-          <Link to="//github.com/JenniferDELEO">
+          <Link to="//github.com/JenniferDELEO" target="_blank">
             {' '}
             <img src={Woman} alt="Jen" />{' '}
           </Link>{' '}
           Jennifer De Léo
         </div>
         <div className="Adrien avatar">
-          <Link to="//github.com/01adrien">
+          <Link to="//github.com/01adrien" target="_blank">
             {' '}
             <img src={Adrien} alt="Adrien" />
           </Link>{' '}
           Adrien Gaucher
         </div>
         <div className="Gaspard avatar">
-          <Link to="//github.com/GaspardMzt">
+          <Link to="//github.com/GaspardMzt" target="_blank">
             {' '}
             <img src={Gaspard} alt="Gaspard" />{' '}
           </Link>
           Gaspard Mazataud
         </div>
         <div className="Clement avatar">
-          <Link to="//github.com/ClemMoFr">
+          <Link to="//github.com/ClemMoFr" target="_blank">
             <img src={Clement} alt="Clement" />
           </Link>{' '}
           Clément Moreno
         </div>
         <div className="Pierre avatar">
-          <Link to="//github.com/PiDartevelle">
+          <Link to="//github.com/PiDartevelle" target="blank">
             <img src={Pierre} alt="Pierre" />
           </Link>{' '}
           Pierre Dartevelle
