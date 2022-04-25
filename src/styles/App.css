@@ -35,6 +35,7 @@
 
   .navbar-fixed {
     order: 1;
+    z-index: 3000;
   }
 
   .main {

@@ -1,45 +1,58 @@
-main {
-  background-color: #f2f2f2;
-  padding: 2rem;
-}
 .boxList {
   text-align: center;
   background-color: #f2f2f2;
   margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .boxList h2 {
   color: #1b9eb2;
+  margin-top: 2rem;
 }
 .boxList p {
   background-color: #ffffff;
   margin: 1vh;
   border-radius: 10px;
-  padding: 5px;
+  padding: 1rem 1.5rem;
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .boxList a {
   text-decoration: none;
+  color: black;
 }
-/* --------------------- Futur carousel --------- */
-
-.bookSelection {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 10px;
+.boxList img {
+  width: 35px;
+  height: 50px;
 }
-
-.bookSelection h2 {
+/* --------------------- Futur carousel? --------- */
+h2 {
+  margin-top: 2rem;
   color: #1b9eb2;
   text-align: center;
+}
+
+.carouselContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 80vw;
+  margin-bottom: 1rem;
 }
 .bookSelection img {
   height: 150px;
   width: 100px;
-  margin: 10px;
+  margin: 5px;
+  padding-right: 0.5rem;
 }
-.carousel {
-  display: flex;
-  flex: 2 1 auto;
-}
+
+/* -------------- MEDIA QUERIES ----------------- */
 
 @media screen and (max-width: 649px) {
   div.header {
@@ -50,9 +63,14 @@ main {
     text-align: center;
   }
 }
-
 @media screen and (min-width: 650px) {
   div.header {
     display: none;
+  }
+  .boxList p {
+    width: 50vw;
+  }
+  .carouselContainer {
+    width: 50vw;
   }
 }
