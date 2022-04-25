@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import '../styles/box_detail.css';
 import '../styles/index.css';
 import Book from '../components/Book';
@@ -63,8 +64,8 @@ export default function BoxDetail() {
         )
         .then((response) => response.data)
         .then((data) => {
-          setAuthorPopup(data[0]);
-          setTitlePopup(data[1]);
+          setAuthorPopup(data.author);
+          setTitlePopup(data.title);
           setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
@@ -125,16 +126,12 @@ export default function BoxDetail() {
           isbnValue={_isbn}
           authorValue={author}
           notFound={notFound}
-          // eslint-disable-next-line react/jsx-no-bind
           changeForm={changeForm}
-          // eslint-disable-next-line react/jsx-no-bind
           showForm={abortPopup}
-          // eslint-disable-next-line react/jsx-no-bind
           fetchBook={addBook}
           rate={setStarRate}
           condition={handleConditionChange}
           status={requestStatus}
-          // eslint-disable-next-line react/jsx-no-bind
           popupAbort={abortPopup}
         />
       ) : (
@@ -146,7 +143,6 @@ export default function BoxDetail() {
             titre={titlePopup}
             auteur={authorPopup}
             popup="depot"
-            // eslint-disable-next-line react/jsx-no-bind
             close={abortPopup}
           />
         ) : (

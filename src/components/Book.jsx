@@ -1,6 +1,8 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import RatingStar from './ratingStar';
 import Popup from './Popup';
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -22,6 +24,18 @@ export default function Book({
   const [showPopup, setShowPopup] = useState(false);
   const [authorPopup, setAuthorPopup] = useState('');
   const [titlePopup, setTitlePopup] = useState('');
+
+  useEffect(() => {
+    toast(`Vous avez: \n ${titlePopup} de ${authorPopup} \n `, {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }, [isDelete]);
 
   let actionBg = '';
   if (isBorrow) {
@@ -116,7 +130,7 @@ export default function Book({
                 type="button"
                 onClick={borrowAction}
               >
-                Emprunter
+                Emprunt
               </button>
             </div>
           ) : (
@@ -137,16 +151,7 @@ export default function Book({
             </div>
           )}
         </div>
-        {showPopup ? (
-          <Popup
-            titre={titlePopup}
-            auteur={authorPopup}
-            popup={popup}
-            close={() => setShowPopup(false)}
-          />
-        ) : (
-          ''
-        )}
+        <ToastContainer />
       </div>
     </div>
   );
