@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import boxList from '../ressources/coordsBAL.json';
 import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
+import BookBox from '../assets/box_middlefull.png';
 
 const quantiteParBoite = [];
 
@@ -18,14 +20,15 @@ function HomeBoxList() {
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
       <ul>
-        {boxList.slice(0, 5).map((box) => (
-          <p>
-            {' '}
-            <Link to={`/BoxDetail/${box.boite + 1}`}> {box.adresse}</Link> boîte
-            numéro : {box.boite + 1}
-            <br />
-            {Math.floor(Math.random() * 12)} livres
-          </p>
+        {boxList.slice(0, 3).map((box) => (
+          <Link to={`/BoxDetail/${box.boite}`}>
+            <p key={box.boite}>
+              {' '}
+              <img src={BookBox} alt="boite a livre" /> {box.adresse}, {box.CP}
+              <br />
+              {quantiteParBoite[box.boite]} livre(s)
+            </p>
+          </Link>
         ))}
       </ul>
     </div>

@@ -47,7 +47,7 @@ export default function BoxDetail() {
   function addBook() {
     if (!notFound && _isbn) {
       axios
-        .get(
+        .post(
           `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`
         )
         .then((response) => response.data)
@@ -91,6 +91,7 @@ export default function BoxDetail() {
         to_borrow: false,
         to_delete: false,
         out_of_stock: 0,
+        selection: 0,
       };
       setBookNotFound(false);
       setAddBookForm(false);

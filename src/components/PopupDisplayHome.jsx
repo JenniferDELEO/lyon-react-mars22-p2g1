@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import PopupHome from './PopupHome';
 import BalMedium from '../assets/BAL-medium.png';
@@ -17,9 +18,6 @@ function PopupDisplayHome() {
 
   return (
     <div>
-      <button type="button" onClick={() => setButtonPopup(true)}>
-        Open popup
-      </button>
       <PopupHome trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1>Bonjour et bienvenue !</h1>
         <div className="welcome">
