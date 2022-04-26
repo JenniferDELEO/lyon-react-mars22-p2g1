@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import RatingStar from './ratingStar';
-import Popup from './Popup';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -20,22 +18,7 @@ export default function Book({
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
   const [isBorrow, setIsBorrow] = useState(borrowState);
-  const [popup, setPopupContent] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
-  const [authorPopup, setAuthorPopup] = useState('');
-  const [titlePopup, setTitlePopup] = useState('');
-
-  useEffect(() => {
-    toast(`Vous avez: \n ${titlePopup} de ${authorPopup} \n `, {
-      position: 'top-center',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }, [isDelete]);
+  const [userAction, setUserAction] = useState('');
 
   let actionBg = '';
   if (isBorrow) {
@@ -65,16 +48,12 @@ export default function Book({
   }
 
   function borrowAction() {
-    setPopupContent('borrow');
-    setAuthorPopup(auteur);
-    setTitlePopup(titre);
+    setUserAction(['emprunté', 'Bonne lecture !']);
     setIsBorrow(true);
   }
 
   function deleteAction() {
-    setAuthorPopup(auteur);
-    setTitlePopup(titre);
-    setPopupContent('delete');
+    setUserAction(['supprimé', 'Merci de tenir les stocks à jour!']);
     setIsDelete(true);
   }
 
@@ -88,9 +67,21 @@ export default function Book({
         console.log(error);
       });
     booksOut(false);
-    setShowPopup(true);
     setIsDelete(false);
     setIsBorrow(false);
+    toast.info(
+      `Vous avez ${userAction[0]}: ${titre} de ${auteur}  ${userAction[1]}`,
+      {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+    setUserAction('');
   }
   return (
     <div className={actionBg.color}>
