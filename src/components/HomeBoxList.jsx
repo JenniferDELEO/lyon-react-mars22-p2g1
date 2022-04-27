@@ -44,9 +44,16 @@ function HomeBoxList() {
           <Link to={`/BoxDetail/${box.id}`}>
             <p key={box.id}>
               {' '}
-              <img src={BookBox} alt="boite a livre" /> {box.adresse}, {box.CP}
+              <img src={BookBox} alt="boite a livre" />
+              {' '}
+              {box.adresse}
+              ,
+              {' '}
+              {box.CP}
               <br />
-              {quantiteParBoite[box.id]} livre(s)
+              {quantiteParBoite[box.id]}
+              {' '}
+              livre(s)
             </p>
           </Link>
         ))}
