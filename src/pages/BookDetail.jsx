@@ -27,11 +27,9 @@ export default function BookDetail() {
 
           <div className="bottomContainer">
             <h2>Auteur : {book.auteur}</h2>
-            <div className="synopsisContainer">
-              <p>
-                <strong>Résumé :</strong> {book.resume}
-              </p>
-            </div>
+            <p className="resumebookDetail">
+              <strong>Résumé :</strong> {book.resume}
+            </p>
             <button type="submit">Vérifier disponibilité</button>
           </div>
         </div>
