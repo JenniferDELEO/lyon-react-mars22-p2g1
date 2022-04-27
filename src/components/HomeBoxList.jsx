@@ -38,25 +38,21 @@ function HomeBoxList() {
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
-      <ul>
-        {boxList.slice(0, 3).map((box) => (
-          <Link to={`/BoxDetail/${box.id}`}>
-            <p key={box.id}>
-              {' '}
-              <img src={BookBox} alt="boite a livre" />
-              {' '}
-              {box.adresse}
-              ,
-              {' '}
-              {box.CP}
-              <br />
-              {quantiteParBoite[box.id]}
-              {' '}
-              livre(s)
-            </p>
-          </Link>
-        ))}
-      </ul>
+
+      {boxList.slice(0, 3).map((box) => (
+        <Link to={`/BoxDetail/${box.id}`}>
+          <p key={box.id}>
+            <img src={BookBox} alt="boite a livre" />
+            {box.adresse}
+            ,
+            {box.CP}
+            <br />
+            {quantiteParBoite[box.id]}
+            {' '}
+            livre(s)
+          </p>
+        </Link>
+      ))}
     </div>
   );
 }

@@ -34,10 +34,11 @@ export default function BoxDetail() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}/books`)
+      .get(`${process.env.REACT_APP_API_URL}boxes/2/books`)
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
+        console.log(process.env);
       })
       .catch((error) => {
         console.log(error);
