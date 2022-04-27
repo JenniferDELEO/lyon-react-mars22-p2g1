@@ -7,6 +7,7 @@ import {
 } from 'react-leaflet';
 import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
+import PopUpMap from './PopupMap';
 
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
@@ -21,7 +22,11 @@ function Map() {
       {coordsData.map((boite) => (
         <Marker position={[boite.lat, boite.long]}>
           <Popup>
-            <h3>test</h3>
+            <PopUpMap
+              name="toto"
+              adress="11 rue des poissons"
+              numberBooks="34"
+            />
           </Popup>
         </Marker>
       ))}
