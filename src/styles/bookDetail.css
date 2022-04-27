@@ -2,6 +2,14 @@
   margin: 8px;
 }
 
+.bookdetail h2 {
+  color: #0e5667;
+  text-decoration: initial;
+  text-align: left;
+  font-weight: 600;
+  font-size: large;
+}
+
 .mainContainerBookDetail {
   display: flex;
   flex-direction: row;
@@ -26,14 +34,6 @@
 .carateristicsContainer h2 {
   font-size: large;
   font-weight: 500;
-}
-
-.bookdetail h2 {
-  color: #0e5667;
-  text-decoration: initial;
-  text-align: left;
-  font-weight: 600;
-  font-size: large;
 }
 
 .resumebookDetail {

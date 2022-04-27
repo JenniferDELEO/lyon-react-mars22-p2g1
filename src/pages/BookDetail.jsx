@@ -22,7 +22,7 @@ export default function BookDetail() {
     <div className="bookdetail">
       {book && (
         <div>
-          <h1>{book.title}</h1>
+          <h2 className="bookTitle">{book.title}</h2>
           <div className="mainContainerBookDetail">
             <img src={book.picture} alt={book.title} />
             <div className="carateristicsContainer">
