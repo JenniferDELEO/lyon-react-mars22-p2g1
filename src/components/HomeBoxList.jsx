@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 // On déclare des states pour nos tables de livres et de boites
-function HomeBoxList() {
+function HomeBoxList({ CP }) {
   const [boxList, setBoxList] = useState([]);
 
   useEffect(() => {
@@ -14,9 +14,10 @@ function HomeBoxList() {
       .then((result) => result.data)
       .then((result) => {
         setBoxList(result);
+        console.log('cp -> ', CP);
       });
-  }, []);
-
+  }, [CP]);
+  console.log('cp -> ', CP);
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>

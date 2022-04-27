@@ -3,7 +3,7 @@ import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
 
-function Map() {
+function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
   return (
     <LeafletMap className="map" center={lyonPosition} zoom={14}>
@@ -13,7 +13,14 @@ function Map() {
       />
 
       {coordsData.map((boite) => (
-        <Marker position={[boite.lat, boite.long]} />
+        <Marker
+          position={[boite.lat, boite.long]}
+          eventHandlers={{
+            click: () => {
+              setCP(boite.CP);
+            },
+          }}
+        />
       ))}
     </LeafletMap>
   );
