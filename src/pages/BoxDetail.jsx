@@ -34,11 +34,10 @@ export default function BoxDetail() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}boxes/2/books`)
+      .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}/books`)
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
-        console.log(process.env);
       })
       .catch((error) => {
         console.log(error);
@@ -72,6 +71,14 @@ export default function BoxDetail() {
           setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
+          axios
+            .patch(`http://localhost:4000/boxes/${boxNumber}?action=add`)
+            .then((r) => {
+              console.log(r);
+            })
+            .catch(() => {
+              console.log('erreur');
+            });
         })
         .catch(() => {
           setRequestStatus(false);
@@ -106,12 +113,17 @@ export default function BoxDetail() {
       setAddBookForm(false);
       axios
         .post(`${process.env.REACT_APP_API_URL}books`, newBook)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          axios
+            .patch(`http://localhost:4000/boxes/${boxNumber}?action=add`)
+            .then((r) => {
+              console.log(r);
+            })
+            .catch(() => {
+              console.log('erreur');
+            });
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch(() => {});
     }
     setTitle('');
     setAuthor('');
@@ -164,6 +176,7 @@ export default function BoxDetail() {
             deleteState={book.to_delete}
             isbn={book.isbn}
             booksOut={setBooksOut}
+            boxId={boxNumber}
           />
         ))}
       </div>
