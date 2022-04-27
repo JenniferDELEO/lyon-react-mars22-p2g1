@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-export default function Popup({
-  popup, close, auteur, titre
-}) {
+export default function Popup({ popup, close, auteur, titre }) {
   const text = ['', ''];
   if (popup === 'borrow') {
     text[0] = 'emprunté';

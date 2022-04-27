@@ -38,10 +38,9 @@ export default function BoxDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
+        console.log(process.env);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => {});
   }, [addBookForm, booksOut]);
 
   function changeForm() {

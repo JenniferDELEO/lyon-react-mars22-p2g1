@@ -19,7 +19,7 @@ export default function Main() {
           <Route path="/form" element={<Form />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/boxDetail/:boite" element={<BoxDetail />} />
-          <Route path="/bookdetail" element={<BookDetail />} />
+          <Route path="/bookdetail/:id" element={<BookDetail />} />
         </Routes>
       </div>
       <div className="img-right img-desktop" />
