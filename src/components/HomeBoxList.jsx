@@ -1,21 +1,15 @@
+// import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
 import BookBox from '../assets/box_middlefull.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+// On déclare des states pour nos tables de livres et de boites
 function HomeBoxList() {
   const [boxList, setBoxList] = useState([]);
   const [bookList, setBookList] = useState([]);
-  const quantiteParBoite = [];
 
-  for (let i = 0; i < boxList.length; i += 1) {
-    quantiteParBoite.push(0);
-  }
-  for (let i = 0; i < bookList.length; i += 1) {
-    const index = parseFloat(bookList[i].id);
-    quantiteParBoite[index] += 1;
-  }
   useEffect(() => {
     axios
       .get('http://localhost:4000/boxes')
@@ -31,11 +25,22 @@ function HomeBoxList() {
       });
   }, []);
 
+  const quantiteParBoite = [];
+  // On déclare un tableau vide avec une entrée initiée a 0 pour chaque boite existante
+  for (let i = 0; i < boxList.length; i += 1) {
+    quantiteParBoite.push(0);
+  }
+  // On loop sur chaque livre présent en DB, on ajoute 1 a chaque index de boite correspondante
+  for (let i = 0; i < bookList.length; i += 1) {
+    const index = parseFloat(bookList[i].box_number);
+    quantiteParBoite[index] += 1;
+  }
+
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
       <ul>
-        {boxList.slice(0, 3).map((box) => (
+        {boxList.map((box) => (
           <Link to={`/BoxDetail/${box.id}`}>
             <p key={box.id}>
               {' '}
