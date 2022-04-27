@@ -40,7 +40,7 @@ function HomeBoxList() {
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
       <ul>
-        {boxList.map((box) => (
+        {boxList.slice(0, 3).map((box) => (
           <Link to={`/BoxDetail/${box.id}`}>
             <p key={box.id}>
               {' '}
