@@ -8,6 +8,11 @@
 }
 .boxList h2 {
   color: #1b9eb2;
+  margin-top: 5rem;
+  font-size: larger;
+}
+
+.boxList ul {
   margin-top: 2rem;
 }
 .boxList p {
@@ -29,48 +34,25 @@
   height: 50px;
 }
 /* --------------------- Futur carousel? --------- */
-h2 {
+.wrapper h2 {
   margin-top: 2rem;
   color: #1b9eb2;
   text-align: center;
+  font-size: larger;
 }
-
-.carouselContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: scroll;
-  background-color: #ffffff;
-  border-radius: 10px;
-  width: 80vw;
-  margin-bottom: 1rem;
-}
-.bookSelection img {
-  height: 150px;
-  width: 100px;
-  margin: 5px;
-  padding-right: 0.5rem;
+.carousel-root {
+  width: 250px;
+  margin-top: 2rem;
 }
 
 /* -------------- MEDIA QUERIES ----------------- */
 
-@media screen and (max-width: 649px) {
-  div.header {
-    background-color: #1b9eb2;
-    height: 4rem;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    text-align: center;
-  }
-}
 @media screen and (min-width: 650px) {
-  div.header {
-    display: none;
-  }
   .boxList p {
     width: 50vw;
   }
-  .carouselContainer {
-    width: 50vw;
+
+  .carousel-root {
+    width: 350px;
   }
 }
