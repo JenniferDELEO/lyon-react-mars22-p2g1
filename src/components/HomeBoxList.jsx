@@ -1,4 +1,3 @@
-// import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
 import BookBox from '../assets/box_middlefull.png';
