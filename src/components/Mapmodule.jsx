@@ -1,10 +1,16 @@
 import React from 'react';
-import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
+import {
+  MapContainer as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+} from 'react-leaflet';
 import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
 
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
+
   return (
     <LeafletMap className="map" center={lyonPosition} zoom={14}>
       <TileLayer
@@ -13,7 +19,11 @@ function Map() {
       />
 
       {coordsData.map((boite) => (
-        <Marker position={[boite.lat, boite.long]} />
+        <Marker position={[boite.lat, boite.long]}>
+          <Popup>
+            <h3>test</h3>
+          </Popup>
+        </Marker>
       ))}
     </LeafletMap>
   );
