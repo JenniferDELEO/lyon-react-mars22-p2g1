@@ -1,4 +1,3 @@
-import bookList from '../ressources/livresDB.json';
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
 import BookBox from '../assets/box_middlefull.png';
@@ -7,13 +6,14 @@ import { useEffect, useState } from 'react';
 
 function HomeBoxList() {
   const [boxList, setBoxList] = useState([]);
+  const [bookList, setBookList] = useState([]);
   const quantiteParBoite = [];
 
   for (let i = 0; i < boxList.length; i += 1) {
     quantiteParBoite.push(0);
   }
   for (let i = 0; i < bookList.length; i += 1) {
-    const index = parseFloat(bookList[i].boite);
+    const index = parseFloat(bookList[i].id);
     quantiteParBoite[index] += 1;
   }
   useEffect(() => {
@@ -22,7 +22,12 @@ function HomeBoxList() {
       .then((result) => result.data)
       .then((result) => {
         setBoxList(result);
-        console.log(result);
+      });
+    axios
+      .get('http://localhost:4000/books')
+      .then((result) => result.data)
+      .then((result) => {
+        setBookList(result);
       });
   }, []);
 
