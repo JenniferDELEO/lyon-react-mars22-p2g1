@@ -38,32 +38,38 @@ function FormComponent() {
     <div className="form-section">
       <h2 className="form-title">Votre message :</h2>
       <form ref={form} className="form-component" onSubmit={sendEmail}>
-        <label htmlFor="name">Votre nom * :</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-        />
-        <label htmlFor="mail">Votre email * :</label>
-        <input
-          type="email"
-          name="mail"
-          value={mail}
-          onChange={(event) => setMail(event.target.value)}
-          required
-        />
-        <label htmlFor="message">Votre message * :</label>
-        <textarea
-          rows="15"
-          cols="40"
-          type="text"
-          name="message"
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          required
-        />
+        <label htmlFor="name">
+          Votre nom * :
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
+        </label>
+        <label htmlFor="mail">
+          Votre email * :
+          <input
+            type="email"
+            name="mail"
+            value={mail}
+            onChange={(event) => setMail(event.target.value)}
+            required
+          />
+        </label>
+        <label htmlFor="message">
+          Votre message * :
+          <textarea
+            rows="15"
+            cols="40"
+            type="text"
+            name="message"
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+            required
+          />
+        </label>
         <button type="submit" className="btn-form">
           Envoyer
         </button>

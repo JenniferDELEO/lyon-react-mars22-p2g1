@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import RatingStar from './ratingStar';
-import Popup from './Popup';
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -18,23 +18,20 @@ export default function Book({
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
   const [isBorrow, setIsBorrow] = useState(borrowState);
-  const [popup, setPopupContent] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
-  const [authorPopup, setAuthorPopup] = useState('');
-  const [titlePopup, setTitlePopup] = useState('');
+  const [userAction, setUserAction] = useState('');
 
   let actionBg = '';
   if (isBorrow) {
     actionBg = {
       color: 'flex items-center bg-green-400 h-40',
-      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg',
+      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
       btn: 'animate-bounce bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (isDelete) {
     actionBg = {
       color: 'flex items-center bg-red-400 h-40',
-      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-lg',
+      size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
       btn: 'animate-bounce bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
     };
   }
@@ -51,16 +48,12 @@ export default function Book({
   }
 
   function borrowAction() {
-    setPopupContent('borrow');
-    setAuthorPopup(auteur);
-    setTitlePopup(titre);
+    setUserAction(['emprunté', 'Bonne lecture !']);
     setIsBorrow(true);
   }
 
   function deleteAction() {
-    setAuthorPopup(auteur);
-    setTitlePopup(titre);
-    setPopupContent('delete');
+    setUserAction(['supprimé', 'Merci de tenir les stocks à jour!']);
     setIsDelete(true);
   }
 
@@ -74,9 +67,21 @@ export default function Book({
         console.log(error);
       });
     booksOut(false);
-    setShowPopup(true);
     setIsDelete(false);
     setIsBorrow(false);
+    toast(
+      `Vous avez ${userAction[0]}: ${titre} de ${auteur}  ${userAction[1]}`,
+      {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+    setUserAction('');
   }
   return (
     <div className={actionBg.color}>
@@ -99,7 +104,7 @@ export default function Book({
               <p className="ml-3">{conditionColor[etat]}</p>
             </div>
             <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={`/bookdetail/${id}`}>detail</Link>
+              <Link to={'/bookdetail'}>detail</Link>
             </em>
           </div>
           {!isBorrow && !isDelete ? (
@@ -112,11 +117,11 @@ export default function Book({
                 onClick={deleteAction}
               />
               <button
-                className="color-bg border-black border text-xs hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+                className="color-bg border-black border text-xs hover:bg-blue-700 text-white transition-all duration-1000 font-bold py-1 px-2 rounded"
                 type="button"
                 onClick={borrowAction}
               >
-                Emprunter
+                Emprunt
               </button>
             </div>
           ) : (
@@ -137,16 +142,7 @@ export default function Book({
             </div>
           )}
         </div>
-        {showPopup ? (
-          <Popup
-            titre={titlePopup}
-            auteur={authorPopup}
-            popup={popup}
-            close={() => setShowPopup(false)}
-          />
-        ) : (
-          ''
-        )}
+        <ToastContainer />
       </div>
     </div>
   );
