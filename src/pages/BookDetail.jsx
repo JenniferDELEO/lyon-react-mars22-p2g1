@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 import '../styles/bookDetail.css';
+import vintage from '../assets/vintage.jpg';
 
 export default function BookDetail() {
   const [book, setBook] = useState();
@@ -24,7 +25,7 @@ export default function BookDetail() {
         <div>
           <h2>{book.title}</h2>
           <div className="carateristicsContainer">
-            <img src={book.picture} alt={book.title} />
+            <img src={book.picture || vintage} alt={book.title} />
             <div className="carateristicsDatas">
               <p id="lectorsRates">Avis des lecteurs :</p>
               <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
