@@ -4,13 +4,12 @@ import BookBox from '../assets/box_middlefull.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-// On déclare des states pour nos tables de livres et de boites
 function HomeBoxList() {
   const [boxList, setBoxList] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/boxes')
+      .get(`${process.env.REACT_APP_API_URL}boxes`)
       .then((result) => result.data)
       .then((result) => {
         setBoxList(result);
