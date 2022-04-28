@@ -59,6 +59,7 @@
   padding: 4px 16px;
   display: block;
   margin: 0 auto;
+  visibility: hidden;
 }
 
 @media screen and (min-width: 650px) {
