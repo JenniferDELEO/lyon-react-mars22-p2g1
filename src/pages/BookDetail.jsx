@@ -22,12 +22,12 @@ export default function BookDetail() {
     <div className="bookdetail">
       {book && (
         <div>
-          <h2 className="bookTitle">{book.title}</h2>
-          <div className="mainContainerBookDetail">
+          <h2>{book.title}</h2>
+          <div className="carateristicsContainer">
             <img src={book.picture} alt={book.title} />
-            <div className="carateristicsContainer">
-              <h2>Avis des lecteurs :</h2>
-              <RatingStar rate={book.note} padding={'pb-0'} size={'text-4xl'} />
+            <div className="carateristicsDatas">
+              <p id="lectorsRates">Avis des lecteurs :</p>
+              <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
               <p>{book.pages_nbr} pages</p>
               <p>Date publication : {book.publication_year}</p>
               <p>Éditeur : {book.editions}</p>
@@ -35,13 +35,12 @@ export default function BookDetail() {
             </div>
           </div>
 
-          <h2>{book.author}</h2>
+          <h2 id="author">{book.author}</h2>
 
           <p className="resumebookDetail">
             <strong>Résumé :</strong> {book.synopsis}
           </p>
-          <button type="button">Vérifier disponibilité</button>
-          <p> CARTE</p>
+          <button type="button">Disponible dans une boîte ?</button>
         </div>
       )}
     </div>

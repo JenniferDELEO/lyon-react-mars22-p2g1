@@ -5,41 +5,45 @@
 .bookdetail h2 {
   color: #0e5667;
   text-decoration: initial;
-  text-align: left;
   font-weight: 600;
-  font-size: large;
+  font-size: x-large;
+  margin: 1rem;
 }
 
-.mainContainerBookDetail {
+.carateristicsContainer {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   color: #0e5667;
 }
 
-.mainContainerBookDetail img {
+.carateristicsContainer img {
   height: 220px;
   border-radius: 20px;
 }
-.carateristicsContainer {
+
+.carateristicsDatas {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 220px;
   padding: 5px;
 }
 
-.carateristicsContainer h2 {
+#lectorsRates {
   font-size: large;
   font-weight: 500;
 }
 
+#author {
+  text-align: left;
+  font-size: large;
+}
+
 .resumebookDetail {
   text-align: justify;
-  width: 90vw;
-  margin: 1rem 0;
+  width: 90%;
+  margin: 1rem auto;
   background-color: white;
   border: 1px solid #0e5667;
   border-radius: 10px;
@@ -55,4 +59,10 @@
   padding: 4px 16px;
   display: block;
   margin: 0 auto;
+}
+
+@media screen and (min-width: 650px) {
+  .bookdetail {
+    width: 90%;
+  }
 }
