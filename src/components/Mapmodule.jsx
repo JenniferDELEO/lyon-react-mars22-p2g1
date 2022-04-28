@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   MapContainer as LeafletMap,
   TileLayer,
   Marker,
   Popup,
 } from 'react-leaflet';
-import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
 import PopUpMap from './PopupMap';
 
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
+  const [coordsData, setCoordsData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/boxes`)
+      .then((result) => result.data)
+      .then((result) => {
+        setCoordsData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <LeafletMap className="map" center={lyonPosition} zoom={14}>
@@ -25,7 +38,7 @@ function Map() {
             <PopUpMap
               name={boite.ville}
               adress={boite.adresse}
-              numberBooks={boite.nmb_books}
+              numberBooks={boite.quantity}
             />
           </Popup>
         </Marker>
