@@ -15,7 +15,7 @@ function Map() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/boxes`)
+      .get(`${process.env.REACT_APP_API_URL}boxes`)
       .then((result) => result.data)
       .then((result) => {
         setCoordsData(result);
