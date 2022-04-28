@@ -98,7 +98,7 @@ export default function AddBookForm({
         <button
           type="button"
           onClick={fetchBook}
-          className="bg-blue-500 hover:bg-blue-700 border-black border text-white font-bold py-1 px-3 rounded"
+          className="color-bg hover:bg-blue-700 border-black border text-white font-bold py-1 px-3 rounded"
         >
           ajouter
         </button>
