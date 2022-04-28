@@ -69,7 +69,7 @@ export default function Book({
     booksOut(false);
     setIsDelete(false);
     setIsBorrow(false);
-    toast.info(
+    toast(
       `Vous avez ${userAction[0]}: ${titre} de ${auteur}  ${userAction[1]}`,
       {
         position: 'top-center',

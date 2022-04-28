@@ -46,6 +46,7 @@ export default function BoxDetail() {
 
   function addBook() {
     if (!notFound && _isbn) {
+      console.log('env -> ', process.env);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`
@@ -98,7 +99,7 @@ export default function BoxDetail() {
       axios
         .post(`${process.env.REACT_APP_API_URL}books`, newBook)
         .then(() => {
-          toast.info(
+          toast(
             `Vous avez deposé:
            \n${title} de ${author}  
            merci de faire vivre les BAL`,
@@ -114,9 +115,7 @@ export default function BoxDetail() {
             }
           );
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch(() => {});
     }
     setAuthor('');
     setTitle('');
@@ -125,7 +124,7 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} boxNumber={boxNumber} />
+      <BoxHeader displayForm={displayForm} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
@@ -140,6 +139,7 @@ export default function BoxDetail() {
           rate={setStarRate}
           condition={handleConditionChange}
           status={requestStatus}
+          showForm={() => setAddBookForm(!addBookForm)}
         />
       ) : (
         ''
