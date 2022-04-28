@@ -23,9 +23,9 @@ function Map() {
         <Marker position={[boite.lat, boite.long]}>
           <Popup>
             <PopUpMap
-              name="toto"
-              adress="11 rue des poissons"
-              numberBooks="34"
+              name={boite.ville}
+              adress={boite.adresse}
+              numberBooks={boite.nmb_books}
             />
           </Popup>
         </Marker>
