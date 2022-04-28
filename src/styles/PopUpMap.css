@@ -3,18 +3,19 @@
 .popupBoxContainer {
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
 }
 
 .popupBoxContainer p {
-  margin-top: 5px;
+  margin-top: 7px;
   margin-bottom: 5px;
 }
 .boxImage {
   position: absolute;
-  top: -20px;
+  top: -12px;
   left: 50%; /* à 50%/50% du parent référent */
   transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
-  width: 50px;
+  width: 70px;
 }
 
 .boxName {
