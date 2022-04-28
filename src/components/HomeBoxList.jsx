@@ -10,14 +10,14 @@ function HomeBoxList({ CP }) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/boxes')
+      .get(`http://localhost:4000/boxes/postalcode/${CP}`)
       .then((result) => result.data)
       .then((result) => {
+        console.log(result);
         setBoxList(result);
-        console.log('cp -> ', CP);
       });
   }, [CP]);
-  console.log('cp -> ', CP);
+
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
