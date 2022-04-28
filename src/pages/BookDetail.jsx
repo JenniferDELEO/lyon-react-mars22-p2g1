@@ -11,7 +11,7 @@ export default function BookDetail() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}books${id.id}`)
+      .get(`${process.env.REACT_APP_API_URL}books/${id.id}`)
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
