@@ -5,7 +5,11 @@ import HomeBookSelection from '../components/HomeBookSelection';
 import HomeBoxList from '../components/HomeBoxList';
 
 export default function Home() {
-  const [postalCode, setPostalCode] = useState('69001');
+  const [postalCode, setPostalCode] = useState({
+    cp: '69001',
+    id: '',
+    address: '',
+  });
   return (
     <>
       <div className="mapContainer">

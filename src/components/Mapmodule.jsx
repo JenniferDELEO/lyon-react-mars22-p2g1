@@ -17,7 +17,7 @@ function Map({ setCP }) {
           position={[boite.lat, boite.long]}
           eventHandlers={{
             click: () => {
-              setCP(boite.CP);
+              setCP({ cp: boite.CP, id: boite.boite, address: boite.adresse });
             },
           }}
         />
