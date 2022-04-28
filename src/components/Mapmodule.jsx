@@ -26,7 +26,12 @@ function Map() {
   }, []);
 
   return (
-    <LeafletMap className="map" center={lyonPosition} zoom={14}>
+    <LeafletMap
+      className="map"
+      center={lyonPosition}
+      zoom={14}
+      scrollWheelZoom={false}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
