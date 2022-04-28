@@ -1,12 +1,33 @@
-import bookList from '../ressources/livresDB.json';
+// import bookList from '../ressources/livresDB.json';
 // import Vintage from '../assets/vintage.jpg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import '../styles/HomeLists.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function HomeBookSelection() {
-  const bookNote = bookList.filter((book) => book.note >= 4);
-  const bookPicture = bookNote.filter((book) => book.picture);
+  const [getBook, setGetBook] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}books`)
+      .then((result) => result.data)
+      .then((data) => {
+        setGetBook(
+          data
+            .filter((book) => book.note >= 4)
+            .filter((book) => book.picture)
+            .slice(0, 10)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // const bookNote = bookList.filter((book) => book.note >= 4);
+  // const bookPicture = bookNote.filter((book) => book.picture);
 
   return (
     <div className="wrapper">
@@ -15,21 +36,19 @@ function HomeBookSelection() {
         <Carousel
           showStatus={false}
           infiniteLoop
-          // emulateTouch
-          // autoPlay
+          autoPlay
           useKeyboardArrows
           transitionTime={1000}
-          // axis="vertical"
           selectedItem={0}
         >
-          {bookPicture.map((book) => (
-            <div className="carouselItems" key={book.ISBN}>
+          {getBook.map((book) => (
+            <div className="carouselItems" key={book.isbn}>
               {' '}
               <img src={book.picture} alt="preview" />
               <p className="legend">
-                {book.titre}
+                {book.title}
                 {' de '}
-                {book.auteur}
+                {book.author}
               </p>
             </div>
           ))}
