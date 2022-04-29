@@ -72,7 +72,9 @@ export default function BoxDetail() {
           setBookNotFound(false);
           setAddBookForm(false);
           axios
-            .patch(`http://localhost:4000/boxes/${boxNumber}?action=add`)
+            .patch(
+              `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
+            )
             .then((r) => {
               console.log(r);
             })
@@ -115,7 +117,9 @@ export default function BoxDetail() {
         .post(`${process.env.REACT_APP_API_URL}books`, newBook)
         .then(() => {
           axios
-            .patch(`http://localhost:4000/boxes/${boxNumber}?action=add`)
+            .patch(
+              `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
+            )
             .then((r) => {
               console.log(r);
             })
