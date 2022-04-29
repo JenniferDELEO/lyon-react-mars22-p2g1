@@ -1,6 +1,4 @@
-// import bookList from '../ressources/livresDB.json';
-// import Vintage from '../assets/vintage.jpg';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import '../styles/HomeLists.css';
 import axios from 'axios';
@@ -25,9 +23,6 @@ function HomeBookSelection() {
         console.log(error);
       });
   }, []);
-
-  // const bookNote = bookList.filter((book) => book.note >= 4);
-  // const bookPicture = bookNote.filter((book) => book.picture);
 
   return (
     <div className="wrapper">
