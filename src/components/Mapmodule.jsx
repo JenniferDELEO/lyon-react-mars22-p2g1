@@ -5,6 +5,7 @@ import '../styles/Map.css';
 
 function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
+
   return (
     <LeafletMap className="map" center={lyonPosition} zoom={14}>
       <TileLayer
@@ -17,7 +18,7 @@ function Map({ setCP }) {
           position={[boite.lat, boite.long]}
           eventHandlers={{
             click: () => {
-              setCP({ cp: boite.CP, id: boite.boite, address: boite.adresse });
+              setCP({ cp: boite.CP, id: boite.id, address: boite.adresse });
             },
           }}
         />

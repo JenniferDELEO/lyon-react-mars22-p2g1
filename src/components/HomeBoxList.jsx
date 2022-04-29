@@ -9,7 +9,7 @@ function HomeBoxList({ CP }) {
   const [selectedBox, setSelectedBox] = useState('');
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/boxes/postalcode/${CP.cp}`)
+      .get(`${process.env.REACT_APP_API_URL}boxes/postalcode/${CP.cp}`)
       .then((result) => result.data)
       .then((result) => {
         console.log(CP);

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-/* eslint-disable linebreak-style */
 import PopupDisplayHome from '../components/PopupDisplayHome';
 import Mapsection from '../components/Mapmodule';
 import HomeBookSelection from '../components/HomeBookSelection';
