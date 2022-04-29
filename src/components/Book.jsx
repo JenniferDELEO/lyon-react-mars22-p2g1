@@ -14,6 +14,7 @@ export default function Book({
   deleteState,
   id,
   booksOut,
+  boxId,
 }) {
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
@@ -62,6 +63,14 @@ export default function Book({
       .put(`${process.env.REACT_APP_API_URL}books/${id}`)
       .then(() => {
         booksOut(true);
+        axios
+          .patch(`${process.env.REACT_APP_API_URL}boxes/${boxId}?action=delete`)
+          .then((r) => {
+            console.log(r);
+          })
+          .catch(() => {
+            console.log('erreur');
+          });
       })
       .catch((error) => {
         console.log(error);
