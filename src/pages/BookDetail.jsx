@@ -8,7 +8,7 @@ import vintage from '../assets/vintage.jpg';
 
 export default function BookDetail() {
   const [book, setBook] = useState();
-  const id = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     axios
