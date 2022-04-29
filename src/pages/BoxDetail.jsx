@@ -22,6 +22,7 @@ export default function BoxDetail() {
   const [starRate, setStarRate] = useState(3);
   const [condition, setCondition] = useState(2);
   const [requestStatus, setRequestStatus] = useState(true);
+  const [boxInfo, setBoxInfo] = useState('');
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
@@ -35,10 +36,27 @@ export default function BoxDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
-        console.log(data);
+        axios
+          .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
+          .then((response2) => response2.data)
+          .then((data2) => {
+            setBoxInfo(data2);
+          });
       })
       .catch(() => {});
   }, [addBookForm, booksOut]);
+
+  /*
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
+      .then((response) => response.data)
+      .then((data) => {
+        setBoxInfo(data);
+      });
+  }, [booksOut, addBookForm]);
+
+  */
 
   function changeForm() {
     setBookNotFound(!notFound);
@@ -145,7 +163,7 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} />
+      <BoxHeader displayForm={displayForm} getBoxInfo={boxInfo} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
