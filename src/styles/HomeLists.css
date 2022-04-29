@@ -33,16 +33,62 @@
   width: 35px;
   height: 50px;
 }
-/* --------------------- Futur carousel? --------- */
+/* --------------------- Carousel --------- */
 .wrapper h2 {
   margin-top: 2rem;
   color: #1b9eb2;
   text-align: center;
   font-size: larger;
 }
-.carousel-root {
-  width: 250px;
+
+.wrapper {
+  width: 90%;
+}
+
+.carouselContainer {
   margin-top: 2rem;
+}
+
+.carouselHomepage .legend {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: 90%;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.25;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -moz-transition: opacity 0.35s ease-in-out;
+  -ms-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.carouselItems:hover + .legend {
+  opacity: 1;
+}
+
+.legend:hover {
+  opacity: 1;
+}
+
+.carouselItems img {
+  padding-top: 16px;
+  margin: 0 auto;
+}
+
+.carouselHomepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
 }
 
 /* -------------- MEDIA QUERIES ----------------- */
@@ -50,9 +96,5 @@
 @media screen and (min-width: 650px) {
   .boxList p {
     width: 50vw;
-  }
-
-  .carousel-root {
-    width: 300px;
   }
 }
