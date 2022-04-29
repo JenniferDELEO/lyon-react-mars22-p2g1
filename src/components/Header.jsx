@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function Header() {
-  return <header>La boite à lire Lyon</header>;
+  return (
+    <header>
+      <h1>La boite à lire Lyon</h1>
+    </header>
+  );
 }

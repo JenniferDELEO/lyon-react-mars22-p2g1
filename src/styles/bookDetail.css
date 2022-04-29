@@ -1,31 +1,69 @@
-.fondtitre {
-  position: absolute;
-  width: 442px;
-  height: 98px;
-  left: -7px;
-  top: 0px;
-
-  /* Background-secondaire */
-  background: #1b9eb2;
-  border: 0.8px solid #000000;
-  box-sizing: border-box;
-  border-radius: 30px;
+.bookdetail {
+  margin: 8px;
 }
 
-h1 {
-  font-family: 'Poppins';
-  font-style: normal;
+.bookdetail h2 {
+  color: #0e5667;
+  text-decoration: initial;
   font-weight: 600;
-  font-size: 36px;
-  line-height: 40px;
+  font-size: x-large;
+  margin: 1rem;
+}
 
-  /* or 111% */
+.carateristicsContainer {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
+  color: #0e5667;
+}
 
-  /* Background-primaire */
-  color: #f2f2f2;
+.carateristicsContainer img {
+  height: 220px;
+  border-radius: 20px;
+}
 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+.carateristicsDatas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+#lectorsRates {
+  font-size: large;
+  font-weight: 500;
+}
+
+#author {
+  text-align: left;
+  font-size: large;
+}
+
+.resumebookDetail {
+  text-align: justify;
+  width: 90%;
+  margin: 1rem auto;
+  background-color: white;
+  border: 1px solid #0e5667;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.bookdetail button {
+  border-radius: 10px;
+  background: #1b9eb2;
+  border: 1px solid rgba(14, 86, 103, 1);
+  cursor: pointer;
+  color: white;
+  padding: 4px 16px;
+  display: block;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 650px) {
+  .bookdetail {
+    width: 90%;
+  }
 }

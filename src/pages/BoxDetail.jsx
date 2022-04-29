@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import AddBookForm from '../components/AddBookForm';
 import BoxHeader from '../components/BoxHeaders';
 import axios from 'axios';
-import Popup from '../components/Popup';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function BoxDetail() {
   const num = useParams();
@@ -19,9 +19,6 @@ export default function BoxDetail() {
   const [boxNumber] = useState(num.boite);
   const [notFound, setBookNotFound] = useState(false);
   const [_isbn, setIsbn] = useState();
-  const [authorPopup, setAuthorPopup] = useState('');
-  const [titlePopup, setTitlePopup] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
   const [starRate, setStarRate] = useState(3);
   const [condition, setCondition] = useState(2);
   const [requestStatus, setRequestStatus] = useState(true);
@@ -38,10 +35,9 @@ export default function BoxDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
+        console.log(data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => {});
   }, [addBookForm, booksOut]);
 
   function changeForm() {
@@ -49,28 +45,29 @@ export default function BoxDetail() {
     setRequestStatus(true);
   }
 
-  function abortPopup() {
-    setRequestStatus(true);
-    setBookNotFound(false);
-    setAddBookForm(false);
-    setShowPopup(false);
-    setTitlePopup('');
-    setAuthorPopup('');
-  }
-
   function addBook() {
     if (!notFound && _isbn) {
+      console.log('env -> ', process.env);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`
         )
         .then((response) => response.data)
         .then((data) => {
-          setAuthorPopup(data.author);
-          setTitlePopup(data.title);
-          setShowPopup(true);
           setBookNotFound(false);
           setAddBookForm(false);
+          toast.info(
+            `Vous avez deposé: \n${data.title} de ${data.author}  merci de faire vivre les BAL`,
+            {
+              position: 'top-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
         })
         .catch(() => {
           setRequestStatus(false);
@@ -98,28 +95,37 @@ export default function BoxDetail() {
         out_of_stock: 0,
         selection: 0,
       };
-      setAuthorPopup(authorCap);
-      setTitlePopup(titleCap);
-      setShowPopup(true);
       setBookNotFound(false);
       setAddBookForm(false);
       axios
         .post(`${process.env.REACT_APP_API_URL}books`, newBook)
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          toast(
+            `Vous avez deposé:
+           \n${title} de ${author}  
+           merci de faire vivre les BAL`,
+            {
+              position: 'top-center',
+              icon: '📖',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch(() => {});
     }
-    setTitle('');
     setAuthor('');
+    setTitle('');
     setIsbn('');
   }
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} boxNumber={boxNumber} />
+      <BoxHeader displayForm={displayForm} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
@@ -130,27 +136,16 @@ export default function BoxDetail() {
           authorValue={author}
           notFound={notFound}
           changeForm={changeForm}
-          showForm={abortPopup}
           fetchBook={addBook}
           rate={setStarRate}
           condition={handleConditionChange}
           status={requestStatus}
-          popupAbort={abortPopup}
+          showForm={() => setAddBookForm(!addBookForm)}
         />
       ) : (
         ''
       )}
       <div>
-        {showPopup ? (
-          <Popup
-            titre={titlePopup}
-            auteur={authorPopup}
-            popup="depot"
-            close={abortPopup}
-          />
-        ) : (
-          ''
-        )}
         {booksList.map((book) => (
           <Book
             id={book.id}
@@ -166,6 +161,7 @@ export default function BoxDetail() {
           />
         ))}
       </div>
+      <ToastContainer />
     </div>
   );
 }
