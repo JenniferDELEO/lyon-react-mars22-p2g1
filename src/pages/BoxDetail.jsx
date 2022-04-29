@@ -46,18 +46,6 @@ export default function BoxDetail() {
       .catch(() => {});
   }, [addBookForm, booksOut]);
 
-  /*
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
-      .then((response) => response.data)
-      .then((data) => {
-        setBoxInfo(data);
-      });
-  }, [booksOut, addBookForm]);
-
-  */
-
   function changeForm() {
     setBookNotFound(!notFound);
     setRequestStatus(true);
