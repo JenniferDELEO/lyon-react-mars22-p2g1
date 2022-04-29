@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import PopupHome from './PopupHome';
 import BalMedium from '../assets/BAL-medium.png';
@@ -5,7 +6,7 @@ import MapNavigation from '../assets/map-navigation.png';
 import '../styles/PopupDisplay.css';
 import { Link } from 'react-router-dom';
 
-function PopupDisplayHome() {
+export default function PopupDisplayHome() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [timedPopup, setTimedPopup] = useState(false);
 
@@ -84,5 +85,3 @@ function PopupDisplayHome() {
     </div>
   );
 }
-
-export default PopupDisplayHome;
