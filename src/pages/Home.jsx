@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import PopupDisplayHome from '../components/PopupDisplayHome';
 import Mapsection from '../components/Mapmodule';

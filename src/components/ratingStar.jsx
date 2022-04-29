@@ -1,10 +1,12 @@
 /* eslint-disable react/no-array-index-key */
-export default function RatingStar({ rate }) {
+export default function RatingStar({ rate, padding = 'pb-5', size }) {
   const yellowStar = new Array(rate).fill('');
   const greyStar = new Array(5 - rate).fill('');
 
+  const stars = `${size} ${padding} flex`;
+
   return (
-    <div className="text-xl pb-5 flex">
+    <div className={stars}>
       {yellowStar.map((_, i) => (
         <p key={i} className="text-yellow-400">
           ★
