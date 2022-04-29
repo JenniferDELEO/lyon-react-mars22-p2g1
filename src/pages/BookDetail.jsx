@@ -7,12 +7,13 @@ import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
 
 export default function BookDetail() {
+  const emptyResume =
+    "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
   const { id } = useParams();
-
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}books/${id.id}`)
+      .get(`${process.env.REACT_APP_API_URL}books/${id}`)
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
@@ -25,7 +26,14 @@ export default function BookDetail() {
         <div>
           <h2>{book.title}</h2>
           <div className="carateristicsContainer">
-            <img src={book.picture || vintage} alt={book.title} />
+            <img
+              src={
+                book.picture === null || book.picture === 'None'
+                  ? vintage
+                  : book.picture
+              }
+              alt={book.title}
+            />
             <div className="carateristicsDatas">
               <p id="lectorsRates">Avis des lecteurs :</p>
               <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
@@ -39,7 +47,10 @@ export default function BookDetail() {
           <h2 id="author">{book.author}</h2>
 
           <p className="resumebookDetail">
-            <strong>Résumé :</strong> {book.synopsis}
+            <strong>Résumé :</strong>{' '}
+            {book.synopsis === null || book.synopsis === 'None'
+              ? emptyResume
+              : book.synopsis}
           </p>
           <button type="button">Disponible dans une boîte ?</button>
         </div>

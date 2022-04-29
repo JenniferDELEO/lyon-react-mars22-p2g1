@@ -104,7 +104,7 @@ export default function Book({
               <p className="ml-3">{conditionColor[etat]}</p>
             </div>
             <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={'/bookdetail'}>detail</Link>
+              <Link to={`/bookdetail/${id}`}>detail</Link>
             </em>
           </div>
           {!isBorrow && !isDelete ? (
