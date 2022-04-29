@@ -50,6 +50,7 @@ function Map({ setCP }) {
               name={boite.ville}
               adress={boite.adresse}
               numberBooks={boite.quantity}
+              id={boite.id}
             />
           </Popup>
         </Marker>
