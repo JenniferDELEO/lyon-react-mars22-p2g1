@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
-import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
 
 function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
+  const [coordsData, setCoordsData] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}boxes`)
+      .then((result) => result.data)
+      .then((result) => {
+        setCoordsData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <LeafletMap className="map" center={lyonPosition} zoom={14}>
       <TileLayer
