@@ -24,6 +24,7 @@ function HomeBoxList({ CP }) {
       {boxList.map((box) => (
         <Link to={`/BoxDetail/${box.id}`}>
           <p
+            className={selectedBox === box.id ? 'animate-pulse' : ''}
             style={{
               backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
             }}
