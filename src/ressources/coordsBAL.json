@@ -5,7 +5,8 @@
     "lat": "45.6753398",
     "long": "4.7650074",
     "boite": 0,
-    "ville": "Brignais"
+    "ville": "Brignais",
+    "nmb_books": 32
   },
   {
     "adresse": "3 Avenue de la Gare",
@@ -13,7 +14,8 @@
     "lat": "45.6739991",
     "long": "4.7633181",
     "boite": 1,
-    "ville": "Brignais"
+    "ville": "Brignais",
+    "nmb_books": 32
   },
   {
     "adresse": "Place Baptiste Curial",
@@ -21,7 +23,8 @@
     "lat": "45.7374217",
     "long": " 4.916939",
     "boite": 2,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 32
   },
   {
     "adresse": "59 Boulevard Pinel",
@@ -29,7 +32,8 @@
     "lat": "45.7474263",
     "long": " 4.8997208",
     "boite": 3,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 32
   },
   {
     "adresse": "Place George Sand",
@@ -37,7 +41,8 @@
     "lat": "45.7553103",
     "long": " 4.8882637",
     "boite": 4,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 32
   },
   {
     "adresse": "195 Avenue Franklin Roosevelt",
@@ -45,7 +50,8 @@
     "lat": "45.7321415",
     "long": " 4.9132846",
     "boite": 5,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 38
   },
   {
     "adresse": "58 Rue Christian Lacouture",
@@ -53,7 +59,8 @@
     "lat": "45.7440725",
     "long": " 4.910463",
     "boite": 6,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 90
   },
   {
     "adresse": "95 Boulevard Pinel",
@@ -61,7 +68,8 @@
     "lat": "45.7389578",
     "long": " 4.8963057",
     "boite": 7,
-    "ville": "Bron"
+    "ville": "Bron",
+    "nmb_books": 76
   },
   {
     "adresse": "51 Rue Coste",
@@ -69,7 +77,8 @@
     "lat": "45.7842227",
     "long": " 4.8330374",
     "boite": 8,
-    "ville": "Caluire et Cuire"
+    "ville": "Caluire et Cuire",
+    "nmb_books": 12
   },
   {
     "adresse": "1 Place Jules Ferry",
@@ -77,7 +86,8 @@
     "lat": "45.7860634",
     "long": " 4.8325513",
     "boite": 9,
-    "ville": "Caluire et cuire"
+    "ville": "Caluire et cuire",
+    "nmb_books": 53
   },
   {
     "adresse": "Place du Vernay",
@@ -85,7 +95,8 @@
     "lat": "45.8111523",
     "long": " 4.8527781",
     "boite": 10,
-    "ville": "Caluire et Cuire"
+    "ville": "Caluire et Cuire",
+    "nmb_books": 65
   },
   {
     "adresse": "5 Chemin de Cr\u00e9pieux",
@@ -93,7 +104,8 @@
     "lat": "45.8007323",
     "long": " 4.8498163",
     "boite": 11,
-    "ville": "Caluire et Cuire"
+    "ville": "Caluire et Cuire",
+    "nmb_books": 39
   },
   {
     "adresse": "23 Avenue Paul Doumer",
@@ -101,7 +113,8 @@
     "lat": "45.7121632",
     "long": " 4.7434095",
     "boite": 12,
-    "ville": "Chaponost"
+    "ville": "Chaponost",
+    "nmb_books": 43
   },
   {
     "adresse": "62 Rue Oreste Z\u00e9n\u00e9zini",
@@ -109,7 +122,8 @@
     "lat": "45.743869",
     "long": " 4.9701289",
     "boite": 13,
-    "ville": "Chassieu"
+    "ville": "Chassieu",
+    "nmb_books": 18
   },
   {
     "adresse": "42 Chemin de Parsonge",
@@ -117,7 +131,8 @@
     "lat": "45.8170734",
     "long": " 4.7561785",
     "boite": 14,
-    "ville": "Dardilly"
+    "ville": "Dardilly",
+    "nmb_books": 76
   },
   {
     "adresse": "31 Chemin des Peupliers",
@@ -125,7 +140,8 @@
     "lat": "45.8136519",
     "long": " 4.7584863",
     "boite": 15,
-    "ville": "Dardilly"
+    "ville": "Dardilly",
+    "nmb_books": 12
   },
   {
     "adresse": "28 Chemin de Pierre Blanche",
@@ -133,7 +149,8 @@
     "lat": "45.8182065",
     "long": " 4.7497613",
     "boite": 16,
-    "ville": "Dardilly"
+    "ville": "Dardilly",
+    "nmb_books": 43
   },
   {
     "adresse": "65 Rue Georges Bizet",
@@ -141,7 +158,8 @@
     "lat": "45.7759502",
     "long": " 4.9668619",
     "boite": 17,
-    "ville": "D\u00e9cines-Charpieu"
+    "ville": "D\u00e9cines-Charpieu",
+    "nmb_books": 34
   },
   {
     "adresse": "110 Rue Emile Zola",
@@ -149,7 +167,8 @@
     "lat": "45.76382",
     "long": " 4.953462",
     "boite": 18,
-    "ville": "D\u00e9cines-Charpieu"
+    "ville": "D\u00e9cines-Charpieu",
+    "nmb_books": 24
   },
   {
     "adresse": "14 Avenue Jean Mac\u00e9",
@@ -157,7 +176,8 @@
     "lat": "45.7688911",
     "long": " 4.9553565",
     "boite": 19,
-    "ville": "D\u00e9cines-Charpieu"
+    "ville": "D\u00e9cines-Charpieu",
+    "nmb_books": 19
   },
   {
     "adresse": "36 Avenue Guy de Collongue",
@@ -165,7 +185,8 @@
     "lat": "45.7825382",
     "long": " 4.7666033",
     "boite": 20,
-    "ville": "Ecully"
+    "ville": "Ecully",
+    "nmb_books": 23
   },
   {
     "adresse": "3 Chemin du Fort",
@@ -173,7 +194,8 @@
     "lat": "45.7297901",
     "long": " 4.7428179",
     "boite": 21,
-    "ville": "Francheville"
+    "ville": "Francheville",
+    "nmb_books": 321
   },
   {
     "adresse": "Place de l'Europe",
@@ -181,7 +203,8 @@
     "lat": "45.7386145",
     "long": " 4.7739971",
     "boite": 22,
-    "ville": "Francheville"
+    "ville": "Francheville",
+    "nmb_books": 47
   },
   {
     "adresse": "1 Place du Bourg",
@@ -189,7 +212,8 @@
     "lat": "45.736905",
     "long": " 4.7640032",
     "boite": 23,
-    "ville": "francheville"
+    "ville": "francheville",
+    "nmb_books": 81
   },
   {
     "adresse": "16 Rue Yves Farge",
@@ -197,7 +221,8 @@
     "lat": "45.5925619",
     "long": " 4.7672428",
     "boite": 24,
-    "ville": "Givors"
+    "ville": "Givors",
+    "nmb_books": 34
   },
   {
     "adresse": "3 Place de la Libert\u00e9",
@@ -205,7 +230,8 @@
     "lat": "45.5847345",
     "long": " 4.7753788",
     "boite": 25,
-    "ville": "Givors"
+    "ville": "Givors",
+    "nmb_books": 43
   },
   {
     "adresse": "9 Rue Constantine",
@@ -213,7 +239,8 @@
     "lat": "45.7670693",
     "long": " 4.8320279",
     "boite": 26,
-    "ville": "Lyon 1"
+    "ville": "Lyon 1",
+    "nmb_books": 10
   },
   {
     "adresse": "Place Sathonay",
@@ -221,7 +248,8 @@
     "lat": "45.7691363",
     "long": " 4.8301485",
     "boite": 27,
-    "ville": "Lyon 1"
+    "ville": "Lyon 1",
+    "nmb_books": 43
   },
   {
     "adresse": "3 Quai Jean Moulin",
@@ -229,7 +257,8 @@
     "lat": "45.7674337",
     "long": " 4.8377007",
     "boite": 28,
-    "ville": "Lyon 1"
+    "ville": "Lyon 1",
+    "nmb_books": 322
   },
   {
     "adresse": "14 Quai Saint Vincent",
@@ -237,7 +266,8 @@
     "lat": "45.7679787",
     "long": " 4.8195187",
     "boite": 29,
-    "ville": "Lyon 1"
+    "ville": "Lyon 1",
+    "nmb_books": 6
   },
   {
     "adresse": "87 Rue de la R\u00e9publique",
@@ -245,7 +275,8 @@
     "lat": "45.7581745",
     "long": " 4.8346659",
     "boite": 30,
-    "ville": "Lyon 2"
+    "ville": "Lyon 2",
+    "nmb_books": 35
   },
   {
     "adresse": "1 Place de l'H\u00f4pital",
@@ -253,7 +284,8 @@
     "lat": "45.7593263",
     "long": " 4.8358695",
     "boite": 31,
-    "ville": "Lyon 2"
+    "ville": "Lyon 2",
+    "nmb_books": 67
   },
   {
     "adresse": "87 Rue de la R\u00e9publique",
@@ -261,7 +293,8 @@
     "lat": "45.7581745",
     "long": " 4.8346659",
     "boite": 32,
-    "ville": "Lyon 2"
+    "ville": "Lyon 2",
+    "nmb_books": 12
   },
   {
     "adresse": "Rue Jean Fabre",
@@ -269,7 +302,8 @@
     "lat": "45.7602682",
     "long": " 4.8330347",
     "boite": 33,
-    "ville": "Lyon 2"
+    "ville": "Lyon 2",
+    "nmb_books": 76
   },
   {
     "adresse": "6 Place des Jacobins",
@@ -277,7 +311,8 @@
     "lat": "45.7541448",
     "long": " 4.8535559",
     "boite": 34,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 65
   },
   {
     "adresse": "Place Guichard",
@@ -285,7 +320,8 @@
     "lat": "45.7590482",
     "long": "4.8473042",
     "boite": 35,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 87
   },
   {
     "adresse": "7 Rue Auguste Lacroix",
@@ -293,7 +329,8 @@
     "lat": "45.7554089",
     "long": "4.8450388",
     "boite": 36,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 87
   },
   {
     "adresse": "53 Rue Charles Richard",
@@ -301,7 +338,8 @@
     "lat": "45.7495455",
     "long": "4.888851",
     "boite": 37,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 53
   },
   {
     "adresse": "30 Boulevard Vivier-Merle",
@@ -309,7 +347,8 @@
     "lat": "45.7606813",
     "long": " 4.8575503",
     "boite": 38,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 34
   },
   {
     "adresse": "249 rue Vendome",
@@ -317,7 +356,8 @@
     "lat": "45.7558726",
     "long": " 4.8478133",
     "boite": 39,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 5
   },
   {
     "adresse": "3 Place d Arsonval",
@@ -325,7 +365,8 @@
     "lat": "45.7433371",
     "long": " 4.8794001",
     "boite": 40,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 31
   },
   {
     "adresse": "7 Place de la Ferrandi\u00e8re",
@@ -333,7 +374,8 @@
     "lat": "45.7597289",
     "long": " 4.8709135",
     "boite": 41,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 432
   },
   {
     "adresse": "17 Rue Dr Bouchut",
@@ -341,7 +383,8 @@
     "lat": "45.7621058",
     "long": " 4.8557052",
     "boite": 42,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 43
   },
   {
     "adresse": "3 Place Sainte Anne",
@@ -349,7 +392,8 @@
     "lat": "45.7574606",
     "long": " 4.865301",
     "boite": 43,
-    "ville": "Lyon 3"
+    "ville": "Lyon 3",
+    "nmb_books": 22
   },
   {
     "adresse": "11 Rue Richan",
@@ -357,7 +401,8 @@
     "lat": "45.7802928",
     "long": "4.836122",
     "boite": 44,
-    "ville": "Lyon 4"
+    "ville": "Lyon 4",
+    "nmb_books": 324
   },
   {
     "adresse": "35 Quai Joseph Gillet",
@@ -365,7 +410,8 @@
     "lat": "45.776331",
     "long": " 4.8109559",
     "boite": 45,
-    "ville": "Lyon 4"
+    "ville": "Lyon 4",
+    "nmb_books": 122
   },
   {
     "adresse": "10 Rue de Vauzelless",
@@ -373,7 +419,8 @@
     "lat": "45.7729907",
     "long": " 4.8265258",
     "boite": 46,
-    "ville": "Lyon 1"
+    "ville": "Lyon 1",
+    "nmb_books": 53
   },
   {
     "adresse": "2 Place Benedict Tessier",
@@ -381,7 +428,8 @@
     "lat": "45.7558487",
     "long": "4.7975989",
     "boite": 47,
-    "ville": "Lyon 5"
+    "ville": "Lyon 5",
+    "nmb_books": 43
   },
   {
     "adresse": "44 Place Saint Ir\u00e9n\u00e9e",
@@ -389,7 +437,8 @@
     "lat": "45.7548904",
     "long": "4.8124515",
     "boite": 48,
-    "ville": "Lyon 5"
+    "ville": "Lyon 5",
+    "nmb_books": 21
   },
   {
     "adresse": "163 Avenue Barth\u00e9l\u00e9my Buyer",
@@ -397,6 +446,7 @@
     "lat": "45.7629918",
     "long": " 4.7960166",
     "boite": 49,
-    "ville": "Lyon 5"
+    "ville": "Lyon 5",
+    "nmb_books": 23
   }
 ]

@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
+import {
+  MapContainer as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+} from 'react-leaflet';
 import '../styles/Map.css';
+import PopUpMap from './PopupMap';
 
 function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
@@ -19,7 +25,12 @@ function Map({ setCP }) {
       });
   }, []);
   return (
-    <LeafletMap className="map" center={lyonPosition} zoom={14}>
+    <LeafletMap
+      className="map"
+      center={lyonPosition}
+      zoom={14}
+      scrollWheelZoom={false}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -33,7 +44,15 @@ function Map({ setCP }) {
               setCP({ cp: boite.CP, id: boite.id, address: boite.adresse });
             },
           }}
-        />
+        >
+          <Popup>
+            <PopUpMap
+              name={boite.ville}
+              adress={boite.adresse}
+              numberBooks={boite.quantity}
+            />
+          </Popup>
+        </Marker>
       ))}
     </LeafletMap>
   );

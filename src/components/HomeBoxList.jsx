@@ -12,7 +12,6 @@ function HomeBoxList({ CP }) {
       .get(`${process.env.REACT_APP_API_URL}boxes/postalcode/${CP.cp}`)
       .then((result) => result.data)
       .then((result) => {
-        console.log(CP);
         setBoxList(result);
         setSelectedBox(CP.id);
       });
@@ -26,7 +25,7 @@ function HomeBoxList({ CP }) {
         <Link to={`/BoxDetail/${box.id}`}>
           <p
             style={{
-              backgroundColor: selectedBox === box.id - 1 ? '#1b9eb2' : '',
+              backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
             }}
             key={box.id}
           >
