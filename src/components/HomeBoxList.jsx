@@ -20,7 +20,6 @@ function HomeBoxList() {
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
-
       {boxList.map((box) => (
         <Link to={`/BoxDetail/${box.id}`}>
           <p key={box.id}>

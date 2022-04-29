@@ -57,9 +57,10 @@ h2 {
 @media screen and (max-width: 649px) {
   div.header {
     background-color: #1b9eb2;
-    height: 4rem;
+    height: 5rem;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    border: 1px solid black;
     text-align: center;
   }
 }
