@@ -13,6 +13,7 @@ function HomeBoxList() {
       .then((result) => result.data)
       .then((result) => {
         setBoxList(result);
+        console.log(result);
       });
   }, []);
 
