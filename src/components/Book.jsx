@@ -59,7 +59,6 @@ export default function Book({
   }
 
   function setNewBooksList() {
-    console.log(boxId);
     axios
       .put(`${process.env.REACT_APP_API_URL}books/${id}`)
       .then(() => {
