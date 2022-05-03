@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
@@ -7,17 +8,26 @@ import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
 
 export default function BookDetail() {
+  const { id } = useParams();
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
-  // const [isfavorite, setIsfavorite] = useState(false);
-  const { id } = useParams();
+  const [isBookFavorite, setIsFavorite] = useState(false);
+  function handleClickFavoriteBook() {
+    setIsFavorite(!isBookFavorite);
+    !isBookFavorite
+      ? localStorage.setItem(id.toString(), JSON.stringify(book))
+      : localStorage.removeItem(id.toString());
+  }
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}books/${id}`)
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
+        if (localStorage.getItem(id.toString())) {
+          setIsFavorite(true);
+        }
       });
   }, []);
 
@@ -42,7 +52,17 @@ export default function BookDetail() {
               <p>Date publication : {book.publication_year}</p>
               <p>Éditeur : {book.editions}</p>
               <p>ISBN : {book.isbn}</p>
-              <p className="favoriteBook"> fav</p>
+              <button
+                className={
+                  isBookFavorite
+                    ? 'bookIsFavoriteButton'
+                    : 'bookIsNotFavoriteButton'
+                }
+                type="button"
+                onClick={handleClickFavoriteBook}
+              >
+                Clic pour favori
+              </button>
             </div>
           </div>
 

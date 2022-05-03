@@ -52,14 +52,17 @@
 
 .bookdetail button {
   border-radius: 10px;
-  background: #1b9eb2;
+  /* background: #1b9eb2;        VOIR AVEC JEN SI ELLE S'EN SERT*/
   border: 1px solid rgba(14, 86, 103, 1);
   cursor: pointer;
   color: white;
   padding: 4px 16px;
   display: block;
   margin: 0 auto;
-  visibility: hidden;
+}
+
+.bookIsFavoriteButton {
+  background: green;
 }
 
 @media screen and (min-width: 650px) {
