@@ -10,6 +10,7 @@ export default function BookDetail() {
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
+  // const [isfavorite, setIsfavorite] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     axios
@@ -41,6 +42,7 @@ export default function BookDetail() {
               <p>Date publication : {book.publication_year}</p>
               <p>Éditeur : {book.editions}</p>
               <p>ISBN : {book.isbn}</p>
+              <p className="favoriteBook"> fav</p>
             </div>
           </div>
 
