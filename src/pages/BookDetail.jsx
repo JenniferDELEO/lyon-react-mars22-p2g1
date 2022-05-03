@@ -5,12 +5,14 @@ import { useParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
+import MapBookDetail from '../components/MapBookDetail';
 
 export default function BookDetail() {
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
   const { id } = useParams();
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}books/${id}`)
@@ -20,7 +22,7 @@ export default function BookDetail() {
       });
   }, []);
 
-  const rtn = () => {
+  const returnBack = () => {
     window.history.back();
   };
 
@@ -28,10 +30,10 @@ export default function BookDetail() {
     <div className="bookdetail">
       {book && (
         <div>
-          <h2>{book.title}</h2>
-          <button type="button" onClick={rtn}>
+          <button type="button" onClick={returnBack}>
             Retour en arrière
           </button>
+          <h2>{book.title}</h2>
           <div className="carateristicsContainer">
             <img
               src={
@@ -59,7 +61,7 @@ export default function BookDetail() {
               ? emptyResume
               : book.synopsis}
           </p>
-          <button type="button">Disponible dans une boîte ?</button>
+          <MapBookDetail />
         </div>
       )}
     </div>
