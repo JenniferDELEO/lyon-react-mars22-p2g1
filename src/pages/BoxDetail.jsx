@@ -22,6 +22,7 @@ export default function BoxDetail() {
   const [starRate, setStarRate] = useState(3);
   const [condition, setCondition] = useState(2);
   const [requestStatus, setRequestStatus] = useState(true);
+  const [boxInfo, setBoxInfo] = useState('');
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
@@ -35,7 +36,12 @@ export default function BoxDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBooksList(data);
-        console.log(data);
+        axios
+          .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
+          .then((response2) => response2.data)
+          .then((data2) => {
+            setBoxInfo(data2);
+          });
       })
       .catch(() => {});
   }, [addBookForm, booksOut]);
@@ -56,6 +62,16 @@ export default function BoxDetail() {
         .then((data) => {
           setBookNotFound(false);
           setAddBookForm(false);
+          axios
+            .patch(
+              `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
+            )
+            .then((r) => {
+              console.log(r);
+            })
+            .catch(() => {
+              console.log('erreur');
+            });
           toast.info(
             `Vous avez deposé: \n${data.title} de ${data.author}  merci de faire vivre les BAL`,
             {
@@ -100,6 +116,16 @@ export default function BoxDetail() {
       axios
         .post(`${process.env.REACT_APP_API_URL}books`, newBook)
         .then(() => {
+          axios
+            .patch(
+              `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
+            )
+            .then((r) => {
+              console.log(r);
+            })
+            .catch(() => {
+              console.log('erreur');
+            });
           toast(
             `Vous avez deposé:
            \n${title} de ${author}  
@@ -125,7 +151,7 @@ export default function BoxDetail() {
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} />
+      <BoxHeader displayForm={displayForm} getBoxInfo={boxInfo} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
@@ -158,6 +184,7 @@ export default function BoxDetail() {
             deleteState={book.to_delete}
             isbn={book.isbn}
             booksOut={setBooksOut}
+            boxId={boxNumber}
           />
         ))}
       </div>

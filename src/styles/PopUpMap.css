@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,700&display=swap');
+
+.popupBoxContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.popupBoxContainer p {
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+.boxImage {
+  position: absolute;
+  top: -12px;
+  left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+  width: 70px;
+}
+
+.boxName {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.boxAdress {
+  display: flex;
+  text-align: left;
+}
