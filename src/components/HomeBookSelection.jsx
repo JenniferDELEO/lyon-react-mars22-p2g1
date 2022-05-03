@@ -16,7 +16,7 @@ function HomeBookSelection() {
         setGetBook(
           data
             .filter((book) => book.note >= 4)
-            .filter((book) => book.picture)
+            .filter((book) => book.picture !== null)
             .sort(() => 0.5 - Math.random())
             .slice(0, 10)
         );

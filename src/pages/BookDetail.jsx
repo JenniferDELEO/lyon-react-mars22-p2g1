@@ -20,11 +20,18 @@ export default function BookDetail() {
       });
   }, []);
 
+  const rtn = () => {
+    window.history.back();
+  };
+
   return (
     <div className="bookdetail">
       {book && (
         <div>
           <h2>{book.title}</h2>
+          <button type="button" onClick={rtn}>
+            Retour en arrière
+          </button>
           <div className="carateristicsContainer">
             <img
               src={
