@@ -26,14 +26,14 @@ export default function Book({
     actionBg = {
       color: 'flex items-center bg-green-400 h-40',
       size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
-      btn: 'animate-bounce bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
+      btn: 'bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (isDelete) {
     actionBg = {
       color: 'flex items-center bg-red-400 h-40',
       size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
-      btn: 'animate-bounce bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
+      btn: 'bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (!isBorrow && !isDelete) {
@@ -95,16 +95,18 @@ export default function Book({
   return (
     <div className={actionBg.color}>
       <div className={actionBg.size}>
-        <img
-          className="ml-1"
-          src={
-            picture === null || picture === 'None'
-              ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
-              : picture
-          }
-          alt="book-cover"
-        />
-        <div className="flex w-full justify-between z-2">
+        <Link to={`/bookdetail/${id}`}>
+          <img
+            className="book-cover"
+            src={
+              picture === null || picture === 'None'
+                ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
+                : picture
+            }
+            alt="book-cover"
+          />
+        </Link>
+        <div className="flex w-full justify-between z-67">
           <div className="ml-5 flex flex-col justify-around leading-10">
             <p className="font-black text-sm underline">{titre.slice(0, 40)}</p>
             <p className="text-xs">{auteur.slice(0, 23)}</p>
@@ -112,9 +114,6 @@ export default function Book({
               <p className="text-xs">etat du livre</p>
               <p className="ml-3">{conditionColor[etat]}</p>
             </div>
-            <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={`/bookdetail/${id}`}>detail</Link>
-            </em>
           </div>
           {!isBorrow && !isDelete ? (
             <div className="mr-5 flex flex-col items-center justify-center">

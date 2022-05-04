@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export default function AddBookForm({
   notFound,
   changeForm,
@@ -19,15 +21,24 @@ export default function AddBookForm({
   const getRateTwo = () => rate(2);
   const getRateOne = () => rate(1);
 
+  const [isQuitForm, setIsQuitForm] = useState(false);
+
+  function quitForm() {
+    setIsQuitForm(true);
+    (function close() {
+      setTimeout(showForm, 200);
+    }());
+  }
+
   return (
-    <div className="transition-opacity popup-bg z-50">
-      <form className="flex text-xs flex-col place-content-between popup">
-        <p
-          className="quit-btn cursor-pointer self-end mr-2 mt-1"
-          onClick={showForm}
-        >
-          X
-        </p>
+    <div>
+      <form className={isQuitForm ? 'abort-form popup' : 'popup'}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/190/190406.png"
+          alt="red-cross"
+          className="quit-btn cursor-pointer mr-2 mt-1 w-12"
+          onClick={quitForm}
+        />
         {!status && notFound ? (
           <>
             <p className="text-red-500 animate-pulse underline text-xxs">
@@ -42,26 +53,30 @@ export default function AddBookForm({
         )}
         {notFound ? (
           <>
-            <p className="underline">Auteur</p>
-            <input
-              className="border w-2/3"
-              value={authorValue}
-              onChange={author}
-              type="text"
-              placeholder="auteur du livre"
-            />
-            <p className="underline">Titre</p>
-            <input
-              className="border w-2/3"
-              value={titleValue}
-              onChange={title}
-              type="text"
-              placeholder="titre du livre"
-            />
+            <div>
+              <p>Auteur</p>
+              <input
+                className="border w-2/3"
+                value={authorValue}
+                onChange={author}
+                type="text"
+                placeholder="auteur du livre"
+              />
+            </div>
+            <div>
+              <p>Titre</p>
+              <input
+                className="border w-2/3"
+                value={titleValue}
+                onChange={title}
+                type="text"
+                placeholder="titre du livre"
+              />
+            </div>
           </>
         ) : (
-          <>
-            <p className="underline">ISBN</p>
+          <div>
+            <p className="mb-2">ISBN</p>
             <input
               className="border w-2/3"
               value={isbnValue}
@@ -69,45 +84,51 @@ export default function AddBookForm({
               type="text"
               placeholder="9782221123300"
             />
-          </>
+          </div>
         )}
-        <p className="underline">etat</p>
-        <select onChange={condition} className="w-2/5">
-          <option value="2">bon</option>
-          <option value="1">mauvais</option>
-          <option value="3">excellent</option>
-        </select>
-        <p className="underline">note</p>
-        <div className="rating rating2 m-2">
-          <a href="#5" onClick={getRateFive}>
-            ★
-          </a>
-          <a href="#4" onClick={getRateFour}>
-            ★
-          </a>
-          <a href="#3" onClick={getRateThree}>
-            ★
-          </a>
-          <a href="#2" onClick={getRateTwo}>
-            ★
-          </a>
-          <a href="#1" onClick={getRateOne}>
-            ★
-          </a>
+        <div>
+          <p className="mb-2">etat</p>
+          <select onChange={condition} className="">
+            <option value="2">bon</option>
+            <option value="1">mauvais</option>
+            <option value="3">excellent</option>
+          </select>
         </div>
-        <button
-          type="button"
-          onClick={fetchBook}
-          className="color-bg hover:bg-blue-700 border-black border text-white font-bold py-1 px-3 rounded"
-        >
-          ajouter
-        </button>
-        <p
-          onClick={changeForm}
-          className="underline text-xxs text-slate-500 cursor-pointer mb-5"
-        >
-          {notFound ? 'requete ISBN' : 'saisie manuelle'}
-        </p>
+        <div>
+          <p>note</p>
+          <div className="rating rating2 m-2">
+            <a href="#5" onClick={getRateFive}>
+              ★
+            </a>
+            <a href="#4" onClick={getRateFour}>
+              ★
+            </a>
+            <a href="#3" onClick={getRateThree}>
+              ★
+            </a>
+            <a href="#2" onClick={getRateTwo}>
+              ★
+            </a>
+            <a href="#1" onClick={getRateOne}>
+              ★
+            </a>
+          </div>
+        </div>
+        <div className="m 46">
+          <button
+            type="button"
+            onClick={fetchBook}
+            className="color-bg hover:bg-blue-700 border-black border text-white font-bold py-1 px-3 rounded"
+          >
+            ajouter
+          </button>
+          <p
+            onClick={changeForm}
+            className="underline text-xxs text-slate-500 cursor-pointer mb-5 mt-3"
+          >
+            {notFound ? 'requete ISBN' : 'saisie manuelle'}
+          </p>
+        </div>
       </form>
     </div>
   );
