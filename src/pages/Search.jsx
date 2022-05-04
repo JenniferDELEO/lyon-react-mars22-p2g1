@@ -8,21 +8,9 @@ export default function Search() {
     setTitleEntered(event.target.value);
   };
 
-  //   const getTitle = () => {
-  //       axios
-  //         .get(`${process.env.REACT_APP_API_URL}books/search${titleEntered}`)
-  //         .then((result) => result.data[0])
-  //         .then((result) => {
-  // console.log(result)
-  //         });
-  //     };
-  //     console.log(titleEntered);
-  //   };
   function getTitle() {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/books/search?title=${titleEntered}`
-      )
+      .get(`${process.env.REACT_APP_API_URL}books/search?title=${titleEntered}`)
       .then((result) => result.data[0])
       .then((result) => {
         console.log(result);
@@ -37,7 +25,7 @@ export default function Search() {
         onChange={handleFilter}
       />
       <button type="button" onClick={getTitle}>
-        Title search
+        Search by Title
       </button>
     </div>
   );
