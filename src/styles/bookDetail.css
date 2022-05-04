@@ -55,12 +55,3 @@
     width: 90%;
   }
 }
-
-/*
-import MapBookDetail from '../components/MapBookDetail';
-  const [oneData, setOneData] = useState([]);
-        console.log(result);
-        setOneData(result[8]);
-        console.log(oneData);
-        <MapBookDetail />
-*/
