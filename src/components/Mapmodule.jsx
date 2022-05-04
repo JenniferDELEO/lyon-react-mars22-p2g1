@@ -8,6 +8,14 @@ import {
 import coordsData from '../ressources/coordsBAL.json';
 import '../styles/Map.css';
 import PopUpMap from './PopupMap';
+import L from 'leaflet';
+
+const userMarker = new L.Icon({
+  /* eslint-disable global-require */
+  iconUrl: require('../assets/userIcon.png'),
+  /* eslint-enable global-require */
+  iconSize: [35, 90],
+});
 
 function Map() {
   const lyonPosition = [45.764043, 4.835659];
@@ -30,6 +38,8 @@ function Map() {
           </Popup>
         </Marker>
       ))}
+
+      <Marker position={lyonPosition} icon={userMarker} />
     </LeafletMap>
   );
 }
