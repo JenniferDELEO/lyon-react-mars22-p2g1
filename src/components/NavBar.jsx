@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/NavBar.css';
 import HomeLogo from '../assets/home_logo.png';
 import SearchLogo from '../assets/search_logo.png';
-import UserLogo from '../assets/user_logo.png';
+import Favorite from '../assets/favorite(heart).svg';
 import FormLogo from '../assets/form_logo.png';
 
 const getActiveLinkStyle = ({ isActive }) => ({
@@ -45,16 +45,16 @@ export default function NavBar() {
         </li>
         <li className="myprofile-navigation">
           <NavLink
-            to="/myprofile"
+            to="/favorite-books"
             className="link-navigation"
             style={getActiveLinkStyle}
           >
             <img
-              src={UserLogo}
-              alt="navigation vers mon profil"
+              src={Favorite}
+              alt="navigation vers mes favoris"
               className="image-navigation"
             />
-            <p>Mon profil</p>
+            <p>Mes favoris</p>
           </NavLink>
         </li>
         <li className="contact-navigation">

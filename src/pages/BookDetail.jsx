@@ -6,18 +6,20 @@ import { useParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
+import redHeart from '../assets/favorite(heart_red).svg';
+import whiteHeart from '../assets/favorite(heart).svg';
 
 export default function BookDetail() {
   const { id } = useParams();
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
-  const [isBookFavorite, setIsFavorite] = useState(false);
+  const [isBookFavorite, setIsBookFavorite] = useState(false);
   function handleClickFavoriteBook() {
-    setIsFavorite(!isBookFavorite);
+    setIsBookFavorite(!isBookFavorite);
     !isBookFavorite
-      ? localStorage.setItem(id.toString(), JSON.stringify(book))
-      : localStorage.removeItem(id.toString());
+      ? localStorage.setItem(book.isbn.toString(), JSON.stringify(book))
+      : localStorage.removeItem(book.isbn.toString());
   }
   useEffect(() => {
     axios
@@ -25,8 +27,8 @@ export default function BookDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
-        if (localStorage.getItem(id.toString())) {
-          setIsFavorite(true);
+        if (localStorage.getItem(data.isbn.toString())) {
+          setIsBookFavorite(true);
         }
       });
   }, []);
@@ -61,7 +63,10 @@ export default function BookDetail() {
                 type="button"
                 onClick={handleClickFavoriteBook}
               >
-                Clic pour favori
+                <img
+                  src={isBookFavorite === true ? redHeart : whiteHeart}
+                  alt={book.title}
+                />
               </button>
             </div>
           </div>
