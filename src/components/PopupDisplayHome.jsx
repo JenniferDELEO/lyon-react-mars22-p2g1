@@ -6,7 +6,7 @@ import MapNavigation from '../assets/map-navigation.png';
 import '../styles/PopupDisplay.css';
 import { Link } from 'react-router-dom';
 
-function PopupDisplayHome() {
+export default function PopupDisplayHome() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [timedPopup, setTimedPopup] = useState(false);
 
@@ -85,5 +85,3 @@ function PopupDisplayHome() {
     </div>
   );
 }
-
-export default PopupDisplayHome;
