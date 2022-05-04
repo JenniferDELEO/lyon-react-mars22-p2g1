@@ -6,11 +6,13 @@ import RatingStar from '../components/ratingStar';
 import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
 import MapBookDetail from '../components/MapBookDetail';
+import backArrow from '../assets/back-arrow.png';
 
 export default function BookDetail() {
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
+  const [coords, setCoords] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,19 +21,24 @@ export default function BookDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
+        axios
+          .get(`${process.env.REACT_APP_API_URL}books/isbn/${data.isbn}`)
+          .then((response2) => response2.data)
+          .then((data2) => {
+            setCoords(data2);
+          });
       });
   }, []);
 
   const returnBack = () => {
     window.history.back();
   };
-
   return (
     <div className="bookdetail">
       {book && (
         <div>
           <button type="button" onClick={returnBack}>
-            Retour en arrière
+            <img src={backArrow} alt="back arrow" />
           </button>
           <h2>{book.title}</h2>
           <div className="carateristicsContainer">
@@ -44,7 +51,6 @@ export default function BookDetail() {
               alt={book.title}
             />
             <div className="carateristicsDatas">
-              <p id="lectorsRates">Avis des lecteurs :</p>
               <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
               <p>{book.pages_nbr} pages</p>
               <p>Date publication : {book.publication_year}</p>
@@ -61,7 +67,7 @@ export default function BookDetail() {
               ? emptyResume
               : book.synopsis}
           </p>
-          <MapBookDetail />
+          <MapBookDetail boxNumber={coords} />
         </div>
       )}
     </div>
