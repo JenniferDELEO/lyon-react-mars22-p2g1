@@ -9,11 +9,9 @@ import {
 import '../styles/Map.css';
 import PopUpMap from './PopupMap';
 
-function Map({ setCP, boxNumber }) {
+function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-
-  console.log(boxNumber);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}boxes`)
@@ -25,8 +23,6 @@ function Map({ setCP, boxNumber }) {
         console.log(err);
       });
   }, []);
-
-  // setOneData(setBoxNumber);
 
   return (
     <LeafletMap
