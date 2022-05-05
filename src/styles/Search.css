@@ -11,25 +11,38 @@
 .SearchInput {
   background-color: rgba(242, 242, 242, 1);
   padding: 20px;
-}
-.ButtonPortion {
-  display: flex;
-  justify-content: flex-end;
-  margin: 2rem;
-}
-.SearchInput {
   height: 50px;
   border-radius: 2.5rem;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
-
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .Btn {
   background-color: #2242b3;
   border-radius: 10px;
-  padding: 2px;
-  margin: 2px;
+  padding: 1rem;
+  color: aliceblue;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  align-self: center;
+}
+.top5 {
+  text-decoration: underline;
+  letter-spacing: 1px;
+  color: #2242b3;
+  font-weight: 500;
 }
 
+.book-infos {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .PreviewPortion {
   display: flex;
   flex-direction: column;
@@ -37,12 +50,15 @@
 }
 
 .Card {
-  height: 5rem;
+  height: 6rem;
   background-color: white;
   border-radius: 10px;
   margin: 0.3rem 1rem;
   padding: 4px;
   display: flex;
+}
+.book-infos {
+  padding-left: 1rem;
 }
 img {
   width: 5rem;
