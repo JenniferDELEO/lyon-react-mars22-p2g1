@@ -40,6 +40,7 @@ export default function BoxDetail() {
           .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
           .then((response2) => response2.data)
           .then((data2) => {
+            console.log('use-effect ok');
             setBoxInfo(data2);
           });
       })
@@ -53,7 +54,6 @@ export default function BoxDetail() {
 
   function addBook() {
     if (!notFound && _isbn) {
-      console.log('env -> ', process.env);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`

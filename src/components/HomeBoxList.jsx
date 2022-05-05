@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
@@ -19,7 +20,10 @@ function HomeBoxList({ CP }) {
 
   return (
     <>
-      <h1 className="title">BOITES</h1>
+      <div className="sep">
+        <h1 className="title">Les boites</h1>
+        <p>Selectionner une boite pour voir les livres!</p>
+      </div>
       <div className="boxList">
         {boxList.map((box) => (
           <Link to={`/BoxDetail/${box.id}`}>

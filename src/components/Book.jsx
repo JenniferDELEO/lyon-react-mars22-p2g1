@@ -95,26 +95,28 @@ export default function Book({
   return (
     <div className={actionBg.color}>
       <div className={actionBg.size}>
-        <Link to={`/bookdetail/${id}`}>
-          <img
-            className="book-cover"
-            src={
-              picture === null || picture === 'None'
-                ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
-                : picture
-            }
-            alt="book-cover"
-          />
-        </Link>
+        <img
+          className="book-cover"
+          src={
+            picture === null || picture === 'None'
+              ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
+              : picture
+          }
+          alt="book-cover"
+        />
         <div className="flex w-full justify-between z-67">
-          <div className="ml-5 flex flex-col justify-around leading-10">
-            <p className="font-black text-sm underline">{titre.slice(0, 40)}</p>
-            <p className="text-xs">{auteur.slice(0, 23)}</p>
-            <div className="flex flex-row text-sm">
-              <p className="text-xs">etat du livre</p>
-              <p className="ml-3">{conditionColor[etat]}</p>
+          <Link to={`/bookdetail/${id}`}>
+            <div className="ml-5 flex flex-col justify-around leading-10">
+              <p className="font-black text-sm underline mt-6">
+                {titre.slice(0, 40)}
+              </p>
+              <p className="text-xs mt-3">{auteur.slice(0, 23)}</p>
+              <div className="flex flex-row text-sm">
+                <p className="text-xs mt-3">etat du livre</p>
+                <p className="ml-3 mt-3">{conditionColor[etat]}</p>
+              </div>
             </div>
-          </div>
+          </Link>
           {!isBorrow && !isDelete ? (
             <div className="mr-5 flex flex-col items-center justify-center">
               <RatingStar rate={parseFloat(note)} id={id} id2={titre} />
