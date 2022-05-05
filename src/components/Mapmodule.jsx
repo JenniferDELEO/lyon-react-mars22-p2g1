@@ -5,6 +5,7 @@ import {
   TileLayer,
   Marker,
   Popup,
+  useMap,
 } from 'react-leaflet';
 import '../styles/Map.css';
 import PopUpMap from './PopupMap';
@@ -17,9 +18,22 @@ const userMarker = new L.Icon({
   iconSize: [35, 90],
 });
 
-function Map({ setCP }) {
-  const lyonPosition = [45.764043, 4.835659];
+function MapComponent({ setMap }) {
+  const map = useMap();
+
+  setMap(map);
+  return null;
+}
+
+function Map({ setCP, userLocation }) {
   const [coordsData, setCoordsData] = useState([]);
+  const [map, setMap] = useState();
+
+  useEffect(() => {
+    if (map && userLocation) {
+      map.flyTo(userLocation, 18);
+    }
+  }, [userLocation, map]);
 
   useEffect(() => {
     axios
@@ -33,13 +47,23 @@ function Map({ setCP }) {
       });
   }, []);
 
+  console.log(map);
+
+  const lyonPosition = [45.746635599868014, 4.827211715345422];
+
   return (
     <LeafletMap
       className="map"
       center={lyonPosition}
       zoom={14}
       scrollWheelZoom={false}
+      whenCreated={(m) => {
+        console.log(m);
+        setMap(m);
+      }}
     >
+      <MapComponent setMap={setMap} />
+
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -63,7 +87,7 @@ function Map({ setCP }) {
           </Popup>
         </Marker>
       ))}
-      <Marker position={lyonPosition} icon={userMarker} />
+      {userLocation && <Marker position={userLocation} icon={userMarker} />}
     </LeafletMap>
   );
 }

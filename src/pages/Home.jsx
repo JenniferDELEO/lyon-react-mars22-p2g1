@@ -12,13 +12,30 @@ export default function Home() {
     id: '',
     address: '',
   });
+
+  const [userLocation, setUserLocation] = useState(null);
+
+  const handleLocation = () => {
+    console.log(navigator.geolocation);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((p) => {
+        setUserLocation([p.coords.latitude, p.coords.longitude]);
+      });
+    }
+  };
+
   return (
     <>
       <div className="mapContainer">
         <div>
-          <img className="localPointer" src={localisationPointer} alt="" />
+          <img
+            onClick={handleLocation}
+            className="localPointer"
+            src={localisationPointer}
+            alt=""
+          />
         </div>
-        <Mapsection setCP={setPostalCode} />
+        <Mapsection setCP={setPostalCode} userLocation={userLocation} />
       </div>
       <PopupDisplayHome />
       <HomeBoxList CP={postalCode} />
