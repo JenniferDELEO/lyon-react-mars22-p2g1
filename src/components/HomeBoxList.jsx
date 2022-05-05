@@ -1,6 +1,6 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
-import BookBox from '../assets/box_middlefull.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -18,30 +18,26 @@ function HomeBoxList({ CP }) {
   }, [CP.cp]);
 
   return (
-    <div className="boxList">
-      <h2>Liste des boîtes : </h2>
-
-      {boxList.map((box) => (
-        <Link to={`/BoxDetail/${box.id}`}>
-          <p
-            className={selectedBox === box.id ? 'animate-pulse' : ''}
-            style={{
-              backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
-            }}
-            key={box.id}
-          >
-            <img src={BookBox} alt="boite a livre" />
-            {box.adresse}
-            ,
-            {box.CP}
-            <br />
-            {box.quantity}
-            {' '}
-            livre(s)
-          </p>
-        </Link>
-      ))}
-    </div>
+    <>
+      <h1 className="title">BOITES</h1>
+      <div className="boxList">
+        {boxList.map((box) => (
+          <Link to={`/BoxDetail/${box.id}`}>
+            <div
+              key={box.id}
+              className="box-card"
+              style={{ backgroundColor: selectedBox === box.id ? '' : '' }}
+            >
+              <p>
+                {box.adresse}
+                <br />
+                {box.quantity} livre(s)
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }
 

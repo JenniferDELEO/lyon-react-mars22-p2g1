@@ -61,6 +61,7 @@ export default function AddBookForm({
                 onChange={author}
                 type="text"
                 placeholder="auteur du livre"
+                required
               />
             </div>
             <div>
@@ -71,6 +72,7 @@ export default function AddBookForm({
                 onChange={title}
                 type="text"
                 placeholder="titre du livre"
+                required
               />
             </div>
           </>
@@ -83,6 +85,7 @@ export default function AddBookForm({
               onChange={isbn}
               type="text"
               placeholder="9782221123300"
+              required
             />
           </div>
         )}
@@ -124,9 +127,9 @@ export default function AddBookForm({
           </button>
           <p
             onClick={changeForm}
-            className="underline text-xxs text-slate-500 cursor-pointer mb-5 mt-3"
+            className="underline text-xs text-slate-500 cursor-pointer mb-5 mt-3"
           >
-            {notFound ? 'requete ISBN' : 'saisie manuelle'}
+            {notFound ? 'saisie ISBN' : 'saisie manuelle'}
           </p>
         </div>
       </form>
