@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/NavBar.css';
 import HomeLogo from '../assets/home_logo.png';
 import SearchLogo from '../assets/search_logo.png';
-import Favorite from '../assets/favorite(heart).svg';
+import Favorite from '../assets/favorite_heart_white.svg';
 import FormLogo from '../assets/form_logo.png';
 
 const getActiveLinkStyle = ({ isActive }) => ({
@@ -43,7 +43,7 @@ export default function NavBar() {
             <p>Recherche</p>
           </NavLink>
         </li>
-        <li className="myprofile-navigation">
+        <li className="myfavorites-navigation">
           <NavLink
             to="/favorite-books"
             className="link-navigation"

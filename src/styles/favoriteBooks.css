@@ -1,0 +1,46 @@
+/* cursor-pointer sur link*/
+
+.favoriteBooks {
+  margin: 8px;
+}
+
+.bookCard {
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.bookCard img {
+  height: 140px;
+  border-radius: 20px;
+}
+
+.bookContainer {
+  display: flex;
+}
+
+.bookDatas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+.author {
+  text-align: left;
+  font-size: large;
+}
+
+.title {
+  font-size: large;
+}
+
+.heart {
+  width: 50px;
+}
+@media screen and (min-width: 1020px) {
+  .bookdetail {
+    width: 90%;
+  }
+}

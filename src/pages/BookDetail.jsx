@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
-import redHeart from '../assets/favorite(heart_red).svg';
-import whiteHeart from '../assets/favorite(heart).svg';
+import redHeart from '../assets/favorite_heart_red.svg';
+import whiteHeart from '../assets/favorite_heart_white.svg';
 import MapBookDetail from '../components/MapBookDetail';
 import backArrow from '../assets/back-arrow.png';
 
@@ -20,8 +20,8 @@ export default function BookDetail() {
   function handleClickFavoriteBook() {
     setIsBookFavorite(!isBookFavorite);
     !isBookFavorite
-      ? localStorage.setItem(book.isbn.toString(), JSON.stringify(book))
-      : localStorage.removeItem(book.isbn.toString());
+      ? localStorage.setItem(book.id.toString(), JSON.stringify(book))
+      : localStorage.removeItem(book.id.toString());
   }
   const [coords, setCoords] = useState([]);
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function BookDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
-        if (localStorage.getItem(data.isbn.toString())) {
+        if (localStorage.getItem(data.id.toString())) {
           setIsBookFavorite(true);
         }
         axios
@@ -50,10 +50,21 @@ export default function BookDetail() {
     <div className="bookdetail">
       {book && (
         <div>
-          <button type="button" onClick={returnBack}>
-            <img src={backArrow} alt="back arrow" />
-          </button>
-          <h2>{book.title}</h2>
+          <div className="buttonBar">
+            <button type="button" onClick={returnBack}>
+              <img src={backArrow} alt="back arrow" />
+            </button>
+            <button type="button" onClick={handleClickFavoriteBook}>
+              <img
+                src={isBookFavorite === true ? redHeart : whiteHeart}
+                alt={book.title}
+              />
+            </button>
+          </div>
+          <div>
+            <h2 className="titre">{book.title}</h2>
+            <h3 className="auteur">{book.author}</h3>
+          </div>
           <div className="carateristicsContainer">
             <img
               src={
@@ -69,17 +80,9 @@ export default function BookDetail() {
               <p>Date publication : {book.publication_year}</p>
               <p>Éditeur : {book.editions}</p>
               <p>ISBN : {book.isbn}</p>
-              <button type="button" onClick={handleClickFavoriteBook}>
-                <img
-                  src={isBookFavorite === true ? redHeart : whiteHeart}
-                  alt={book.title}
-                />
-              </button>
             </div>
           </div>
-
           <h2 id="author">{book.author}</h2>
-
           <p className="resumebookDetail">
             <strong>Résumé :</strong>{' '}
             {book.synopsis === null || book.synopsis === 'None'

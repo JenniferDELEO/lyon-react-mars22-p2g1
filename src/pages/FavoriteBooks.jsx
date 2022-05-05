@@ -3,17 +3,19 @@
 import vintage from '../assets/vintage.jpg';
 import { useEffect, useState } from 'react';
 import RatingStar from '../components/ratingStar';
-import redHeart from '../assets/favorite(heart_red).svg';
-import whiteHeart from '../assets/favorite(heart).svg';
+import redHeart from '../assets/favorite_heart_red.svg';
+import whiteHeart from '../assets/favorite_heart_white.svg';
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import '../styles/favoriteBooks.css';
 
 export default function FavoriteBooks() {
   let heart = redHeart;
   const [favoritesList, setFavoritesList] = useState([]);
   function handleClickDeleteBookFromFavorites(book) {
     const newFavoritesList = favoritesList.slice();
-    localStorage.removeItem(book.isbn);
-    setFavoritesList(newFavoritesList.filter((b) => b.isbn !== book.isbn));
+    localStorage.removeItem(book.id);
+    setFavoritesList(newFavoritesList.filter((b) => b.id !== book.id));
     heart = whiteHeart;
     toast(
       `Vous avez supprimé de vos favoris :
@@ -40,27 +42,34 @@ export default function FavoriteBooks() {
   }, []);
 
   return (
-    <div>
+    <div className="favoriteBooks">
       <ToastContainer />
-      <h1>Mes livres favoris</h1>
+      <h2>Mes livres favoris</h2>
       {favoritesList.map((book) => (
         <div className="bookCard">
-          <img
-            src={
-              book.picture === null || book.picture === 'None'
-                ? vintage
-                : book.picture
-            }
-            alt={book.title}
-          />
-          <div className="ml-5 flex flex-col justify-around leading-10">
-            <p className="font-black text-sm underline">
-              {book.title.slice(0, 40)}
-            </p>
-            <p className="text-xs">{book.author.slice(0, 23)}</p>
-          </div>
-          <RatingStar rate={parseFloat(book.note)} />
+          <Link to={`/bookdetail/${book.id}`}>
+            <div className="bookContainer">
+              <img
+                src={
+                  book.picture === null || book.picture === 'None'
+                    ? vintage
+                    : book.picture
+                }
+                alt={book.title}
+              />
+              <div className="bookDatas">
+                <p className="title">{book.title}</p>
+                <p className="author">{book.author}</p>
+                <RatingStar
+                  rate={book.note}
+                  padding={'pb-2'}
+                  size={'text-2xl'}
+                />
+              </div>
+            </div>
+          </Link>
           <button
+            className="heart"
             type="button"
             onClick={() => handleClickDeleteBookFromFavorites(book)}
           >

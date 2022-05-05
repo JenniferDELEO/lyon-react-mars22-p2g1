@@ -10,6 +10,16 @@
   margin: 1rem;
 }
 
+.auteur {
+  font-size: large;
+}
+
+.buttonBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
 .carateristicsContainer {
   display: flex;
   justify-content: space-around;
