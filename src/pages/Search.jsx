@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 import '../styles/Search.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 
 export default function Search() {
@@ -66,10 +66,12 @@ export default function Search() {
             />
             <div className="book-infos">
               <div>
-                <p className="font-black text-sm underline">
-                  {book.title.slice(0, 40)}
-                </p>
-                <p className="text-xs">{book.author.slice(0, 23)}</p>
+                <Link to={`/bookdetail/${book.id}`}>
+                  <p className="font-black text-sm underline">
+                    {book.title.slice(0, 40)}
+                  </p>
+                  <p className="text-xs">{book.author.slice(0, 23)}</p>
+                </Link>
               </div>
               <div className="Stars">
                 <RatingStar rate={parseFloat(book.note)} />
@@ -90,10 +92,12 @@ export default function Search() {
               <img src={book.picture} alt={book.title} />
               <div className="book-infos">
                 <div>
-                  <p className="font-black text-sm underline">
-                    {book.title.slice(0, 40)}
-                  </p>
-                  <p className="text-xs">{book.author.slice(0, 23)}</p>
+                  <Link to={`/bookdetail/${book.id}`}>
+                    <p className="font-black text-sm underline">
+                      {book.title.slice(0, 40)}
+                    </p>
+                    <p className="text-xs">{book.author.slice(0, 23)}</p>
+                  </Link>
                 </div>
                 <div className="Stars">
                   <RatingStar rate={parseFloat(book.note)} />
