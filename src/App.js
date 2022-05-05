@@ -5,25 +5,27 @@ import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import React, { useEffect, useState } from 'react';
 import useScroll from './hooks/useScroll';
+import { useMediaQuery } from 'usehooks-ts';
 
 function App() {
-  const searchBoxHeight = 50;
-  const [height, setHeight] = useState(searchBoxHeight);
+  const navbarHeight = 150;
+  const [height, setHeight] = useState(navbarHeight);
   const scroll = useScroll({
     wait: 50,
   });
+  const matches = useMediaQuery('(max-width: 1020px)');
 
   useEffect(() => {
     if (scroll.direction === 'up') {
       setHeight((prevHeight) => {
         const newHeight = prevHeight - scroll.deltaY;
-        return newHeight > searchBoxHeight ? searchBoxHeight : newHeight;
+        return newHeight > navbarHeight ? navbarHeight : newHeight;
       });
     } else if (scroll.direction === 'down') {
       setHeight((prevHeight) => {
         const leftToScroll =
           document.documentElement.scrollHeight - scroll.y - window.innerHeight;
-        if (leftToScroll <= searchBoxHeight) setHeight(searchBoxHeight);
+        if (leftToScroll <= navbarHeight) setHeight(navbarHeight);
 
         const newHeight = prevHeight - scroll.deltaY;
         return newHeight < 0 ? 0 : newHeight;
@@ -36,14 +38,13 @@ function App() {
       <div className="header">
         <Header />
       </div>
-
       <div className="main">
         <Main />
       </div>
       <div className="footer">
         <Footer />
       </div>
-      <div id="searchbar" className={'navbar-fixed'} style={{ height }}>
+      <div className="navbar" style={matches ? { height } : null}>
         <NavBar />
       </div>
     </div>
