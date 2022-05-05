@@ -1,0 +1,17 @@
+.mapContainer {
+  position: relative;
+}
+
+.localPointer {
+  position: absolute;
+  z-index: 1500;
+  height: 40px;
+  width: 40px;
+  bottom: 30px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.localPointer:hover {
+  filter: brightness(110%);
+}

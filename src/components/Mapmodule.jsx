@@ -32,6 +32,7 @@ function Map({ setCP }) {
         console.log(err);
       });
   }, []);
+
   return (
     <LeafletMap
       className="map"
@@ -43,7 +44,6 @@ function Map({ setCP }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-
       {coordsData.map((boite) => (
         <Marker
           position={[boite.lat, boite.long]}
@@ -63,7 +63,6 @@ function Map({ setCP }) {
           </Popup>
         </Marker>
       ))}
-
       <Marker position={lyonPosition} icon={userMarker} />
     </LeafletMap>
   );
