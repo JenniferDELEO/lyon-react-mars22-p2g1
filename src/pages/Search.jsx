@@ -86,7 +86,7 @@ export default function Search() {
           }}
         >
           <h3 className="top5">Top 5 de l'application :</h3>
-          {getBooks.map((book) => (
+          {getBooks.slice(0, 5).map((book) => (
             <div className="Card" key={book.ISBN}>
               {' '}
               <img src={book.picture} alt={book.title} />
