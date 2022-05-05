@@ -41,6 +41,7 @@ export default function BoxDetail() {
           .then((response2) => response2.data)
           .then((data2) => {
             setBoxInfo(data2);
+            console.log('use Effect');
           });
       })
       .catch(() => {});
@@ -120,12 +121,8 @@ export default function BoxDetail() {
             .patch(
               `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
             )
-            .then((r) => {
-              console.log(r);
-            })
-            .catch(() => {
-              console.log('erreur');
-            });
+            .then(() => {})
+            .catch(() => {});
           toast(
             `Vous avez deposé:
            \n${title} de ${author}  
