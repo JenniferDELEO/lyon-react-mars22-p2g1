@@ -54,15 +54,7 @@ export default function BookDetail() {
               <p>Date publication : {book.publication_year}</p>
               <p>Éditeur : {book.editions}</p>
               <p>ISBN : {book.isbn}</p>
-              <button
-                className={
-                  isBookFavorite
-                    ? 'bookIsFavoriteButton'
-                    : 'bookIsNotFavoriteButton'
-                }
-                type="button"
-                onClick={handleClickFavoriteBook}
-              >
+              <button type="button" onClick={handleClickFavoriteBook}>
                 <img
                   src={isBookFavorite === true ? redHeart : whiteHeart}
                   alt={book.title}
