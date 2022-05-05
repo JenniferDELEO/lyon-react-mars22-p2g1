@@ -31,6 +31,19 @@
   height: 52px;
 }
 
+#searchbar {
+  height: 100px;
+  width: 100%;
+  transition: height 0.1s ease-out;
+  will-change: height;
+  background-color: blue;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 div.header {
   background-color: #1b9eb2;
   height: 4rem;
@@ -39,7 +52,7 @@ div.header {
   text-align: center;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 1020px) {
   .header {
     order: 2;
     margin-top: 75px;

@@ -24,7 +24,7 @@
   display: none;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 1020px) {
   .page-title {
     display: initial;
     color: white;
