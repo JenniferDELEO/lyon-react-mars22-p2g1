@@ -8,6 +8,8 @@ import '../styles/bookDetail.css';
 import vintage from '../assets/vintage.jpg';
 import redHeart from '../assets/favorite(heart_red).svg';
 import whiteHeart from '../assets/favorite(heart).svg';
+import MapBookDetail from '../components/MapBookDetail';
+import backArrow from '../assets/back-arrow.png';
 
 export default function BookDetail() {
   const { id } = useParams();
@@ -21,6 +23,7 @@ export default function BookDetail() {
       ? localStorage.setItem(book.isbn.toString(), JSON.stringify(book))
       : localStorage.removeItem(book.isbn.toString());
   }
+  const [coords, setCoords] = useState([]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}books/${id}`)
@@ -30,13 +33,26 @@ export default function BookDetail() {
         if (localStorage.getItem(data.isbn.toString())) {
           setIsBookFavorite(true);
         }
-      });
+        axios
+          .get(`${process.env.REACT_APP_API_URL}books/isbn/${data.isbn}`)
+          .then((response2) => response2.data)
+          .then((data2) => {
+            setCoords(data2);
+          });
+      })
+      .catch((err) => console.log(err));
   }, []);
 
+  const returnBack = () => {
+    window.history.back();
+  };
   return (
     <div className="bookdetail">
       {book && (
         <div>
+          <button type="button" onClick={returnBack}>
+            <img src={backArrow} alt="back arrow" />
+          </button>
           <h2>{book.title}</h2>
           <div className="carateristicsContainer">
             <img
@@ -48,7 +64,6 @@ export default function BookDetail() {
               alt={book.title}
             />
             <div className="carateristicsDatas">
-              <p id="lectorsRates">Avis des lecteurs :</p>
               <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
               <p>{book.pages_nbr} pages</p>
               <p>Date publication : {book.publication_year}</p>
@@ -71,7 +86,7 @@ export default function BookDetail() {
               ? emptyResume
               : book.synopsis}
           </p>
-          <button type="button">Disponible dans une boîte ?</button>
+          <MapBookDetail boxNumber={coords} />
         </div>
       )}
     </div>
