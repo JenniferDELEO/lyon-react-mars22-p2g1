@@ -35,10 +35,6 @@
   flex-direction: column;
   justify-content: center;
 }
-.Card img {
-  width: 20%;
-  height: 100%;
-}
 
 .Card {
   height: 5rem;
@@ -47,10 +43,15 @@
   margin: 0.3rem 1rem;
   padding: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
+img {
+  width: 5rem;
+  height: 100%;
+}
+
 .Bookinfo {
   display: flex;
   flex-direction: column;
+  margin: 1rem 2rem;
+  text-align: center;
 }

@@ -71,7 +71,7 @@ export default function Search() {
         ))}
         <div className="listholder">
           {getBooks.map((book) => (
-            <div className="Card listHolderItem" key={book.ISBN}>
+            <div className="Card" key={book.ISBN}>
               {' '}
               <img src={book.picture} alt={book.title} />
               <h3>{book.title}</h3>
