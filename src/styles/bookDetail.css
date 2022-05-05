@@ -50,18 +50,6 @@
   padding: 8px;
 }
 
-.bookdetail button {
-  border-radius: 10px;
-  background: #1b9eb2;
-  border: 1px solid rgba(14, 86, 103, 1);
-  cursor: pointer;
-  color: white;
-  padding: 4px 16px;
-  display: block;
-  margin: 0 auto;
-  visibility: hidden;
-}
-
 @media screen and (min-width: 650px) {
   .bookdetail {
     width: 90%;

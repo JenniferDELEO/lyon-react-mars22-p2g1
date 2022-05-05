@@ -12,7 +12,6 @@ import PopUpMap from './PopupMap';
 function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}boxes`)
@@ -24,6 +23,7 @@ function Map({ setCP }) {
         console.log(err);
       });
   }, []);
+
   return (
     <LeafletMap
       className="map"
@@ -35,7 +35,6 @@ function Map({ setCP }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-
       {coordsData.map((boite) => (
         <Marker
           position={[boite.lat, boite.long]}
