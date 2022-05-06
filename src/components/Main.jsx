@@ -11,7 +11,6 @@ import '../styles/Main.css';
 export default function Main() {
   return (
     <main className="main-container">
-      <div className="img-left img-desktop" />
       <div className="routes-container">
         <Routes>
           <Route path="/" element={<Home />} />
