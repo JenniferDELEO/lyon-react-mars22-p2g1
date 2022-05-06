@@ -1,7 +1,15 @@
 /* cursor-pointer sur link*/
 
 .favoriteBooks {
-  margin: 8px;
+  margin: 1rem;
+}
+
+.favoriteBooks h2 {
+  margin: 1.5rem;
+  font-size: x-large;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
 }
 
 .bookCard {
@@ -25,17 +33,13 @@
 .bookDatas {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 5px;
-  font-size: xx-small;
+  font-size: small;
 }
 
-.author {
-  text-align: left;
-  font-size: large;
-}
-
-.title {
-  font-size: large;
+.bookDatas .title {
+  font-weight: bold;
 }
 
 .heart {
