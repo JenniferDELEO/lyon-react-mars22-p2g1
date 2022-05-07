@@ -46,7 +46,7 @@ export default function FavoriteBooks() {
       <ToastContainer />
       <h2>Mes livres favoris</h2>
       {favoritesList.map((book) => (
-        <div className="bookCard">
+        <div className="bookCard" key={book.id}>
           <Link to={`/bookdetail/${book.id}`}>
             <div className="bookContainer">
               <img

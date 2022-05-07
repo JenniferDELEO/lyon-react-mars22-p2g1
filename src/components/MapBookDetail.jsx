@@ -59,7 +59,7 @@ function MapBookDetail({ boxNumber }) {
             </Popup>
           </Marker>
         ) : (
-          <Marker position={[boite.lat, boite.long]}>
+          <Marker position={[boite.lat, boite.long]} key={boite.id}>
             <Popup>
               <PopUpMap
                 name={boite.ville}

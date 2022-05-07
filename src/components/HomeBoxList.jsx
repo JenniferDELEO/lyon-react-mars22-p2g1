@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
 import BookBox from '../assets/box_middlefull.png';
@@ -22,21 +23,17 @@ function HomeBoxList({ CP }) {
       <h2>Liste des boîtes : </h2>
 
       {boxList.map((box) => (
-        <Link to={`/BoxDetail/${box.id}`}>
+        <Link to={`/BoxDetail/${box.id}`} key={box.id}>
           <p
             className={selectedBox === box.id ? 'animate-pulse' : ''}
             style={{
               backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
             }}
-            key={box.id}
           >
             <img src={BookBox} alt="boite a livre" />
-            {box.adresse}
-            ,
-            {box.CP}
+            {box.adresse},{box.CP}
             <br />
             {box.quantity}
-            {' '}
             livre(s)
           </p>
         </Link>
