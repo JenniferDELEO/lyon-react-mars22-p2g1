@@ -48,7 +48,11 @@ function MapBookDetail({ boxNumber }) {
       />
       {coordsData.map((boite) =>
         boite.id === boxNumber[0].box_number ? (
-          <Marker position={[boite.lat, boite.long]} icon={boxIcon}>
+          <Marker
+            position={[boite.lat, boite.long]}
+            icon={boxIcon}
+            key={boite.id}
+          >
             <Popup>
               <PopUpMap
                 name={boite.ville}

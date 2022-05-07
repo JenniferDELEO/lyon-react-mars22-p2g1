@@ -174,6 +174,7 @@ export default function BoxDetail() {
       <div>
         {booksList.map((book) => (
           <Book
+            key={book.id}
             id={book.id}
             picture={book.picture}
             titre={book.title}
