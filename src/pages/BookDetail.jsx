@@ -30,8 +30,10 @@ export default function BookDetail() {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
-        if (localStorage.getItem(data.id.toString())) {
-          setIsBookFavorite(true);
+        if (data !== 'undefined') {
+          if (localStorage.getItem(data.id.toString())) {
+            setIsBookFavorite(true);
+          }
         }
         axios
           .get(`${process.env.REACT_APP_API_URL}books/isbn/${data.isbn}`)
@@ -65,30 +67,31 @@ export default function BookDetail() {
             <h2 className="titre">{book.title}</h2>
             <h3 className="auteur">{book.author}</h3>
           </div>
-          <div className="carateristicsContainer">
-            <img
-              src={
-                book.picture === null || book.picture === 'None'
-                  ? vintage
-                  : book.picture
-              }
-              alt={book.title}
-            />
-            <div className="carateristicsDatas">
-              <RatingStar rate={book.note} padding={'pb-2'} size={'text-4xl'} />
-              <p>{book.pages_nbr} pages</p>
-              <p>Date publication : {book.publication_year}</p>
-              <p>Éditeur : {book.editions}</p>
-              <p>ISBN : {book.isbn}</p>
-            </div>
+          <img
+            className="bookImage"
+            src={
+              book.picture === null || book.picture === 'None'
+                ? vintage
+                : book.picture
+            }
+            alt={book.title}
+          />
+          <div className="carateristicsDatas">
+            <RatingStar rate={book.note} padding={'pb-2'} size={'text-6xl'} />
+            <p className="caracteristics">{book.pages_nbr} pages</p>
+            <p className="caracteristics">
+              Date publication : {book.publication_year}
+            </p>
+            <p className="caracteristics">Éditeur : {book.editions}</p>
+            <p className="caracteristics">ISBN : {book.isbn}</p>
           </div>
-          <h2 id="author">{book.author}</h2>
           <p className="resumebookDetail">
             <strong>Résumé :</strong>{' '}
             {book.synopsis === null || book.synopsis === 'None'
               ? emptyResume
               : book.synopsis}
           </p>
+          <p className="text-before-map">Où trouver ce livre ?</p>
           <MapBookDetail boxNumber={coords} />
         </div>
       )}
