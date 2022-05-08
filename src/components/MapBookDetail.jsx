@@ -18,7 +18,7 @@ import * as L from 'leaflet';
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-
+  console.log(boxNumber);
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -42,7 +42,7 @@ function MapBookDetail({ boxNumber }) {
 
   return (
     <LeafletMap
-      className="map"
+      className="map map-books"
       center={lyonPosition}
       zoom={13}
       scrollWheelZoom={false}
@@ -52,8 +52,12 @@ function MapBookDetail({ boxNumber }) {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {coordsData.map((boite) =>
-        boite.id === boxNumber[0].box_number ? (
-          <Marker position={[boite.lat, boite.long]} icon={boxIcon}>
+        boite.id === 5 ? (
+          <Marker
+            key={boite.id}
+            position={[boite.lat, boite.long]}
+            icon={boxIcon}
+          >
             <Popup>
               <PopUpMap
                 name={boite.ville}
@@ -64,7 +68,7 @@ function MapBookDetail({ boxNumber }) {
             </Popup>
           </Marker>
         ) : (
-          <Marker position={[boite.lat, boite.long]}>
+          <Marker key={boite.id} position={[boite.lat, boite.long]}>
             <Popup>
               <PopUpMap
                 name={boite.ville}

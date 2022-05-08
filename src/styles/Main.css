@@ -12,9 +12,9 @@
   .main-container {
     display: flex;
     flex-direction: row;
-    margin: 32px;
+    /* margin: 32px; */
     margin-top: 60px;
-    padding: 32px;
+    /* padding: 32px; */
     justify-content: space-between;
   }
 
@@ -27,7 +27,7 @@
     background-size: cover;
     background-position: 75%;
     position: fixed;
-    height: 90vh;
+    height: 100vh;
   }
 
   .img-right {
@@ -41,6 +41,7 @@
   }
 
   .routes-container {
-    width: 60%;
+    width: 100vw;
+    flex-direction: row;
   }
 }

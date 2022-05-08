@@ -15,6 +15,7 @@ export default function Book({
   id,
   booksOut,
   boxId,
+  setId,
 }) {
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
@@ -96,6 +97,7 @@ export default function Book({
     <div className={actionBg.color}>
       <div className={actionBg.size}>
         <img
+          onClick={setId}
           className="book-cover"
           src={
             picture === null || picture === 'None'

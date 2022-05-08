@@ -26,13 +26,15 @@ export default function AddBookForm({
   function quitForm() {
     setIsQuitForm(true);
     (function close() {
-      setTimeout(showForm, 200);
+      setTimeout(showForm, 300);
     }());
   }
 
   return (
-    <div>
-      <form className={isQuitForm ? 'abort-form popup' : 'popup'}>
+    <div className="books-form-container">
+      <form
+        className={isQuitForm ? 'abort-form add-book-form' : 'add-book-form'}
+      >
         <img
           src="https://cdn-icons-png.flaticon.com/512/190/190406.png"
           alt="red-cross"
@@ -127,7 +129,7 @@ export default function AddBookForm({
           </button>
           <p
             onClick={changeForm}
-            className="underline text-xs text-slate-500 cursor-pointer mb-5 mt-3"
+            className="underline text-xs text-slate-500 cursor-pointer mb-10 mt-3"
           >
             {notFound ? 'saisie ISBN' : 'saisie manuelle'}
           </p>

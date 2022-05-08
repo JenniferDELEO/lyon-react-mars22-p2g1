@@ -1,20 +1,23 @@
 .title {
   font-weight: 600;
-  font-size: 1.1em;
-  text-decoration: underline;
+  font-size: 1.3em;
+  text-align: center;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  text-transform: uppercase;
 }
 
 .title::after {
-  content: ' 📚';
-  font-size: 1.3em;
+  content: ' 🔷';
+  font-size: 0.7em;
 }
 
 .title::before {
-  content: '📚 ';
-  font-size: 1.3em;
+  content: '🔷 ';
+  font-size: 0.7em;
 }
+
 .boxList {
-  width: 100%;
+  width: 80vw;
   text-align: center;
   display: flex;
   overflow: scroll;
@@ -38,24 +41,36 @@
   margin-right: 7px;
   background-color: #ededed;
   background-image: url('https://miro.medium.com/max/1400/0*cnkEZEZPWLmvQ3Av');
+  /* background-image: url('https://static.vecteezy.com/ti/vecteur-libre/p1/2998089-livre-ouvert-un-croquis-d-un-dessin-d-un-livre-avec-des-lettres-volantes-vectoriel.jpg') */
   background-size: cover;
+  box-shadow: 0px 10px 13px -7px #000000;
 }
 
 .box-card:hover {
   transform: scale(1.05);
 }
 
+.books-shelves {
+  width: 80vw;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .sep {
+  position: absolute;
+  left: 0px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   margin-top: -40px;
   z-index: 2500;
   background-color: rgba(242, 242, 242, 1);
   width: 99vw;
-  height: 100px;
-  border-radius: 70px;
+  border-top-left-radius: 70px;
+  border-top-right-radius: 70px;
+  height: 40px;
 }
 
 /* --------------------- Carousel --------- */
@@ -63,9 +78,10 @@
 .month-selection {
   padding: 20px;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1.3em;
   text-align: center;
-  text-decoration: underline;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  text-transform: uppercase;
 }
 
 .month-selection::after {
@@ -119,6 +135,7 @@
   min-height: 160px;
   min-width: 90px;
   max-width: 90px;
+  box-shadow: 0px 10px 13px -7px #000000;
 }
 
 .carouselContainer img:hover {
@@ -147,12 +164,51 @@
   justify-content: space-around;
   align-items: center;
   height: 150px;
+  margin-bottom: 30px;
 }
 
 /* -------------- MEDIA QUERIES ----------------- */
 
-@media screen and (min-width: 650px) {
-  .boxList p {
-    width: 50vw;
+@media screen and (min-width: 1000px) {
+  .sep {
+    display: none;
+  }
+
+  .home-component {
+    justify-self: center;
+    align-self: flex-start;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .boxList {
+    width: 100%;
+    overflow-x: scroll;
+    height: 50vh;
+    flex-direction: column;
+  }
+
+  .box-card {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 20%;
+    max-height: auto;
+    margin: 10px;
+  }
+
+  .books-shelves {
+    display: none;
+  }
+
+  .wrapper {
+    align-self: flex-end;
+    position: relative;
+    right: 15%;
+    width: 25vw;
+  }
+
+  .carouselItems {
   }
 }

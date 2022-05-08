@@ -1,23 +1,18 @@
 .mapContainer {
-  display: flex;
-  justify-content: center;
-  background-color: blue;
   width: 100vw;
-  margin-top: 1rem;
 }
 
 .leaflet-container {
   width: 100vw;
-  height: 350px;
+  height: 400px;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 1000px) {
   .leaflet-container {
-    width: 100%;
-    height: 400px;
+    width: 65vw;
+    height: 100vh;
   }
   .mapContainer {
-    width: 600px;
-    height: 400px;
+    width: 65vw;
   }
 }

@@ -37,6 +37,7 @@ function Map({ setCP }) {
       />
       {coordsData.map((boite) => (
         <Marker
+          key={boite.id}
           position={[boite.lat, boite.long]}
           eventHandlers={{
             click: () => {

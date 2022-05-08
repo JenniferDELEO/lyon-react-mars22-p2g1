@@ -19,20 +19,18 @@ function HomeBoxList({ CP }) {
   }, [CP.cp]);
 
   return (
-    <>
-      <div className="sep">
-        <h1 className="title">Les boites</h1>
-        <p>Selectionner une boite pour voir les livres!</p>
-      </div>
+    <div className="home-component">
+      <div className="sep"></div>
+      <h1 className="title"> Les boites </h1>
       <div className="boxList">
         {boxList.map((box) => (
-          <Link to={`/BoxDetail/${box.id}`}>
+          <Link key={box.id} to={`/BoxDetail/${box.id}`}>
             <div
               key={box.id}
               className="box-card"
               style={{ backgroundColor: selectedBox === box.id ? '' : '' }}
             >
-              <p>
+              <p key={box.id}>
                 {box.adresse}
                 <br />
                 {box.quantity} livre(s)
@@ -41,7 +39,12 @@ function HomeBoxList({ CP }) {
           </Link>
         ))}
       </div>
-    </>
+      <img
+        className="books-shelves"
+        src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
+        alt="books"
+      />
+    </div>
   );
 }
 

@@ -1,5 +1,9 @@
+.box-content {
+  width: 95vw;
+}
+
 .color-bg {
-  background-color: rgba(27, 158, 178, 1);
+  background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
 }
 
 .rating {
@@ -36,7 +40,7 @@
   font-size: 3rem;
 }
 
-.popup {
+.add-book-form {
   text-align: center;
   background: white;
   border-radius: 10px;
@@ -45,6 +49,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  height: 100vh;
+  overflow: auto;
+  width: 100vw;
 }
 
 .quit-btn {
@@ -61,9 +68,7 @@
 }
 
 .abort-form {
-  width: 0px;
-  transition: width 0.5s ease-in-out;
-  transition: pop-out 0.4s ease-in-out;
+  animation: pop-out 0.4s ease-in-out;
 }
 
 .book-cover {
@@ -86,5 +91,76 @@
   }
   to {
     width: 0%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .box-content-container {
+    overflow: scroll;
+    width: 80vw;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .box-content {
+    width: 40vw;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .add-book-form {
+    width: 40vw;
+  }
+
+  .test {
+    float: right;
+    background-color: gray;
+    width: 50%;
+    height: 100vh;
+  }
+
+  .bookdetail {
+    float: right;
+    width: 40vw;
+  }
+
+  .map-books {
+    display: none;
+  }
+
+  .books-form-container {
+    justify-self: flex-end;
+  }
+
+  .book-detail {
+    margin-left: 30px;
+  }
+
+  .abort-form {
+    animation: pop-out-desktop 0.4s ease-in-out;
+  }
+
+  .add-book-form {
+    position: fixed;
+    animation: pop-in-desktop 0.4s ease-in-out;
+  }
+
+  @keyframes pop-in-desktop {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 50%;
+    }
+  }
+
+  @keyframes pop-out-desktop {
+    from {
+      width: 50%;
+    }
+    to {
+      width: 0%;
+    }
   }
 }
