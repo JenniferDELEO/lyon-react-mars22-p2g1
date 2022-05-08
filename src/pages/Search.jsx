@@ -46,9 +46,6 @@ export default function Search() {
           value={userEntry}
           onChange={handleChange}
         />
-        {/* <button className="Btn SearchBtn" type="submit">
-          Lancez votre recherche
-        </button> */}
       </div>
       <div className="PreviewPortion">
         {searchResult.map((book) => (
