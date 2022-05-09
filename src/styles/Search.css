@@ -3,18 +3,6 @@
   flex-direction: column;
   align-items: center;
 }
-
-/* .SearchPortion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
-  width: 80%;
-  background-color: white;
-  border-radius: 30px;
-  height: 15vh;
-} */
 .SearchInput {
   background-color: white;
   padding: 20px;
@@ -103,5 +91,11 @@ img {
 @media screen and (min-width: 1020px) {
   .main-container {
     justify-content: center;
+  }
+  .bookshelf {
+    display: none;
+  }
+  .SearchWrapper {
+    align-items: flex-start;
   }
 }
