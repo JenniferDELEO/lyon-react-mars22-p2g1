@@ -8,7 +8,7 @@ import useScroll from './hooks/useScroll';
 import { useMediaQuery } from 'usehooks-ts';
 
 function App() {
-  const navbarHeight = 150;
+  const navbarHeight = 70;
   const [height, setHeight] = useState(navbarHeight);
   const scroll = useScroll({
     wait: 50,
