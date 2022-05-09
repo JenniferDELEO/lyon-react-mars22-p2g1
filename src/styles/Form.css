@@ -3,6 +3,6 @@
     display: flex;
     justify-content: center;
     flex-direction: row-reverse;
-    width: 110%;
+    width: 100%;
   }
 }

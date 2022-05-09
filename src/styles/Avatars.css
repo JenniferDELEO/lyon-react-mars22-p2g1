@@ -7,11 +7,11 @@
 
 h2 {
   text-decoration: none;
-  margin: 32px;
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   color: black;
+  text-align: center;
 }
 .avatar {
   display: flex;
@@ -42,7 +42,12 @@ h2 {
 }
 
 .contactTitle {
+  width: 100%;
+  text-align: center;
   margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
 }
 
 @media screen and (min-width: 650px) {
@@ -50,24 +55,36 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 60%;
+    height: 500px;
+    margin-left: 40px;
   }
   .Avatars {
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 100%;
   }
   .avatar img {
-    width: 10rem;
-    height: 10rem;
+    width: 7rem;
+    height: 7rem;
   }
 
   .avatarBackground {
     position: absolute;
     z-index: -1;
-    width: 180px;
-    height: 160px;
+    width: 120px;
+    height: 110px;
     top: -3px;
     border-radius: 30%;
     background-color: white;
+  }
+  .contactTitle {
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: -2px;
+  }
+
+  .avatar {
+    margin-bottom: 60px;
   }
 }
