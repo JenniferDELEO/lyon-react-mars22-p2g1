@@ -66,12 +66,8 @@ export default function Book({
         booksOut(true);
         axios
           .patch(`${process.env.REACT_APP_API_URL}boxes/${boxId}?action=delete`)
-          .then((r) => {
-            console.log(r);
-          })
-          .catch(() => {
-            console.log('erreur');
-          });
+          .then(() => {})
+          .catch(() => {});
       })
       .catch((error) => {
         console.log(error);

@@ -50,7 +50,7 @@
   justify-content: space-around;
   align-items: center;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
   width: 100vw;
 }
 

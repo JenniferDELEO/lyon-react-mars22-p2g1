@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable global-require */
 /* eslint-disable function-paren-newline */
 /* eslint-disable no-confusing-arrow */
@@ -18,7 +19,6 @@ import * as L from 'leaflet';
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-  console.log(boxNumber);
   const LeafIcon = L.Icon.extend({
     options: {},
   });
