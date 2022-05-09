@@ -3,7 +3,7 @@ import React from 'react';
 
 function PopupHome({ trigger, children, setTrigger }) {
   return trigger ? (
-    <div className="popup">
+    <div className="popup-container">
       <div className="popup-inner">
         <button
           type="button"

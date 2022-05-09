@@ -1,4 +1,4 @@
-.popup {
+.popup-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,10 +13,11 @@
 
 .popup-inner {
   position: relative;
+  margin-top: 0;
   padding: 32px;
   width: 100%;
   max-width: 640px;
-  background-color: rgba(27, 158, 178, 1);
+  background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
   color: white;
   text-align: center;
   border-radius: 20px;
@@ -29,8 +30,8 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  background-color: rgba(14, 86, 103, 1);
-  border: 1px solid rgba(14, 86, 103, 1);
+  background-color: #070645;
+  border: 1px solid #070645;
   cursor: pointer;
   font-weight: 200;
   color: white;
