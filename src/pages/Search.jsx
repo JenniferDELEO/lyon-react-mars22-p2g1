@@ -1,31 +1,32 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-return-assign */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../styles/Search.css';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 
 export default function Search() {
-  const [userEntry, setUserEntry] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [getBooks, setGetBooks] = useState([]);
   const [userHasSearched, setUserHasSearched] = useState(false);
-
-  const handleChange = (e) => {
-    setUserEntry(e.target.value);
-  };
+  const [searchParams, setSearchParams] = useSearchParams(' ');
 
   useEffect(() => {
-    if (userEntry) {
+    if (searchParams.get('query')) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}books/search?search=${userEntry}`)
+        .get(
+          `${
+            process.env.REACT_APP_API_URL
+          }books/search?search=${searchParams.get('query')}`
+        )
         .then((result) => result.data)
         .then((result) => {
           setSearchResult(result);
           setUserHasSearched(true);
         });
     }
-  }, [handleChange]);
+  }, [searchParams]);
 
   useEffect(() => {
     axios
@@ -43,8 +44,15 @@ export default function Search() {
           className="SearchInput"
           type="text"
           placeholder={'Entrez votre recherche ici'}
-          value={userEntry}
-          onChange={handleChange}
+          value={searchParams.get('query')}
+          onChange={(e) => {
+            setSearchParams({ query: e.target.value });
+          }}
+        />
+        <img
+          className="bookshelf"
+          src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
+          alt="étagère de livre"
         />
       </div>
       <div className="PreviewPortion">
@@ -73,7 +81,7 @@ export default function Search() {
             display: userHasSearched ? 'none' : '',
           }}
         >
-          <h3 className="top5">Top 5 de l'application :</h3>
+          <h3 className="top5">Nos coups de coeur </h3>
           {getBooks.slice(0, 5).map((book) => (
             <div className="Card" key={book.ISBN}>
               {' '}
