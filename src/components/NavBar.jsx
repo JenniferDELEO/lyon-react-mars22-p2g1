@@ -47,7 +47,7 @@ export default function NavBar() {
         </li>
         <li className="myfavorites-navigation">
           <NavLink
-            to="/myprofile"
+            to="/favorite-books"
             className="link-navigation"
             style={getActiveLinkStyle}
           >

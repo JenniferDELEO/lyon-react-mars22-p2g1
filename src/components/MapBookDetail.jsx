@@ -12,7 +12,7 @@ import {
   Marker,
   Popup,
 } from 'react-leaflet';
-import '../styles/Map.css';
+import '../styles/MapBookdetail.css';
 import PopUpMap from './PopupMap';
 import * as L from 'leaflet';
 

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
 import '../styles/box_detail.css';
