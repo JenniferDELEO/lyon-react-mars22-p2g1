@@ -11,7 +11,7 @@ import {
   Marker,
   Popup,
 } from 'react-leaflet';
-import '../styles/Map.css';
+import '../styles/MapBookdetail.css';
 import PopUpMap from './PopupMap';
 import * as L from 'leaflet';
 
@@ -41,19 +41,18 @@ function MapBookDetail({ boxNumber }) {
   }, []);
 
   return (
-    <LeafletMap
-      className="map"
-      center={lyonPosition}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
+    <LeafletMap center={lyonPosition} zoom={13} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {coordsData.map((boite) =>
         boite.id === boxNumber[0].box_number ? (
-          <Marker position={[boite.lat, boite.long]} icon={boxIcon}>
+          <Marker
+            position={[boite.lat, boite.long]}
+            icon={boxIcon}
+            key={boite.id}
+          >
             <Popup>
               <PopUpMap
                 name={boite.ville}
@@ -64,7 +63,7 @@ function MapBookDetail({ boxNumber }) {
             </Popup>
           </Marker>
         ) : (
-          <Marker position={[boite.lat, boite.long]}>
+          <Marker position={[boite.lat, boite.long]} key={boite.id}>
             <Popup>
               <PopUpMap
                 name={boite.ville}

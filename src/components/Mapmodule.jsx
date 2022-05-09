@@ -43,6 +43,7 @@ function Map({ setCP }) {
               setCP({ cp: boite.CP, id: boite.id, address: boite.adresse });
             },
           }}
+          key={boite.id}
         >
           <Popup>
             <PopUpMap
