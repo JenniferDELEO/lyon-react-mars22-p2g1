@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Search.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
+import notFound from '../assets/notfound.jpeg';
 
 export default function Search() {
   const [searchResult, setSearchResult] = useState([]);
@@ -59,7 +60,10 @@ export default function Search() {
         {searchResult.map((book) => (
           <div className="Card" key={book.ISBN}>
             {' '}
-            <img src={book.picture} alt={book.title} />
+            <img
+              src={book.picture !== 'None' || null ? book.picture : notFound}
+              alt={book.title}
+            />
             <div className="book-infos">
               <div>
                 <Link to={`/bookdetail/${book.id}`}>
