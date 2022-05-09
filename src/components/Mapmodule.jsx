@@ -49,13 +49,13 @@ function Map({ setCP, userLocation }) {
 
   console.log(map);
 
-  const lyonPosition = [45.746635599868014, 4.827211715345422];
+  const lyonPosition = [45.764043, 4.835659];
 
   return (
     <LeafletMap
       className="map"
       center={lyonPosition}
-      zoom={14}
+      zoom={15}
       scrollWheelZoom={false}
       whenCreated={(m) => {
         console.log(m);
