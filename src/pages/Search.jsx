@@ -96,18 +96,23 @@ export default function Search() {
             {getBooks.slice(0, 5).map((book) => (
               <div className="Card" key={book.ISBN}>
                 {' '}
-                <img src={book.picture} alt={book.title} />
-                <div className="book-infos">
+                <img key={book.ISBN} src={book.picture} alt={book.title} />
+                <div key={book.ISBN} className="book-infos">
                   <div>
-                    <Link to={`/bookdetail/${book.id}`}>
-                      <p className="font-black text-sm underline">
+                    <Link key={book.ISBN} to={`/bookdetail/${book.id}`}>
+                      <p
+                        key={book.ISBN}
+                        className="font-black text-sm underline"
+                      >
                         {book.title.slice(0, 40)}
                       </p>
-                      <p className="text-xs">{book.author.slice(0, 23)}</p>
+                      <p key={book.ISBN} className="text-xs">
+                        {book.author.slice(0, 23)}
+                      </p>
                     </Link>
                   </div>
-                  <div className="Stars">
-                    <RatingStar rate={parseFloat(book.note)} />
+                  <div key={book.ISBN} className="Stars">
+                    <RatingStar key={book.ISBN} rate={parseFloat(book.note)} />
                   </div>
                 </div>
               </div>
