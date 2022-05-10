@@ -52,7 +52,7 @@ function MapBookDetail({ boxNumber }) {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {coordsData.map((boite) =>
-        boite.id === 5 ? (
+        boite.id === boxNumber[0].box_number ? (
           <Marker
             key={boite.id}
             position={[boite.lat, boite.long]}

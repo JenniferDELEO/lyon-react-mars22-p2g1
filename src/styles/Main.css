@@ -36,11 +36,12 @@
   }
 
   .main-routes {
-    margin: 150px;
+    /* margin: 150px; */
   }
 
   .routes-container {
     width: 100vw;
+    height: 100vh;
     flex-direction: row;
   }
 }

@@ -21,7 +21,7 @@ function HomeBoxList({ CP }) {
   return (
     <div className="home-component">
       <div className="sep"></div>
-      <h1 className="title"> Les boites </h1>
+      <h1 className="title-home"> Les boites </h1>
       <div className="boxList">
         {boxList.map((box) => (
           <Link key={box.id} to={`/BoxDetail/${box.id}`}>
@@ -30,7 +30,7 @@ function HomeBoxList({ CP }) {
               className="box-card"
               style={{ backgroundColor: selectedBox === box.id ? '' : '' }}
             >
-              <p key={box.id}>
+              <p key={box.adresse}>
                 {box.adresse}
                 <br />
                 {box.quantity} livre(s)

@@ -4,15 +4,15 @@
 
 .leaflet-container {
   width: 100vw;
-  height: 400px;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1020px) {
   .leaflet-container {
     width: 55vw;
     height: 100vh;
   }
   .mapContainer {
     width: 55vw;
+    height: 100vh;
   }
 }
