@@ -70,10 +70,14 @@ export default function Search() {
                 onClick={() => setBookId(book.id)}
                 src={book.picture !== 'None' || null ? book.picture : notFound}
                 alt={book.title}
+                style={{ cursor: 'pointer' }}
               />
               <div className="book-infos">
                 <div>
-                  <Link to={`/bookdetail/${book.id}`}>
+                  <Link
+                    to={`/bookdetail/${book.id}`}
+                    style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
+                  >
                     <p className="font-black text-sm underline">
                       {book.title.slice(0, 40)}
                     </p>
@@ -99,7 +103,10 @@ export default function Search() {
                 <img src={book.picture} alt={book.title} />
                 <div className="book-infos">
                   <div>
-                    <Link to={`/bookdetail/${book.id}`}>
+                    <Link
+                      to={`/bookdetail/${book.id}`}
+                      style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
+                    >
                       <p className="font-black text-sm underline">
                         {book.title.slice(0, 40)}
                       </p>
