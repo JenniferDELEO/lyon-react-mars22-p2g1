@@ -6,12 +6,15 @@ import '../styles/Search.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import RatingStar from '../components/ratingStar';
 import notFound from '../assets/notfound.jpeg';
+import UseMediaQuery from '../hooks/useMediaQuery';
+import BookDetail from './BookDetail';
 
 export default function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [getBooks, setGetBooks] = useState([]);
   const [userHasSearched, setUserHasSearched] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams(' ');
+  const isDesktop = UseMediaQuery('(min-width: 1000px)');
 
   useEffect(() => {
     if (searchParams.get('query')) {
@@ -107,6 +110,7 @@ export default function Search() {
           ))}
         </div>
       </div>
+      {isDesktop ? <BookDetail /> : null}
     </div>
   );
 }
