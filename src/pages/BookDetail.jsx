@@ -36,11 +36,7 @@ export default function BookDetail({ id }) {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
-        if (localStorage.length > 0) {
-          if (localStorage.getItem(data.id)) {
-            setIsBookFavorite(true);
-          }
-        }
+        setIsBookFavorite(!!localStorage.getItem(data.id));
         axios
           .get(`${process.env.REACT_APP_API_URL}books/isbn/${data.isbn}`)
           .then((response2) => response2.data)
