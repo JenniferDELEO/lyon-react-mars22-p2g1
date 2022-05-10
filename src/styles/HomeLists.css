@@ -1,58 +1,100 @@
-main {
-  background-color: #f2f2f2;
-  padding: 2rem;
-}
 .boxList {
   text-align: center;
   background-color: #f2f2f2;
   margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .boxList h2 {
   color: #1b9eb2;
+  margin-top: 5rem;
+  font-size: larger;
+}
+
+.boxList ul {
+  margin-top: 2rem;
 }
 .boxList p {
   background-color: #ffffff;
   margin: 1vh;
   border-radius: 10px;
-  padding: 5px;
+  padding: 1rem 1.5rem;
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .boxList a {
   text-decoration: none;
+  color: black;
 }
-/* --------------------- Futur carousel --------- */
-
-.bookSelection {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 10px;
+.boxList img {
+  width: 35px;
+  height: 50px;
 }
-
-.bookSelection h2 {
+/* --------------------- Carousel --------- */
+.wrapper h2 {
+  margin-top: 2rem;
   color: #1b9eb2;
   text-align: center;
-}
-.bookSelection img {
-  height: 150px;
-  width: 100px;
-  margin: 10px;
-}
-.carousel {
-  display: flex;
-  flex: 2 1 auto;
+  font-size: larger;
 }
 
-@media screen and (max-width: 649px) {
-  div.header {
-    background-color: #1b9eb2;
-    height: 4rem;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    text-align: center;
-  }
+.wrapper {
+  width: 90%;
 }
+
+.carouselContainer {
+  margin-top: 2rem;
+}
+
+.carouselHomepage .legend {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: 90%;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.25;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  -moz-transition: opacity 0.35s ease-in-out;
+  -ms-transition: opacity 0.35s ease-in-out;
+  -o-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.carouselItems:hover + .legend {
+  opacity: 1;
+}
+
+.legend:hover {
+  opacity: 1;
+}
+
+.carouselItems img {
+  padding-top: 16px;
+  margin: 0 auto;
+}
+
+.carouselHomepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+}
+
+/* -------------- MEDIA QUERIES ----------------- */
 
 @media screen and (min-width: 650px) {
-  div.header {
-    display: none;
+  .boxList p {
+    width: 50vw;
   }
 }

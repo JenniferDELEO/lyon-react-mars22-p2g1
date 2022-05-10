@@ -1,35 +1,62 @@
-import React from 'react';
-import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
-import coordsData from '../ressources/coordsBAL.json';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import {
+  MapContainer as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+} from 'react-leaflet';
+import '../styles/Map.css';
+import PopUpMap from './PopupMap';
 
-function Map() {
+function Map({ setCP }) {
   const lyonPosition = [45.764043, 4.835659];
+  const [coordsData, setCoordsData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}boxes`)
+      .then((result) => result.data)
+      .then((result) => {
+        setCoordsData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <LeafletMap className="map" center={lyonPosition} zoom={16}>
+    <LeafletMap
+      className="map"
+      center={lyonPosition}
+      zoom={14}
+      scrollWheelZoom={false}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-
       {coordsData.map((boite) => (
-        <Marker position={[boite.lat, boite.long]} />
+        <Marker
+          position={[boite.lat, boite.long]}
+          eventHandlers={{
+            click: () => {
+              setCP({ cp: boite.CP, id: boite.id, address: boite.adresse });
+            },
+          }}
+          key={boite.id}
+        >
+          <Popup>
+            <PopUpMap
+              name={boite.ville}
+              adress={boite.adresse}
+              numberBooks={boite.quantity}
+              id={boite.id}
+            />
+          </Popup>
+        </Marker>
       ))}
     </LeafletMap>
   );
 }
 
 export default Map;
-
-/* const dataPoints = coordsData;
-const list = [];
-for (let i = 0; i < dataPoints.length; i++) {
-  const latdata = dataPoints[i].coords[0];
-  const longdata = dataPoints[i].coords[1];
-  list.push({ lat: latdata, long: longdata });
-}
-console.log(list);
-
-console.log(dataPoints[i].coords[0]);
-console.log(dataPoints[i].coords[1]);
-
-<Marker position={bal1}> </Marker>: */

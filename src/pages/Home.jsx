@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PopupDisplayHome from '../components/PopupDisplayHome';
+import Mapsection from '../components/Mapmodule';
 import HomeBookSelection from '../components/HomeBookSelection';
 import HomeBoxList from '../components/HomeBoxList';
-import Mapsection from '../components/Mapmodule';
-import PopupDisplayBal from '../components/PopupDisplayBal';
 
 export default function Home() {
+  const [postalCode, setPostalCode] = useState({
+    cp: '69001',
+    id: '',
+    address: '',
+  });
   return (
     <>
       <div className="mapContainer">
-        <Mapsection />
+        <Mapsection setCP={setPostalCode} />
       </div>
       <PopupDisplayHome />
-      <PopupDisplayBal />
-      <HomeBoxList />
+      <HomeBoxList CP={postalCode} />
       <HomeBookSelection />
     </>
   );

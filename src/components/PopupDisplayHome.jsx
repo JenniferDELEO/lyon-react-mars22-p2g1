@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import PopupHome from './PopupHome';
 import '../styles/PopupDisplay.css';

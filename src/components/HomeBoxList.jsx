@@ -1,33 +1,43 @@
-import boxList from '../ressources/coordsBAL.json';
-import bookList from '../ressources/livresDB.json';
+/* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
+import BookBox from '../assets/box_middlefull.png';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-const quantiteParBoite = [];
+function HomeBoxList({ CP }) {
+  const [boxList, setBoxList] = useState([]);
+  const [selectedBox, setSelectedBox] = useState('');
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}boxes/postalcode/${CP.cp}`)
+      .then((result) => result.data)
+      .then((result) => {
+        setBoxList(result);
+        setSelectedBox(CP.id);
+      });
+  }, [CP.cp]);
 
-for (let i = 0; i < boxList.length; i += 1) {
-  quantiteParBoite.push(0);
-}
-for (let i = 0; i < bookList.length; i += 1) {
-  const index = parseFloat(bookList[i].boite);
-  quantiteParBoite[index] += 1;
-}
-
-function HomeBoxList() {
   return (
     <div className="boxList">
       <h2>Liste des boîtes : </h2>
-      <ul>
-        {boxList.slice(0, 3).map((box) => (
-          <p>
-            {' '}
-            <Link to={`/BoxDetail/${box.boite}`}> {box.adresse}</Link> boîte
-            numéro : {box.boite}
+
+      {boxList.map((box) => (
+        <Link to={`/BoxDetail/${box.id}`} key={box.id}>
+          <p
+            className={selectedBox === box.id ? 'animate-pulse' : ''}
+            style={{
+              backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
+            }}
+          >
+            <img src={BookBox} alt="boite a livre" />
+            {box.adresse},{box.CP}
             <br />
-            {quantiteParBoite[box.boite]} livres
+            {box.quantity}
+            livre(s)
           </p>
-        ))}
-      </ul>
+        </Link>
+      ))}
     </div>
   );
 }
