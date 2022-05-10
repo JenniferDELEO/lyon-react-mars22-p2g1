@@ -15,10 +15,12 @@ import {
 import '../styles/MapBookdetail.css';
 import PopUpMap from './PopupMap';
 import * as L from 'leaflet';
+import UseMediaQuery from '../hooks/useMediaQuery';
 
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
+  const isDesktop = UseMediaQuery('(min-width: 1000px)');
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -41,46 +43,48 @@ function MapBookDetail({ boxNumber }) {
   }, []);
 
   return (
-    <LeafletMap
-      className="map map-books"
-      center={lyonPosition}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {coordsData.map((boite) =>
-        boite.id === boxNumber[0].box_number ? (
-          <Marker
-            key={boite.id}
-            position={[boite.lat, boite.long]}
-            icon={boxIcon}
-          >
-            <Popup>
-              <PopUpMap
-                name={boite.ville}
-                adress={boite.adresse}
-                numberBooks={boite.quantity}
-                id={boite.id}
-              />
-            </Popup>
-          </Marker>
-        ) : (
-          <Marker key={boite.id} position={[boite.lat, boite.long]}>
-            <Popup>
-              <PopUpMap
-                name={boite.ville}
-                adress={boite.adresse}
-                numberBooks={boite.quantity}
-                id={boite.id}
-              />
-            </Popup>
-          </Marker>
-        )
-      )}
-    </LeafletMap>
+    <div>
+      <LeafletMap
+        style={{ width: isDesktop ? '40vw' : '60vw', height: '30vh' }}
+        center={lyonPosition}
+        zoom={13}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {coordsData.map((boite) =>
+          boite.id === boxNumber[0].box_number ? (
+            <Marker
+              key={boite.id}
+              position={[boite.lat, boite.long]}
+              icon={boxIcon}
+            >
+              <Popup>
+                <PopUpMap
+                  name={boite.ville}
+                  adress={boite.adresse}
+                  numberBooks={boite.quantity}
+                  id={boite.id}
+                />
+              </Popup>
+            </Marker>
+          ) : (
+            <Marker key={boite.id} position={[boite.lat, boite.long]}>
+              <Popup>
+                <PopUpMap
+                  name={boite.ville}
+                  adress={boite.adresse}
+                  numberBooks={boite.quantity}
+                  id={boite.id}
+                />
+              </Popup>
+            </Marker>
+          )
+        )}
+      </LeafletMap>
+    </div>
   );
 }
 
