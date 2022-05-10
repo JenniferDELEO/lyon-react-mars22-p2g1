@@ -47,8 +47,6 @@ function Map({ setCP, userLocation }) {
       });
   }, []);
 
-  console.log(map);
-
   const lyonPosition = [45.764043, 4.835659];
 
   return (
@@ -58,7 +56,6 @@ function Map({ setCP, userLocation }) {
       zoom={15}
       scrollWheelZoom={false}
       whenCreated={(m) => {
-        console.log(m);
         setMap(m);
       }}
     >

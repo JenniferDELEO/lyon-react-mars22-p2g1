@@ -74,12 +74,12 @@
 /* --------------------- Carousel --------- */
 
 .month-selection {
-  padding: 20px;
   font-weight: 600;
   font-size: 1.3em;
   text-align: center;
   text-shadow: 0.1em 0.1em 0.2em black;
   text-transform: uppercase;
+  margin-top: 25px;
 }
 
 .month-selection::after {
@@ -96,7 +96,6 @@
 
 .wrapper {
   margin-top: 30px;
-  width: 90%;
 }
 
 .carouselHomepage .legend {
@@ -202,8 +201,9 @@
 
   .wrapper {
     align-self: flex-end;
-    padding-top: 20px;
+    padding-top: 0px;
     width: 25vw;
+    margin-top: 10px;
   }
 
   .box-list-selection {

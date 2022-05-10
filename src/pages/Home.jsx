@@ -16,7 +16,6 @@ export default function Home() {
   const [userLocation, setUserLocation] = useState(null);
 
   const handleLocation = () => {
-    console.log(navigator.geolocation);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((p) => {
         setUserLocation([p.coords.latitude, p.coords.longitude]);

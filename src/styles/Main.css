@@ -25,15 +25,13 @@
     background-position: 75%;
     position: fixed;
     height: 100vh;
-  }
-
-  .img-right {
     transform: scaleX(-1);
     right: 0px;
     top: 60px;
   }
 
   .routes-container {
-    width: 80%;
+    width: 100%;
+    flex-direction: row;
   }
 }

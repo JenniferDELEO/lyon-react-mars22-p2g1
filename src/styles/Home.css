@@ -18,12 +18,7 @@
 
 @media screen and (min-width: 650px) {
   .localPointer {
-    position: absolute;
-    z-index: 1500;
-    height: 40px;
-    width: 40px;
-    top: 20px;
     right: 20px;
-    cursor: pointer;
+    bottom: 20px;
   }
 }
