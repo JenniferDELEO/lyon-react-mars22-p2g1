@@ -51,6 +51,11 @@ export default function FavoriteBooks() {
       <div className="favoriteBooks">
         <ToastContainer />
         <h2>Mes livres favoris</h2>
+        {localStorage.length === 0 ? (
+          <p className="noFavs">
+            Vous n'avez pas encore sélectionné de favoris
+          </p>
+        ) : null}
         {favoritesList.map((book) => (
           <div className="bookCard" key={book.id}>
             <div className="bookContainer">

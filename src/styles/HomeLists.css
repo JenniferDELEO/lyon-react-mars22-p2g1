@@ -4,6 +4,7 @@
   text-align: center;
   text-shadow: 0.1em 0.1em 0.2em black;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .title-home::after {
