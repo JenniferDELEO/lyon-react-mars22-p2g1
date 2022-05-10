@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable global-require */
 /* eslint-disable function-paren-newline */
 /* eslint-disable no-confusing-arrow */
@@ -11,14 +12,13 @@ import {
   Marker,
   Popup,
 } from 'react-leaflet';
-import '../styles/Map.css';
+import '../styles/MapBookdetail.css';
 import PopUpMap from './PopupMap';
 import * as L from 'leaflet';
 
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -42,7 +42,7 @@ function MapBookDetail({ boxNumber }) {
 
   return (
     <LeafletMap
-      className="map"
+      className="map map-books"
       center={lyonPosition}
       zoom={13}
       scrollWheelZoom={false}
@@ -53,7 +53,11 @@ function MapBookDetail({ boxNumber }) {
       />
       {coordsData.map((boite) =>
         boite.id === boxNumber[0].box_number ? (
-          <Marker position={[boite.lat, boite.long]} icon={boxIcon}>
+          <Marker
+            key={boite.id}
+            position={[boite.lat, boite.long]}
+            icon={boxIcon}
+          >
             <Popup>
               <PopUpMap
                 name={boite.ville}
@@ -64,7 +68,7 @@ function MapBookDetail({ boxNumber }) {
             </Popup>
           </Marker>
         ) : (
-          <Marker position={[boite.lat, boite.long]}>
+          <Marker key={boite.id} position={[boite.lat, boite.long]}>
             <Popup>
               <PopUpMap
                 name={boite.ville}

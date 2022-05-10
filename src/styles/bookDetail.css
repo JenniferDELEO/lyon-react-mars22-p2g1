@@ -2,24 +2,39 @@
   margin: 8px;
 }
 
-.bookdetail h2 {
+.buttonBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin-bottom: 32px;
+}
+
+.buttonBar button img {
+  height: 60px;
+  filter: drop-shadow(0px 0px 1px black);
+}
+
+.titre {
   color: #0e5667;
   text-decoration: initial;
   font-weight: 600;
-  font-size: x-large;
-  margin: 1rem;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  text-align: center;
 }
 
-.carateristicsContainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.auteur {
+  font-size: large;
+  text-align: center;
   color: #0e5667;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-.carateristicsContainer img {
-  height: 220px;
-  border-radius: 20px;
+.bookImage {
+  height: 600px;
+  display: block;
+  margin: 32px auto;
 }
 
 .carateristicsDatas {
@@ -27,17 +42,11 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 5px;
 }
 
-#lectorsRates {
-  font-size: large;
-  font-weight: 500;
-}
-
-#author {
-  text-align: left;
-  font-size: large;
+.carateristics {
+  padding: 4px 0;
+  font-size: 1.5rem;
 }
 
 .resumebookDetail {
@@ -47,11 +56,24 @@
   background-color: white;
   border: 1px solid #0e5667;
   border-radius: 10px;
-  padding: 8px;
+  padding: 12px 20px;
+  font-size: 1.3rem;
 }
 
-@media screen and (min-width: 650px) {
-  .bookdetail {
-    width: 90%;
+.text-before-map {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 16px 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .map-books {
+    display: hidden;
+  }
+
+  .bookImage {
+    height: 45vh;
+    width: 20vw;
   }
 }

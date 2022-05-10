@@ -1,5 +1,9 @@
+.box-content {
+  width: 95vw;
+}
+
 .color-bg {
-  background-color: rgba(27, 158, 178, 1);
+  background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
 }
 
 .rating {
@@ -33,43 +37,26 @@
 
 .rating2 a {
   float: none;
+  font-size: 3rem;
 }
 
-.popup-bg {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup {
-  height: 40%;
-  width: 50%;
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
-  margin: auto;
+.add-book-form {
+  text-align: center;
   background: white;
   border-radius: 10px;
+  animation: pop-in 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
 }
 
 .quit-btn {
   color: red;
   font-size: 1.2em;
-}
-
-.small {
-  left: 15%;
-  right: 15%;
-  width: 70%;
-  height: 10%;
 }
 
 .text-xxs {
@@ -80,9 +67,100 @@
   height: 9.5rem;
 }
 
-@media screen and (max-width: 450px) {
-  .btn-small {
-    width: 3rem;
-    font-size: 0.5rem;
+.abort-form {
+  animation: pop-out 0.4s ease-in-out;
+}
+
+.book-cover {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@keyframes pop-in {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes pop-out {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .box-content-container {
+    overflow: scroll;
+    width: 80vw;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .box-content {
+    width: 40vw;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .add-book-form {
+    width: 40vw;
+  }
+
+  .test {
+    float: right;
+    background-color: gray;
+    width: 50%;
+    height: 100vh;
+  }
+
+  .bookdetail {
+    float: right;
+    width: 40vw;
+  }
+
+  .map-books {
+    display: none;
+  }
+
+  .books-form-container {
+    justify-self: flex-end;
+  }
+
+  .book-detail {
+    margin-left: 30px;
+  }
+
+  .abort-form {
+    animation: pop-out-desktop 0.4s ease-in-out;
+  }
+
+  .add-book-form {
+    position: fixed;
+    animation: pop-in-desktop 0.4s ease-in-out;
+  }
+
+  @keyframes pop-in-desktop {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 50%;
+    }
+  }
+
+  @keyframes pop-out-desktop {
+    from {
+      width: 50%;
+    }
+    to {
+      width: 0%;
+    }
   }
 }
