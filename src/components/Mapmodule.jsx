@@ -5,7 +5,7 @@ import {
   TileLayer,
   Marker,
   Popup,
-  // useMap,
+  useMap,
 } from 'react-leaflet';
 import '../styles/Map.css';
 import PopUpMap from './PopupMap';
@@ -18,12 +18,15 @@ const userMarker = new L.Icon({
   iconSize: [35, 90],
 });
 
-// function MapComponent({ setMap }) {
-//   const map = useMap();
+function MapComponent({ setMap }) {
+  const map = useMap();
 
-//   setMap(map);
-//   return null;
-// }
+  useEffect(() => {
+    setMap(map);
+  });
+
+  return null;
+}
 
 function Map({ setCP, userLocation }) {
   const [coordsData, setCoordsData] = useState([]);
@@ -59,7 +62,7 @@ function Map({ setCP, userLocation }) {
         setMap(m);
       }}
     >
-      {/* <MapComponent setMap={setMap} /> */}
+      <MapComponent setMap={setMap} />
 
       <TileLayer
         url="http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
