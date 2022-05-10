@@ -38,8 +38,10 @@ export default function Home() {
         <Mapsection setCP={setPostalCode} userLocation={userLocation} />
       </div>
       <PopupDisplayHome />
-      <HomeBoxList CP={postalCode} />
-      <HomeBookSelection />
+      <div className="box-list-selection">
+        <HomeBoxList CP={postalCode} />
+        <HomeBookSelection />
+      </div>
     </>
   );
 }

@@ -15,22 +15,24 @@
 }
 
 .main {
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .navbar {
   width: 100%;
   transition: height 0.1s ease-out;
   will-change: height;
-  background-image: url(../assets/background-bottom.png);
-  background-size: cover;
-  background-repeat: no-repeat;
   position: fixed;
   bottom: 0;
   z-index: 3000;
+  background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
 }
 
 @media screen and (min-width: 1020px) {
+  .main {
+    margin-bottom: 50px;
+  }
+
   .header {
     display: none;
   }

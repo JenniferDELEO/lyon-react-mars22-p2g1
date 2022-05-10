@@ -1,20 +1,21 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import PopupHome from './PopupHome';
-import BalMedium from '../assets/BAL-medium.png';
-import MapNavigation from '../assets/map-navigation.png';
 import '../styles/PopupDisplay.css';
-import { Link } from 'react-router-dom';
 
-export default function PopupDisplayHome() {
-  const [buttonPopup, setButtonPopup] = useState(false);
+function PopupDisplayHome() {
   const [timedPopup, setTimedPopup] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTimedPopup(true);
-    }, 2000);
+    const popStatus = sessionStorage.getItem('pop_status');
+    if (!popStatus) {
+      setTimeout(() => {
+        setTimedPopup(true);
+      }, 2000);
+      sessionStorage.setItem('pop_status', 1);
+    }
   }, []);
+  if (!timedPopup) return null;
 
   return (
     <div>
@@ -46,42 +47,8 @@ export default function PopupDisplayHome() {
           </button>
         </div>
       </PopupHome>
-      <PopupHome trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <div className="bal-popup">
-          <h1>Boîte ...</h1>
-          <p>
-            {' '}
-            <Link to="//www.google.fr/maps/@45.5256143,5.2922127,15z">
-              <img
-                alt="navigation to google maps"
-                src={MapNavigation}
-                className="map-navigation"
-              />
-            </Link>
-            Adresse
-          </p>
-          <div className="bal-popup-content">
-            <div>
-              <p>23 livres</p>
-              <div>
-                <p>Catégories :</p>
-                <ul>
-                  <li>Roman</li>
-                  <li>Aventure</li>
-                </ul>
-              </div>
-            </div>
-            <img src={BalMedium} alt="BAL medium" />
-            <button
-              type="button"
-              onClick={() => setTimedPopup(false)}
-              className="button-acces"
-            >
-              Accéder au contenu
-            </button>
-          </div>
-        </div>
-      </PopupHome>
     </div>
   );
 }
+
+export default PopupDisplayHome;

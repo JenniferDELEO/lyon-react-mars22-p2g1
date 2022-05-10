@@ -3,6 +3,7 @@ import RatingStar from './ratingStar';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import UseMediaQuery from '../hooks/useMediaQuery';
 
 export default function Book({
   picture,
@@ -21,6 +22,7 @@ export default function Book({
   const [isDelete, setIsDelete] = useState(deleteState);
   const [isBorrow, setIsBorrow] = useState(borrowState);
   const [userAction, setUserAction] = useState('');
+  const isDesktop = UseMediaQuery('(min-width: 1020px)');
 
   let actionBg = '';
   if (isBorrow) {
@@ -94,6 +96,7 @@ export default function Book({
       <div className={actionBg.size}>
         <img
           onClick={setId}
+          style={{ cursor: 'pointer' }}
           className="book-cover"
           src={
             picture === null || picture === 'None'
@@ -103,7 +106,10 @@ export default function Book({
           alt="book-cover"
         />
         <div className="flex w-full justify-between z-67">
-          <Link to={`/bookdetail/${id}`}>
+          <Link
+            to={`/bookdetail/${id}`}
+            style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
+          >
             <div className="ml-5 flex flex-col justify-around leading-10">
               <p className="font-black text-sm underline mt-6">
                 {titre.slice(0, 40)}

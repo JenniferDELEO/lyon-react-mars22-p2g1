@@ -41,46 +41,48 @@ function MapBookDetail({ boxNumber }) {
   }, []);
 
   return (
-    <LeafletMap
-      className="map map-books"
-      center={lyonPosition}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {coordsData.map((boite) =>
-        boite.id === boxNumber[0].box_number ? (
-          <Marker
-            key={boite.id}
-            position={[boite.lat, boite.long]}
-            icon={boxIcon}
-          >
-            <Popup>
-              <PopUpMap
-                name={boite.ville}
-                adress={boite.adresse}
-                numberBooks={boite.quantity}
-                id={boite.id}
-              />
-            </Popup>
-          </Marker>
-        ) : (
-          <Marker key={boite.id} position={[boite.lat, boite.long]}>
-            <Popup>
-              <PopUpMap
-                name={boite.ville}
-                adress={boite.adresse}
-                numberBooks={boite.quantity}
-                id={boite.id}
-              />
-            </Popup>
-          </Marker>
-        )
-      )}
-    </LeafletMap>
+    <div>
+      <LeafletMap
+        style={{ width: '100%', height: '30vh', margin: '0' }}
+        center={lyonPosition}
+        zoom={13}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {coordsData.map((boite) =>
+          boite.id === boxNumber[0].box_number ? (
+            <Marker
+              key={boite.id}
+              position={[boite.lat, boite.long]}
+              icon={boxIcon}
+            >
+              <Popup>
+                <PopUpMap
+                  name={boite.ville}
+                  adress={boite.adresse}
+                  numberBooks={boite.quantity}
+                  id={boite.id}
+                />
+              </Popup>
+            </Marker>
+          ) : (
+            <Marker key={boite.id} position={[boite.lat, boite.long]}>
+              <Popup>
+                <PopUpMap
+                  name={boite.ville}
+                  adress={boite.adresse}
+                  numberBooks={boite.quantity}
+                  id={boite.id}
+                />
+              </Popup>
+            </Marker>
+          )
+        )}
+      </LeafletMap>
+    </div>
   );
 }
 

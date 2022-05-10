@@ -2,6 +2,9 @@
   display: flex;
   list-style: none;
   justify-content: space-around;
+  height: 100%;
+  align-items: center;
+  margin-top: 9px;
 }
 
 .image-navigation {
@@ -25,10 +28,6 @@
   text-transform: uppercase;
 }
 
-.navbar-container {
-  padding-top: 65px;
-}
-
 @media screen and (min-width: 1020px) {
   .page-title {
     display: initial;
@@ -41,10 +40,13 @@
     text-transform: uppercase;
   }
 
+  .list-navbar-container {
+    margin-top: 0;
+  }
   .navbar-container {
     display: flex;
     justify-content: space-between;
-    padding-top: 6px;
+    align-items: center;
   }
 
   .link-navigation {

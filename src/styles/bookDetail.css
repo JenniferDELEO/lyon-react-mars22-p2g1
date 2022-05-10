@@ -6,7 +6,13 @@
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
-  margin-bottom: 32px;
+}
+
+.map-book-detail {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  height: 40vh;
 }
 
 .buttonBar button img {
@@ -32,7 +38,8 @@
 }
 
 .bookImage {
-  height: 600px;
+  height: 60vh;
+  border-radius: 20px;
   display: block;
   margin: 32px auto;
 }
@@ -58,22 +65,36 @@
   border-radius: 10px;
   padding: 12px 20px;
   font-size: 1.3rem;
+  margin-bottom: 2rem;
 }
 
 .text-before-map {
-  text-align: center;
+  width: 100%;
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 16px 0;
+  margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 1000px) {
-  .map-books {
-    display: hidden;
+@media screen and (min-width: 1020px) {
+  .buttonBar {
+    justify-content: flex-end;
+  }
+
+  .books-infos {
+    min-width: 30%;
+    display: flex;
+    justify-content: space-around;
   }
 
   .bookImage {
-    height: 45vh;
-    width: 20vw;
+    height: 30vh;
+  }
+
+  .resumebookDetail {
+    width: initial;
+  }
+
+  .test-map {
+    width: 100%;
   }
 }
