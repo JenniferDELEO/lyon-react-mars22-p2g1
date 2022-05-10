@@ -31,6 +31,10 @@
 }
 
 @media screen and (min-width: 1020px) {
+  .main {
+    margin-bottom: 0;
+  }
+
   .header {
     display: none;
   }

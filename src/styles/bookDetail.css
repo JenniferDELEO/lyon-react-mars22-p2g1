@@ -74,12 +74,15 @@
 
   .books-infos {
     min-width: 30vw;
-    max-width: 30vw;
     display: flex;
     justify-content: space-around;
   }
 
   .bookImage {
     height: 30vh;
+  }
+
+  .resumebookDetail {
+    width: initial;
   }
 }

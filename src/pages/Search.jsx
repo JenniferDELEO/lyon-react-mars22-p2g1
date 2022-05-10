@@ -14,6 +14,7 @@ export default function Search() {
   const [getBooks, setGetBooks] = useState([]);
   const [userHasSearched, setUserHasSearched] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams(' ');
+  const [bookId, setBookId] = useState();
   const isDesktop = UseMediaQuery('(min-width: 1000px)');
 
   useEffect(() => {
@@ -42,57 +43,34 @@ export default function Search() {
   }, []);
 
   return (
-    <div className="SearchWrapper">
-      <div className="SearchPortion">
-        <input
-          className="SearchInput"
-          type="text"
-          placeholder={'Entrez votre recherche ici'}
-          value={searchParams.get('query')}
-          onChange={(e) => {
-            setSearchParams({ query: e.target.value });
-          }}
-        />
-        <img
-          className="bookshelf"
-          src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
-          alt="étagère de livre"
-        />
-      </div>
-      <div className="PreviewPortion">
-        {searchResult.map((book) => (
-          <div className="Card" key={book.ISBN}>
-            {' '}
-            <img
-              src={book.picture !== 'None' || null ? book.picture : notFound}
-              alt={book.title}
+    <div>
+      <div className="SearchWrapper">
+        <div className="PreviewPortion">
+          <div className="SearchPortion">
+            <input
+              className="SearchInput"
+              type="text"
+              placeholder={'Entrez votre recherche ici'}
+              value={searchParams.get('query')}
+              onChange={(e) => {
+                setSearchParams({ query: e.target.value });
+              }}
             />
-            <div className="book-infos">
-              <div>
-                <Link to={`/bookdetail/${book.id}`}>
-                  <p className="font-black text-sm underline">
-                    {book.title.slice(0, 40)}
-                  </p>
-                  <p className="text-xs">{book.author.slice(0, 23)}</p>
-                </Link>
-              </div>
-              <div className="Stars">
-                <RatingStar rate={parseFloat(book.note)} />
-              </div>
-            </div>
+            <img
+              className="bookshelf"
+              src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
+              alt="étagère de livre"
+            />
           </div>
-        ))}
-        <div
-          className="listholder"
-          style={{
-            display: userHasSearched ? 'none' : '',
-          }}
-        >
-          <h3 className="top5">Nos coups de coeur </h3>
-          {getBooks.slice(0, 5).map((book) => (
+          {searchResult.map((book) => (
             <div className="Card" key={book.ISBN}>
               {' '}
-              <img src={book.picture} alt={book.title} />
+              <img
+                className="book-img-search"
+                onClick={() => setBookId(book.id)}
+                src={book.picture !== 'None' || null ? book.picture : notFound}
+                alt={book.title}
+              />
               <div className="book-infos">
                 <div>
                   <Link to={`/bookdetail/${book.id}`}>
@@ -108,9 +86,38 @@ export default function Search() {
               </div>
             </div>
           ))}
+          <div
+            className="listholder"
+            style={{
+              display: userHasSearched ? 'none' : '',
+            }}
+          >
+            <h3 className="top5">Nos coups de coeur </h3>
+            {getBooks.slice(0, 5).map((book) => (
+              <div className="Card" key={book.ISBN}>
+                {' '}
+                <img src={book.picture} alt={book.title} />
+                <div className="book-infos">
+                  <div>
+                    <Link to={`/bookdetail/${book.id}`}>
+                      <p className="font-black text-sm underline">
+                        {book.title.slice(0, 40)}
+                      </p>
+                      <p className="text-xs">{book.author.slice(0, 23)}</p>
+                    </Link>
+                  </div>
+                  <div className="Stars">
+                    <RatingStar rate={parseFloat(book.note)} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="book-det">
+          {isDesktop ? <BookDetail id={bookId} /> : null}
         </div>
       </div>
-      {isDesktop ? <BookDetail /> : null}
     </div>
   );
 }
