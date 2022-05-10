@@ -48,7 +48,7 @@ export default function BookDetail({ id }) {
             setCoords(data2);
           });
       });
-  }, [id, isBookFavorite]);
+  }, [id]);
 
   const returnBack = () => {
     window.history.back();
