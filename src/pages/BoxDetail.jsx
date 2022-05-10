@@ -66,6 +66,8 @@ export default function BoxDetail() {
         )
         .then((response) => response.data)
         .then((data) => {
+          setBookNotFound(false);
+          setAddBookForm(false);
           axios
             .patch(
               `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
