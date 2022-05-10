@@ -50,7 +50,15 @@
   width: 50px;
 }
 @media screen and (min-width: 1020px) {
+  .favoriteBooks {
+    width: 40vw;
+  }
   .bookdetail {
     width: 90%;
+  }
+
+  .favorite-books-coontainer {
+    display: flex;
+    flex-direction: row;
   }
 }

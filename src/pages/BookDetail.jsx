@@ -103,7 +103,7 @@ export default function BookDetail({ id }) {
               ? emptyResume
               : book.synopsis}
           </p>
-          <div>
+          <div className="test-map">
             <p className="text-before-map">Où trouver ce livre ?</p>
             <MapBookDetail boxNumber={coords} />
           </div>

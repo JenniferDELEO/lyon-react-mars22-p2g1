@@ -125,10 +125,6 @@
     width: 40vw;
   }
 
-  .map-books {
-    display: none;
-  }
-
   .books-form-container {
     justify-self: flex-end;
   }

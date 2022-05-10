@@ -31,7 +31,7 @@ export default function Search() {
           setUserHasSearched(true);
         });
     }
-  }, [searchParams]);
+  }, [searchParams, bookId]);
 
   useEffect(() => {
     axios

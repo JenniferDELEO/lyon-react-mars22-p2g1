@@ -8,10 +8,15 @@ import whiteHeart from '../assets/favorite_heart_white.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import '../styles/favoriteBooks.css';
+import UseMediaQuery from '../hooks/useMediaQuery';
+import BookDetail from './BookDetail';
 
 export default function FavoriteBooks() {
   let heart = redHeart;
   const [favoritesList, setFavoritesList] = useState([]);
+  const [bookId, setBookId] = useState();
+  const isDesktop = UseMediaQuery('(min-width: 1000px)');
+
   function handleClickDeleteBookFromFavorites(book) {
     const newFavoritesList = favoritesList.slice();
     localStorage.removeItem(book.id);
@@ -39,17 +44,18 @@ export default function FavoriteBooks() {
       booksFavsList.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
     setFavoritesList(booksFavsList);
-  }, []);
+  }, [bookId, favoritesList]);
 
   return (
-    <div className="favoriteBooks">
-      <ToastContainer />
-      <h2>Mes livres favoris</h2>
-      {favoritesList.map((book) => (
-        <div className="bookCard" key={book.id}>
-          <Link to={`/bookdetail/${book.id}`}>
+    <div className="favorite-books-coontainer">
+      <div className="favoriteBooks">
+        <ToastContainer />
+        <h2>Mes livres favoris</h2>
+        {favoritesList.map((book) => (
+          <div className="bookCard" key={book.id}>
             <div className="bookContainer">
               <img
+                onClick={() => setBookId(book.id)}
                 src={
                   book.picture === null || book.picture === 'None'
                     ? vintage
@@ -57,26 +63,31 @@ export default function FavoriteBooks() {
                 }
                 alt={book.title}
               />
-              <div className="bookDatas">
-                <p className="title">{book.title}</p>
-                <p className="author">{book.author}</p>
-                <RatingStar
-                  rate={book.note}
-                  padding={'pb-2'}
-                  size={'text-2xl'}
-                />
-              </div>
+              <Link to={`/bookdetail/${book.id}`}>
+                <div className="bookDatas">
+                  <p className="title">{book.title}</p>
+                  <p className="author">{book.author}</p>
+                  <RatingStar
+                    rate={book.note}
+                    padding={'pb-2'}
+                    size={'text-2xl'}
+                  />
+                </div>
+              </Link>
             </div>
-          </Link>
-          <button
-            className="heart"
-            type="button"
-            onClick={() => handleClickDeleteBookFromFavorites(book)}
-          >
-            <img src={heart} alt={book.title} />
-          </button>
-        </div>
-      ))}
+            <button
+              className="heart"
+              type="button"
+              onClick={() => handleClickDeleteBookFromFavorites(book)}
+            >
+              <img src={heart} alt={book.title} />
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className="book-det">
+        {isDesktop && bookId ? <BookDetail id={bookId} /> : null}
+      </div>
     </div>
   );
 }
