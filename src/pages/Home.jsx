@@ -31,7 +31,7 @@ export default function Home() {
             onClick={handleLocation}
             className="localPointer"
             src={localisationPointer}
-            alt=""
+            alt="pointer localisation"
           />
         </div>
         <Mapsection setCP={setPostalCode} userLocation={userLocation} />

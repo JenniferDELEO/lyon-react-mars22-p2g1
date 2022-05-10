@@ -4,7 +4,7 @@ import localisationPointer from '../assets/localisation.png';
 function pointerLocalisation() {
   return (
     <div>
-      <img src={localisationPointer} alt="" />
+      <img src={localisationPointer} alt="pointer localisation" />
     </div>
   );
 }
