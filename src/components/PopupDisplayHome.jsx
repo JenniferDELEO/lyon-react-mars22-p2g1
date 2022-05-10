@@ -7,10 +7,15 @@ function PopupDisplayHome() {
   const [timedPopup, setTimedPopup] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTimedPopup(true);
-    }, 2000);
+    const popStatus = sessionStorage.getItem('pop_status');
+    if (!popStatus) {
+      setTimeout(() => {
+        setTimedPopup(true);
+      }, 2000);
+      sessionStorage.setItem('pop_status', 1);
+    }
   }, []);
+  if (!timedPopup) return null;
 
   return (
     <div>
