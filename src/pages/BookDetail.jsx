@@ -36,8 +36,8 @@ export default function BookDetail({ id }) {
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
-        if (data !== 'undefined') {
-          if (localStorage.getItem(data.id.toString())) {
+        if (localStorage.length > 0) {
+          if (localStorage.getItem(data.id)) {
             setIsBookFavorite(true);
           }
         }

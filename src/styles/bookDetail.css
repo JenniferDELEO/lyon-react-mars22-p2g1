@@ -76,6 +76,10 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .bookdetail {
+    width: 20vw;
+  }
+
   .buttonBar {
     justify-content: flex-end;
   }
