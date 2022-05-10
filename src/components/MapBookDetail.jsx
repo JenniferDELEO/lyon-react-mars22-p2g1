@@ -20,7 +20,7 @@ import UseMediaQuery from '../hooks/useMediaQuery';
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-  const isDesktop = UseMediaQuery('(min-width: 1000px)');
+  const isDesktop = UseMediaQuery('(min-width: 1020px)');
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -45,7 +45,7 @@ function MapBookDetail({ boxNumber }) {
   return (
     <div>
       <LeafletMap
-        style={{ width: isDesktop ? '40vw' : '60vw', height: '30vh' }}
+        style={{ width: '100%', height: '30vh', margin: '0' }}
         center={lyonPosition}
         zoom={13}
         scrollWheelZoom={false}

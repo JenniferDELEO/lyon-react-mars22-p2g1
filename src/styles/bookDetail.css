@@ -69,19 +69,19 @@
 }
 
 .text-before-map {
-  width: 100vw;
+  width: 100%;
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1020px) {
   .buttonBar {
     justify-content: flex-end;
   }
 
   .books-infos {
-    min-width: 30vw;
+    min-width: 30%;
     display: flex;
     justify-content: space-around;
   }
@@ -95,6 +95,6 @@
   }
 
   .test-map {
-    width: 100px;
+    width: 100%;
   }
 }
