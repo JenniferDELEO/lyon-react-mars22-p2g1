@@ -1,7 +1,7 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { Link } from 'react-router-dom';
 import '../styles/HomeLists.css';
-import BookBox from '../assets/box_middlefull.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -19,25 +19,31 @@ function HomeBoxList({ CP }) {
   }, [CP.cp]);
 
   return (
-    <div className="boxList">
-      <h2>Liste des boîtes : </h2>
-
-      {boxList.map((box) => (
-        <Link to={`/BoxDetail/${box.id}`} key={box.id}>
-          <p
-            className={selectedBox === box.id ? 'animate-pulse' : ''}
-            style={{
-              backgroundColor: selectedBox === box.id ? '#1b9eb2' : '',
-            }}
-          >
-            <img src={BookBox} alt="boite a livre" />
-            {box.adresse},{box.CP}
-            <br />
-            {box.quantity}
-            livre(s)
-          </p>
-        </Link>
-      ))}
+    <div className="home-component">
+      <div className="sep"></div>
+      <h1 className="title-home"> Les boites </h1>
+      <div className="boxList">
+        {boxList.map((box) => (
+          <Link key={box.id} to={`/BoxDetail/${box.id}`}>
+            <div
+              key={box.id}
+              className="box-card"
+              style={{ backgroundColor: selectedBox === box.id ? '' : '' }}
+            >
+              <p key={box.adresse}>
+                {box.adresse}
+                <br />
+                {box.quantity} livre(s)
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <img
+        className="books-shelves"
+        src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
+        alt="books"
+      />
     </div>
   );
 }

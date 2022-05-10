@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable global-require */
 /* eslint-disable function-paren-newline */
 /* eslint-disable no-confusing-arrow */
@@ -18,7 +19,6 @@ import * as L from 'leaflet';
 function MapBookDetail({ boxNumber }) {
   const lyonPosition = [45.764043, 4.835659];
   const [coordsData, setCoordsData] = useState([]);
-
   const LeafIcon = L.Icon.extend({
     options: {},
   });
@@ -41,7 +41,12 @@ function MapBookDetail({ boxNumber }) {
   }, []);
 
   return (
-    <LeafletMap center={lyonPosition} zoom={13} scrollWheelZoom={false}>
+    <LeafletMap
+      className="map map-books"
+      center={lyonPosition}
+      zoom={13}
+      scrollWheelZoom={false}
+    >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -49,9 +54,9 @@ function MapBookDetail({ boxNumber }) {
       {coordsData.map((boite) =>
         boite.id === boxNumber[0].box_number ? (
           <Marker
+            key={boite.id}
             position={[boite.lat, boite.long]}
             icon={boxIcon}
-            key={boite.id}
           >
             <Popup>
               <PopUpMap
@@ -63,7 +68,7 @@ function MapBookDetail({ boxNumber }) {
             </Popup>
           </Marker>
         ) : (
-          <Marker position={[boite.lat, boite.long]} key={boite.id}>
+          <Marker key={boite.id} position={[boite.lat, boite.long]}>
             <Popup>
               <PopUpMap
                 name={boite.ville}

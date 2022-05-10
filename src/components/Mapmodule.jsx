@@ -32,18 +32,18 @@ function Map({ setCP }) {
       scrollWheelZoom={false}
     >
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {coordsData.map((boite) => (
         <Marker
+          key={boite.id}
           position={[boite.lat, boite.long]}
           eventHandlers={{
             click: () => {
               setCP({ cp: boite.CP, id: boite.id, address: boite.adresse });
             },
           }}
-          key={boite.id}
         >
           <Popup>
             <PopUpMap

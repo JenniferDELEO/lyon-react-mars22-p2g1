@@ -29,7 +29,7 @@ function HomeBookSelection() {
 
   return (
     <div className="wrapper">
-      <h2>Sélection du mois :</h2>
+      <h2 className="month-selection">Selection du mois</h2>
       <div className="carouselContainer">
         <AliceCarousel
           autoPlay
@@ -50,11 +50,6 @@ function HomeBookSelection() {
                   {' '}
                   <img src={book.picture} alt="preview" role="presentation" />
                 </div>
-                <p className="legend">
-                  {book.title}
-                  {' de '}
-                  {book.author}
-                </p>
               </div>
             </Link>
           ))}
@@ -64,3 +59,11 @@ function HomeBookSelection() {
   );
 }
 export default HomeBookSelection;
+
+/*
+<p className="legend">
+                  {book.title}
+                  {' de '}
+                  {book.author}
+                </p>
+*/

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-expressions */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
@@ -10,9 +11,9 @@ import redHeart from '../assets/favorite_heart_red.svg';
 import whiteHeart from '../assets/favorite_heart_white.svg';
 import MapBookDetail from '../components/MapBookDetail';
 import backArrow from '../assets/back-arrow.png';
+import UseMediaQuery from '../hooks/useMediaQuery';
 
-export default function BookDetail() {
-  const { id } = useParams();
+export default function BookDetail({ id }) {
   const emptyResume =
     "Resumé non disponible, mais c'est certainement un excellent livre !";
   const [book, setBook] = useState();
@@ -24,9 +25,14 @@ export default function BookDetail() {
       : localStorage.removeItem(book.id.toString());
   }
   const [coords, setCoords] = useState([]);
+  const isDesktop = UseMediaQuery('(min-width: 1000px)');
+  const params = useParams();
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}books/${id}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}books/${isDesktop ? id : params.id}}`
+      )
       .then((response) => response.data)
       .then((data) => {
         setBook(data);
@@ -41,9 +47,8 @@ export default function BookDetail() {
           .then((data2) => {
             setCoords(data2);
           });
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      });
+  }, [id]);
 
   const returnBack = () => {
     window.history.back();

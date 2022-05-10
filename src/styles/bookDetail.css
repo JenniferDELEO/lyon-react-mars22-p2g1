@@ -33,7 +33,6 @@
 
 .bookImage {
   height: 600px;
-  border-radius: 20px;
   display: block;
   margin: 32px auto;
 }
@@ -68,8 +67,13 @@
   padding: 16px 0;
 }
 
-@media screen and (min-width: 1020px) {
-  .bookdetail {
-    width: 90%;
+@media screen and (min-width: 1000px) {
+  .map-books {
+    display: hidden;
+  }
+
+  .bookImage {
+    height: 45vh;
+    width: 20vw;
   }
 }

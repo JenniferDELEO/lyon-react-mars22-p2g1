@@ -1,5 +1,6 @@
 .form-section {
   margin: 0 10%;
+  width: 90%;
 }
 
 .form-title {
@@ -22,6 +23,7 @@
   border: 1px solid rgba(27, 158, 178, 1);
   border-radius: 20px;
   padding: 8px;
+  width: 90%;
 }
 
 .form-component textarea {

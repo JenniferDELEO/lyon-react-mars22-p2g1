@@ -15,6 +15,7 @@ export default function Book({
   id,
   booksOut,
   boxId,
+  setId,
 }) {
   const conditionColor = [null, '🔴', '🟠', '🟢'];
   const [isDelete, setIsDelete] = useState(deleteState);
@@ -26,14 +27,14 @@ export default function Book({
     actionBg = {
       color: 'flex items-center bg-green-400 h-40',
       size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
-      btn: 'animate-bounce bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
+      btn: 'bg-green-400 hover:bg-green-500 border-black text-xxs border text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (isDelete) {
     actionBg = {
       color: 'flex items-center bg-red-400 h-40',
       size: 'flex bg-white w-5/6 h-38 transition-all duration-500 rounded-r-lg',
-      btn: 'animate-bounce bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
+      btn: 'bg-red-400 hover:bg-red-500 border-black border text-xxs text-black font-bold w-6 h-6 rounded self-center',
     };
   }
   if (!isBorrow && !isDelete) {
@@ -65,12 +66,8 @@ export default function Book({
         booksOut(true);
         axios
           .patch(`${process.env.REACT_APP_API_URL}boxes/${boxId}?action=delete`)
-          .then((r) => {
-            console.log(r);
-          })
-          .catch(() => {
-            console.log('erreur');
-          });
+          .then(() => {})
+          .catch(() => {});
       })
       .catch((error) => {
         console.log(error);
@@ -96,7 +93,8 @@ export default function Book({
     <div className={actionBg.color}>
       <div className={actionBg.size}>
         <img
-          className="ml-1"
+          onClick={setId}
+          className="book-cover"
           src={
             picture === null || picture === 'None'
               ? 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-46e27bb5bb18d1354f5acc1d96454f60_screen.jpg?ts=1637015775'
@@ -104,18 +102,19 @@ export default function Book({
           }
           alt="book-cover"
         />
-        <div className="flex w-full justify-between z-2">
-          <div className="ml-5 flex flex-col justify-around leading-10">
-            <p className="font-black text-sm underline">{titre.slice(0, 40)}</p>
-            <p className="text-xs">{auteur.slice(0, 23)}</p>
-            <div className="flex flex-row text-sm">
-              <p className="text-xs">etat du livre</p>
-              <p className="ml-3">{conditionColor[etat]}</p>
+        <div className="flex w-full justify-between z-67">
+          <Link to={`/bookdetail/${id}`}>
+            <div className="ml-5 flex flex-col justify-around leading-10">
+              <p className="font-black text-sm underline mt-6">
+                {titre.slice(0, 40)}
+              </p>
+              <p className="text-xs mt-3">{auteur.slice(0, 23)}</p>
+              <div className="flex flex-row text-sm">
+                <p className="text-xs mt-3">etat du livre</p>
+                <p className="ml-3 mt-3">{conditionColor[etat]}</p>
+              </div>
             </div>
-            <em className="text-xs underline text-slate-500 cursor-pointer">
-              <Link to={`/bookdetail/${id}`}>detail</Link>
-            </em>
-          </div>
+          </Link>
           {!isBorrow && !isDelete ? (
             <div className="mr-5 flex flex-col items-center justify-center">
               <RatingStar rate={parseFloat(note)} id={id} id2={titre} />

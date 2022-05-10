@@ -10,7 +10,6 @@
   background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
   text-transform: uppercase;
   letter-spacing: 4px;
-  margin-bottom: 16px;
   text-align: center;
   padding: 25px 0;
 }
@@ -43,5 +42,9 @@
     padding: 0;
     background-image: none;
     background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
+  }
+
+  .footer {
+    display: none;
   }
 }
