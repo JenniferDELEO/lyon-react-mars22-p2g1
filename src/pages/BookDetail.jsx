@@ -58,9 +58,12 @@ export default function BookDetail({ id }) {
       {book && (
         <div>
           <div className="buttonBar">
-            <button type="button" onClick={returnBack}>
-              <img src={backArrow} alt="back arrow" />
-            </button>
+            {!isDesktop ? (
+              <button type="button" onClick={returnBack}>
+                <img src={backArrow} alt="back arrow" />
+              </button>
+            ) : null}
+
             <button type="button" onClick={handleClickFavoriteBook}>
               <img
                 src={isBookFavorite === true ? redHeart : whiteHeart}
@@ -68,27 +71,31 @@ export default function BookDetail({ id }) {
               />
             </button>
           </div>
-          <div>
-            <h2 className="titre">{book.title}</h2>
-            <h3 className="auteur">{book.author}</h3>
-          </div>
-          <img
-            className="bookImage"
-            src={
-              book.picture === null || book.picture === 'None'
-                ? vintage
-                : book.picture
-            }
-            alt={book.title}
-          />
-          <div className="carateristicsDatas">
-            <RatingStar rate={book.note} padding={'pb-2'} size={'text-6xl'} />
-            <p className="caracteristics">{book.pages_nbr} pages</p>
-            <p className="caracteristics">
-              Date publication : {book.publication_year}
-            </p>
-            <p className="caracteristics">Éditeur : {book.editions}</p>
-            <p className="caracteristics">ISBN : {book.isbn}</p>
+          <div className="books-infos">
+            <img
+              className="bookImage"
+              src={
+                book.picture === null || book.picture === 'None'
+                  ? vintage
+                  : book.picture
+              }
+              alt={book.title}
+            />
+            <div className="carateristicsDatas">
+              <h2 className="titre">{book.title}</h2>
+              <h3 className="auteur">{book.author}</h3>
+              <RatingStar
+                rate={book.note}
+                padding={'pb-2'}
+                size={!isDesktop ? 'text-6xl' : 'text-3xl'}
+              />
+              <p className="caracteristics">{book.pages_nbr} pages</p>
+              <p className="caracteristics">
+                Date publication : {book.publication_year}
+              </p>
+              <p className="caracteristics">Éditeur : {book.editions}</p>
+              <p className="caracteristics">ISBN : {book.isbn}</p>
+            </div>
           </div>
           <p className="resumebookDetail">
             <strong>Résumé :</strong>{' '}
@@ -96,8 +103,12 @@ export default function BookDetail({ id }) {
               ? emptyResume
               : book.synopsis}
           </p>
-          <p className="text-before-map">Où trouver ce livre ?</p>
-          <MapBookDetail boxNumber={coords} />
+          {!isDesktop ? (
+            <div>
+              <p className="text-before-map">Où trouver ce livre ?</p>
+              <MapBookDetail boxNumber={coords} />
+            </div>
+          ) : null}
         </div>
       )}
     </div>
