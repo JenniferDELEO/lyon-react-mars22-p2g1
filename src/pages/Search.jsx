@@ -13,7 +13,7 @@ export default function Search() {
   const [searchResult, setSearchResult] = useState([]);
   const [getBooks, setGetBooks] = useState([]);
   const [userHasSearched, setUserHasSearched] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams(' ');
+  const [searchParams, setSearchParams] = useSearchParams('');
   const [bookId, setBookId] = useState();
   const isDesktop = UseMediaQuery('(min-width: 1000px)');
 
@@ -51,7 +51,7 @@ export default function Search() {
               className="SearchInput"
               type="text"
               placeholder={'Entrez votre recherche ici'}
-              value={searchParams.get('query')}
+              value={searchParams.get('query') || ''}
               onChange={(e) => {
                 setSearchParams({ query: e.target.value });
               }}
@@ -114,9 +114,7 @@ export default function Search() {
             ))}
           </div>
         </div>
-        <div className="book-det">
-          {isDesktop ? <BookDetail id={bookId} /> : null}
-        </div>
+        {isDesktop ? <BookDetail id={bookId} /> : null}
       </div>
     </div>
   );
