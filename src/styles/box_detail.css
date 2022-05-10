@@ -117,7 +117,7 @@
     height: 100vh;
   }
 
-  .bookdetail {
+  .book {
     margin-left: 5rem;
     float: right;
     width: 40vw;
@@ -125,10 +125,6 @@
 
   .books-form-container {
     justify-self: flex-end;
-  }
-
-  .book-detail {
-    margin-left: 30px;
   }
 
   .abort-form {
