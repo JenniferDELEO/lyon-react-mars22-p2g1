@@ -11,9 +11,7 @@
   .main-container {
     display: flex;
     flex-direction: row;
-    /* margin: 32px; */
     margin-top: 60px;
-    /* padding: 32px; */
     justify-content: space-between;
   }
 
@@ -33,10 +31,6 @@
     transform: scaleX(-1);
     right: 0px;
     top: 60px;
-  }
-
-  .main-routes {
-    /* margin: 150px; */
   }
 
   .routes-container {
