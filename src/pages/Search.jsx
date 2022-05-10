@@ -100,13 +100,7 @@ export default function Search() {
             {getBooks.slice(0, 5).map((book) => (
               <div className="Card" key={book.ISBN}>
                 {' '}
-                <img
-                  onClick={() => setBookId(book.id)}
-                  key={book.ISBN}
-                  src={book.picture}
-                  alt={book.title}
-                  style={{ cursor: 'pointer' }}
-                />
+                <img key={book.ISBN} src={book.picture} alt={book.title} />
                 <div key={book.ISBN} className="book-infos">
                   <div>
                     <Link

@@ -59,3 +59,11 @@ function HomeBookSelection() {
   );
 }
 export default HomeBookSelection;
+
+/*
+<p className="legend">
+                  {book.title}
+                  {' de '}
+                  {book.author}
+                </p>
+*/
