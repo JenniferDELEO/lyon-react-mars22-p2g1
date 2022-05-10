@@ -44,7 +44,7 @@ export default function FavoriteBooks() {
       booksFavsList.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
     setFavoritesList(booksFavsList);
-  }, [bookId, favoritesList]);
+  }, [bookId, setFavoritesList]);
 
   return (
     <div className="favorite-books-coontainer">

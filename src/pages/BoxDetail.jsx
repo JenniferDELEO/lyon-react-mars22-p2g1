@@ -51,7 +51,7 @@ export default function BoxDetail() {
           });
       })
       .catch(() => {});
-  }, [addBookForm, booksOut, author]);
+  }, [addBookForm, booksOut, author, bookId]);
 
   function changeForm() {
     setBookNotFound(!notFound);

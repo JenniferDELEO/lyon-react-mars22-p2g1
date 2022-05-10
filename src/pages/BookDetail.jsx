@@ -25,7 +25,7 @@ export default function BookDetail({ id }) {
       : localStorage.removeItem(book.id.toString());
   }
   const [coords, setCoords] = useState([]);
-  const isDesktop = UseMediaQuery('(min-width: 1000px)');
+  const isDesktop = UseMediaQuery('(min-width: 1020px)');
   const params = useParams();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function BookDetail({ id }) {
             setCoords(data2);
           });
       });
-  }, [id]);
+  }, [id, isBookFavorite]);
 
   const returnBack = () => {
     window.history.back();
