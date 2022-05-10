@@ -1,7 +1,3 @@
-.box-content {
-  width: 95vw;
-}
-
 .color-bg {
   background: linear-gradient(180deg, #2242b3 0%, #090c67 100%);
 }
@@ -72,8 +68,9 @@
 }
 
 .book-cover {
-  max-width: 100%;
-  max-height: 100%;
+  min-width: 25%;
+  max-width: 25%;
+  height: 100%;
 }
 
 @keyframes pop-in {
@@ -121,12 +118,9 @@
   }
 
   .bookdetail {
+    margin-left: 5rem;
     float: right;
     width: 40vw;
-  }
-
-  .map-books {
-    display: none;
   }
 
   .books-form-container {
@@ -162,5 +156,11 @@
     to {
       width: 0%;
     }
+  }
+
+  .book-cover {
+    min-width: 20%;
+    max-width: 20%;
+    height: 100%;
   }
 }
