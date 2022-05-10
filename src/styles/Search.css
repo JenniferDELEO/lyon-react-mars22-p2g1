@@ -54,6 +54,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.PreviewPortion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .Card {
   height: 6rem;
