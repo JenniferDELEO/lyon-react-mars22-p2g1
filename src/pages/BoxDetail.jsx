@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
 import '../styles/box_detail.css';
 import '../styles/index.css';
@@ -8,6 +10,8 @@ import AddBookForm from '../components/AddBookForm';
 import BoxHeader from '../components/BoxHeaders';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import UseMediaQuery from '../hooks/useMediaQuery';
+import BookDetail from './BookDetail';
 
 export default function BoxDetail() {
   const num = useParams();
@@ -23,6 +27,8 @@ export default function BoxDetail() {
   const [condition, setCondition] = useState(2);
   const [requestStatus, setRequestStatus] = useState(true);
   const [boxInfo, setBoxInfo] = useState('');
+  const [bookId, setBookId] = useState('');
+  const isDesktop = UseMediaQuery('(min-width: 1000px)');
 
   const handleIsbnChange = (e) => setIsbn(e.target.value);
   const handleAuthorChange = (e) => setAuthor(e.target.value);
@@ -35,6 +41,7 @@ export default function BoxDetail() {
       .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}/books`)
       .then((response) => response.data)
       .then((data) => {
+        setBookId(data[0].id);
         setBooksList(data);
         axios
           .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}`)
@@ -44,7 +51,7 @@ export default function BoxDetail() {
           });
       })
       .catch(() => {});
-  }, [addBookForm, booksOut]);
+  }, [addBookForm, booksOut, author]);
 
   function changeForm() {
     setBookNotFound(!notFound);
@@ -53,7 +60,6 @@ export default function BoxDetail() {
 
   function addBook() {
     if (!notFound && _isbn) {
-      console.log('env -> ', process.env);
       axios
         .post(
           `${process.env.REACT_APP_API_URL}books/${_isbn}/${boxNumber}/${starRate}/${condition}`
@@ -66,12 +72,8 @@ export default function BoxDetail() {
             .patch(
               `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
             )
-            .then((r) => {
-              console.log(r);
-            })
-            .catch(() => {
-              console.log('erreur');
-            });
+            .then(() => {})
+            .catch(() => {});
           toast.info(
             `Vous avez deposé: \n${data.title} de ${data.author}  merci de faire vivre les BAL`,
             {
@@ -120,12 +122,16 @@ export default function BoxDetail() {
             .patch(
               `${process.env.REACT_APP_API_URL}boxes/${boxNumber}?action=add`
             )
-            .then((r) => {
-              console.log(r);
+            .then(() => {
+              axios
+                .get(`${process.env.REACT_APP_API_URL}boxes/${boxNumber}/books`)
+                .then((response) => response.data)
+                .then((data) => {
+                  setBookId(data[0].id);
+                  setBooksList(data);
+                });
             })
-            .catch(() => {
-              console.log('erreur');
-            });
+            .catch(() => {});
           toast(
             `Vous avez deposé:
            \n${title} de ${author}  
@@ -142,16 +148,18 @@ export default function BoxDetail() {
             }
           );
         })
-        .catch(() => {});
+        .catch(() => {
+          console.log('erreur');
+        });
     }
     setAuthor('');
     setTitle('');
     setIsbn('');
+    console.log('end of fetching..');
   }
 
   return (
     <div>
-      <BoxHeader displayForm={displayForm} getBoxInfo={boxInfo} />
       {addBookForm ? (
         <AddBookForm
           title={handleTitleChange}
@@ -167,28 +175,40 @@ export default function BoxDetail() {
           condition={handleConditionChange}
           status={requestStatus}
           showForm={() => setAddBookForm(!addBookForm)}
+          flashIsbn={setIsbn}
         />
       ) : (
         ''
       )}
-      <div>
-        {booksList.map((book) => (
-          <Book
-            id={book.id}
-            picture={book.picture}
-            titre={book.title}
-            auteur={book.author}
-            note={book.note}
-            etat={book.cond}
-            borrowState={book.to_borrow}
-            deleteState={book.to_delete}
-            isbn={book.isbn}
-            booksOut={setBooksOut}
-            boxId={boxNumber}
-          />
-        ))}
+      <BoxHeader
+        displayForm={displayForm}
+        getBoxInfo={boxInfo}
+        display={addBookForm}
+      />
+      <div className="box-content-container">
+        {isDesktop ? <BookDetail id={bookId} /> : null}
+        <div className="box-content">
+          {booksList.map((book) => (
+            <div key={book.id}>
+              <Book
+                id={book.id}
+                picture={book.picture}
+                titre={book.title}
+                auteur={book.author}
+                note={book.note}
+                etat={book.cond}
+                borrowState={book.to_borrow}
+                deleteState={book.to_delete}
+                isbn={book.isbn}
+                booksOut={setBooksOut}
+                boxId={boxNumber}
+                setId={() => setBookId(book.id)}
+              />
+            </div>
+          ))}
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 }

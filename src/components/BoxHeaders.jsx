@@ -1,7 +1,7 @@
-export default function BoxHeader({ displayForm, getBoxInfo }) {
+export default function BoxHeader({ displayForm, getBoxInfo, display }) {
   return (
-    <div className="mt-4 flex flex-col items-center">
-      <div className="text-center flex flex-col justify-around border-black border font-bold text-white color-bg rounded-xl h-16 w-4/6">
+    <div className={!display ? 'mt-4 flex flex-col items-center' : 'hidden'}>
+      <div className="text-center flex flex-col justify-around font-bold text-black h-16 w-4/6">
         <h3>{getBoxInfo.adresse}</h3>
         <p>
           {getBoxInfo.quantity}

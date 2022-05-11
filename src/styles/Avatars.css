@@ -4,25 +4,86 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 h2 {
-  text-decoration: underline;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+  color: black;
+  text-align: center;
 }
 .avatar {
   display: flex;
+  position: relative;
   flex-direction: column;
+  align-items: center;
   padding: 1rem;
   text-align: center;
+  z-index: 1;
+  font-weight: 300;
 }
+
 .avatar img {
-  border: solid 2px #1b9eb2;
+  border: none;
   border-radius: 45px;
   width: 7rem;
   height: 7rem;
 }
 
+.avatarBackground {
+  position: absolute;
+  z-index: -1;
+  width: 110px;
+  height: 110px;
+  top: -3px;
+  border-radius: 30%;
+  background-color: white;
+}
+
+.contactTitle {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+}
+
 @media screen and (min-width: 650px) {
+  .contactContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 500px;
+    margin-left: 40px;
+  }
+  .Avatars {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
   .avatar img {
-    width: 10rem;
-    height: 10rem;
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .avatarBackground {
+    position: absolute;
+    z-index: -1;
+    width: 120px;
+    height: 110px;
+    top: -3px;
+    border-radius: 30%;
+    background-color: white;
+  }
+  .contactTitle {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: -2px;
+  }
+
+  .avatar {
+    margin-bottom: 60px;
   }
 }

@@ -48,6 +48,7 @@
     "import/order": "off",
     "react/jsx-curly-brace-presence": "off",
     "linebreak-style": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "jsx-one-expression-per-line": "off"
   }
 }

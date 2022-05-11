@@ -10,10 +10,11 @@ import '../styles/Avatars.css';
 
 function ContactComponent() {
   return (
-    <>
-      <h2>Notre équipe</h2>
+    <div className="contactContainer">
+      <h2 className="contactTitle">NOTRE ÉQUIPE</h2>
       <div className="Avatars">
         <div className="Jen avatar">
+          <div className="avatarBackground" />
           <Link to="//github.com/JenniferDELEO" target="_blank">
             {' '}
             <img src={Woman} alt="Jen" />{' '}
@@ -21,6 +22,7 @@ function ContactComponent() {
           Jennifer De Léo
         </div>
         <div className="Adrien avatar">
+          <div className="avatarBackground" />
           <Link to="//github.com/01adrien" target="_blank">
             {' '}
             <img src={Adrien} alt="Adrien" />
@@ -28,6 +30,7 @@ function ContactComponent() {
           Adrien Gaucher
         </div>
         <div className="Gaspard avatar">
+          <div className="avatarBackground" />
           <Link to="//github.com/GaspardMzt" target="_blank">
             {' '}
             <img src={Gaspard} alt="Gaspard" />{' '}
@@ -35,19 +38,21 @@ function ContactComponent() {
           Gaspard Mazataud
         </div>
         <div className="Clement avatar">
+          <div className="avatarBackground" />
           <Link to="//github.com/ClemMoFr" target="_blank">
             <img src={Clement} alt="Clement" />
           </Link>{' '}
           Clément Moreno
         </div>
         <div className="Pierre avatar">
+          <div className="avatarBackground" />
           <Link to="//github.com/PiDartevelle" target="blank">
             <img src={Pierre} alt="Pierre" />
           </Link>{' '}
           Pierre Dartevelle
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
