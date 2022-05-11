@@ -59,6 +59,8 @@ export default function BoxDetail() {
   }
 
   function addBook() {
+    console.log('fetch starting..');
+    console.log(_isbn);
     if (!notFound && _isbn) {
       axios
         .post(
@@ -155,6 +157,7 @@ export default function BoxDetail() {
     setAuthor('');
     setTitle('');
     setIsbn('');
+    console.log('end of fetching..');
   }
 
   return (
@@ -174,6 +177,7 @@ export default function BoxDetail() {
           condition={handleConditionChange}
           status={requestStatus}
           showForm={() => setAddBookForm(!addBookForm)}
+          flashIsbn={setIsbn}
         />
       ) : (
         ''

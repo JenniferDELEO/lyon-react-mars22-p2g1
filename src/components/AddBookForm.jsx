@@ -1,4 +1,6 @@
+/* eslint-disable space-before-function-paren */
 import { useState } from 'react';
+import IsbnCodeReader from './IsbnCodeReader';
 
 export default function AddBookForm({
   notFound,
@@ -14,6 +16,7 @@ export default function AddBookForm({
   rate,
   condition,
   status,
+  flashIsbn,
 }) {
   const getRateFive = () => rate(5);
   const getRateFour = () => rate(4);
@@ -79,17 +82,35 @@ export default function AddBookForm({
             </div>
           </>
         ) : (
-          <div>
-            <p className="mb-2">ISBN</p>
-            <input
-              className="border w-2/3"
-              value={isbnValue}
-              onChange={isbn}
-              type="text"
-              placeholder="9782221123300"
-              required
-            />
-          </div>
+          <>
+            <div>
+              <p className="mb-2">ISBN</p>
+              <input
+                className="border w-2/3"
+                value={isbnValue}
+                onChange={isbn}
+                type="text"
+                placeholder="9782221123300"
+                required
+              />
+            </div>
+            <div className="mt-5">
+              <IsbnCodeReader
+                fps={60}
+                qrbox={250}
+                disableFlip={false}
+                onDecode={(decodedText, decodedResult) => {
+                  flashIsbn(decodedText);
+                  /*
+                  (function getBook() {
+                    setTimeout(fetchBook, 5000);
+                  }());
+                  */
+                  console.log('code :', decodedResult, decodedText);
+                }}
+              />
+            </div>
+          </>
         )}
         <div>
           <p className="mb-2">etat</p>
