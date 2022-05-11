@@ -90,7 +90,7 @@ export default function AddBookForm({
                 value={isbnValue}
                 onChange={isbn}
                 type="text"
-                placeholder="9782221123300"
+                placeholder="9782221123344"
                 required
               />
             </div>
