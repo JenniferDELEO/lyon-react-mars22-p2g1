@@ -9,10 +9,6 @@
   overflow: hidden;
 }
 
-#html5qr-code-full-region__dashboard_section_swaplink {
-  display: none;
-}
-
 #html5qr-code-full-region__scan_region {
   display: flex;
   justify-content: center;
@@ -20,13 +16,8 @@
 
 #html5qr-code-full-region__camera_permission_button {
   text-decoration: underline;
-  font-size: 1em;
   font-weight: 600;
   font-family: 'poppins', sans-serif;
-}
-
-.isbn-reader {
-  width: 60%;
 }
 
 #html5qr-code-full-region {
