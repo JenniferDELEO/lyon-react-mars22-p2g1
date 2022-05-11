@@ -43,36 +43,71 @@ export default function Search() {
   }, []);
 
   return (
-    <div>
-      <div className="SearchWrapper">
-        <div className="PreviewPortion">
-          <div className="SearchPortion">
-            <input
-              className="SearchInput"
-              type="text"
-              placeholder={'Entrez votre recherche ici'}
-              value={searchParams.get('query') || ''}
-              onChange={(e) => {
-                setSearchParams({ query: e.target.value });
-              }}
-            />
+    <div className="SearchWrapper">
+      <div className="PreviewPortion">
+        <div className="SearchPortion">
+          <input
+            className="SearchInput"
+            type="text"
+            placeholder={'Entrez votre recherche ici'}
+            value={searchParams.get('query') || ''}
+            onChange={(e) => {
+              setSearchParams({ query: e.target.value });
+            }}
+          />
+          <img
+            className="bookshelf"
+            src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
+            alt="étagère de livre"
+          />
+        </div>
+        {searchResult.map((book) => (
+          <div className="Card" key={book.ISBN}>
+            {' '}
             <img
-              className="bookshelf"
-              src="https://bouquinbec.ca/wp-content/uploads/2020/03/bouquinbec-dessin-etagere-livres-tab-cell.png"
-              alt="étagère de livre"
+              className="book-img-search"
+              onClick={() => setBookId(book.id)}
+              src={book.picture !== 'None' || null ? book.picture : notFound}
+              alt={book.title}
+              style={{ cursor: 'pointer' }}
             />
+            <div className="book-infos">
+              <div>
+                <Link
+                  to={`/bookdetail/${book.id}`}
+                  style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
+                >
+                  <p className="font-black text-sm underline">
+                    {book.title.slice(0, 40)}
+                  </p>
+                  <p className="text-xs">{book.author.slice(0, 23)}</p>
+                </Link>
+              </div>
+              <div className="Stars">
+                <RatingStar rate={parseFloat(book.note)} />
+              </div>
+            </div>
           </div>
-          {searchResult.map((book) => (
+        ))}
+        <div
+          className="listholder"
+          style={{
+            display: userHasSearched ? 'none' : '',
+          }}
+        >
+          <h3 className="top5">Nos coups de coeur </h3>
+          {getBooks.slice(0, 5).map((book) => (
             <div className="Card" key={book.ISBN}>
               {' '}
               <img
                 className="book-img-search"
                 onClick={() => setBookId(book.id)}
-                src={book.picture !== 'None' || null ? book.picture : notFound}
+                key={book.ISBN}
+                src={book.picture}
                 alt={book.title}
                 style={{ cursor: 'pointer' }}
               />
-              <div className="book-infos">
+              <div key={book.ISBN} className="book-infos">
                 <div>
                   <Link
                     to={`/bookdetail/${book.id}`}
@@ -81,50 +116,20 @@ export default function Search() {
                     <p className="font-black text-sm underline">
                       {book.title.slice(0, 40)}
                     </p>
-                    <p className="text-xs">{book.author.slice(0, 23)}</p>
+                    <p key={book.ISBN} className="text-xs">
+                      {book.author.slice(0, 23)}
+                    </p>
                   </Link>
                 </div>
-                <div className="Stars">
-                  <RatingStar rate={parseFloat(book.note)} />
+                <div key={book.ISBN} className="Stars">
+                  <RatingStar key={book.ISBN} rate={parseFloat(book.note)} />
                 </div>
               </div>
             </div>
           ))}
-          <div
-            className="listholder"
-            style={{
-              display: userHasSearched ? 'none' : '',
-            }}
-          >
-            <h3 className="top5">Nos coups de coeur </h3>
-            {getBooks.slice(0, 5).map((book) => (
-              <div className="Card" key={book.ISBN}>
-                {' '}
-                <img key={book.ISBN} src={book.picture} alt={book.title} />
-                <div key={book.ISBN} className="book-infos">
-                  <div>
-                    <Link
-                      to={`/bookdetail/${book.id}`}
-                      style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
-                    >
-                      <p className="font-black text-sm underline">
-                        {book.title.slice(0, 40)}
-                      </p>
-                      <p key={book.ISBN} className="text-xs">
-                        {book.author.slice(0, 23)}
-                      </p>
-                    </Link>
-                  </div>
-                  <div key={book.ISBN} className="Stars">
-                    <RatingStar key={book.ISBN} rate={parseFloat(book.note)} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-        {isDesktop ? <BookDetail id={bookId} /> : null}
       </div>
+      {isDesktop ? <BookDetail id={bookId} /> : null}
     </div>
   );
 }

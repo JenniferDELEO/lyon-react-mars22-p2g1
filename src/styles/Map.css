@@ -10,12 +10,12 @@
 
 @media screen and (min-width: 1020px) {
   .leaflet-container {
-    height: 100vh;
+    height: calc(100vh - 65px);
     width: 60vw;
   }
 
   .mapContainer {
     width: 60vw;
-    height: 100vh;
+    height: calc(100vh - 65px);
   }
 }

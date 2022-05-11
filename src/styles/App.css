@@ -19,7 +19,7 @@
 }
 
 .navbar {
-  width: 100%;
+  width: 100vw;
   transition: height 0.1s ease-out;
   will-change: height;
   position: fixed;
@@ -30,7 +30,7 @@
 
 @media screen and (min-width: 1020px) {
   .main {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 
   .header {
