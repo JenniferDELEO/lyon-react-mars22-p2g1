@@ -36,10 +36,10 @@ function FormComponent() {
   };
   return (
     <div className="form-section">
-      <h2 className="form-title">Votre message :</h2>
+      <h2 className="form-title">CONTACTEZ-NOUS !</h2>
       <form ref={form} className="form-component" onSubmit={sendEmail}>
         <label htmlFor="name">
-          Votre nom * :
+          <p> Votre nom * :</p>
           <input
             type="text"
             name="name"
@@ -49,7 +49,7 @@ function FormComponent() {
           />
         </label>
         <label htmlFor="mail">
-          Votre email * :
+          <p>Votre email * :</p>
           <input
             type="email"
             name="mail"
@@ -59,7 +59,7 @@ function FormComponent() {
           />
         </label>
         <label htmlFor="message">
-          Votre message * :
+          <p>Votre message * :</p>
           <textarea
             rows="15"
             cols="40"
@@ -68,10 +68,11 @@ function FormComponent() {
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             required
+            className="textArea"
           />
         </label>
         <button type="submit" className="btn-form">
-          Envoyer
+          ENVOYER LE MESSAGE
         </button>
       </form>
       <ToastContainer className="toast-container" />

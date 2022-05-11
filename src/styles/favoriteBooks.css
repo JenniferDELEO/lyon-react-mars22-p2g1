@@ -2,12 +2,20 @@
   margin: 0;
 }
 
+.noFavs {
+  text-align: center;
+  margin-top: 20vh;
+  font-size: x-large;
+  font-weight: 500;
+  opacity: 0.2;
+}
 .favoriteBooks h2 {
   font-size: 2.5rem;
   font-weight: bolder;
   text-align: center;
   text-decoration: none;
   margin-bottom: 24px;
+  margin-top: 3rem;
 }
 
 .bookCard {

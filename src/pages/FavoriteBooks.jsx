@@ -51,6 +51,11 @@ export default function FavoriteBooks() {
       <div className="favoriteBooks">
         <ToastContainer />
         <h2>Mes livres favoris</h2>
+        {localStorage.length === 0 ? (
+          <p className="noFavs">
+            Vous n'avez pas encore sélectionné de favoris
+          </p>
+        ) : null}
         {favoritesList.map((book) => (
           <div className="bookCard" key={book.id}>
             <div className="bookContainer">
@@ -62,8 +67,12 @@ export default function FavoriteBooks() {
                     : book.picture
                 }
                 alt={book.title}
+                style={{ cursor: 'pointer' }}
               />
-              <Link to={`/bookdetail/${book.id}`}>
+              <Link
+                to={`/bookdetail/${book.id}`}
+                style={{ cursor: isDesktop ? 'initial' : 'pointer' }}
+              >
                 <div className="bookDatas">
                   <p className="title">{book.title}</p>
                   <p className="author">{book.author}</p>
@@ -86,7 +95,7 @@ export default function FavoriteBooks() {
         ))}
       </div>
       <div className="book-det">
-        {isDesktop && bookId ? <BookDetail id={bookId} /> : null}
+        {isDesktop ? <BookDetail id={bookId} /> : null}
       </div>
     </div>
   );
