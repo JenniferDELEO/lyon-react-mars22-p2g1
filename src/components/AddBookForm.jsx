@@ -101,11 +101,6 @@ export default function AddBookForm({
                 disableFlip={false}
                 onDecode={(decodedText, decodedResult) => {
                   flashIsbn(decodedText);
-                  /*
-                  (function getBook() {
-                    setTimeout(fetchBook, 5000);
-                  }());
-                  */
                   console.log('code :', decodedResult, decodedText);
                 }}
               />
