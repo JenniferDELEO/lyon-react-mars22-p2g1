@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable space-before-function-paren */
 import { useState } from 'react';
 import IsbnCodeReader from './IsbnCodeReader';
@@ -101,7 +102,6 @@ export default function AddBookForm({
                 disableFlip={false}
                 onDecode={(decodedText, decodedResult) => {
                   flashIsbn(decodedText);
-                  console.log('code :', decodedResult, decodedText);
                 }}
               />
             </div>
