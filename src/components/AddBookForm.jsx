@@ -94,7 +94,7 @@ export default function AddBookForm({
                 required
               />
             </div>
-            <div className="mt-5">
+            <div className="isbn-reader">
               <IsbnCodeReader
                 fps={60}
                 qrbox={250}
