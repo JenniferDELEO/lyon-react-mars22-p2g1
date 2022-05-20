@@ -1,3 +1,4 @@
+/* eslint-disable wrap-iife */
 /* eslint-disable no-unused-vars */
 /* eslint-disable space-before-function-paren */
 import { useState } from 'react';
@@ -30,7 +31,7 @@ export default function AddBookForm({
     setIsQuitForm(true);
     (function close() {
       setTimeout(showForm, 300);
-    }());
+    })();
   }
 
   return (
@@ -82,19 +83,17 @@ export default function AddBookForm({
             </div>
           </>
         ) : (
-          <>
-            <div>
-              <p className="mb-2">ISBN</p>
-              <input
-                className="border w-2/3"
-                value={isbnValue}
-                onChange={isbn}
-                type="text"
-                placeholder="9782221123344"
-                required
-              />
-            </div>
-          </>
+          <div>
+            <p className="mb-2">ISBN</p>
+            <input
+              className="border w-2/3"
+              value={isbnValue}
+              onChange={isbn}
+              type="text"
+              placeholder="9782221123344"
+              required
+            />
+          </div>
         )}
         <div>
           <p className="mb-2">etat</p>
