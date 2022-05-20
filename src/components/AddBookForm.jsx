@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable space-before-function-paren */
 import { useState } from 'react';
-import IsbnCodeReader from './IsbnCodeReader';
 
 export default function AddBookForm({
   notFound,
@@ -93,16 +92,6 @@ export default function AddBookForm({
                 type="text"
                 placeholder="9782221123344"
                 required
-              />
-            </div>
-            <div className="isbn-reader">
-              <IsbnCodeReader
-                fps={60}
-                qrbox={250}
-                disableFlip={false}
-                onDecode={(decodedText, decodedResult) => {
-                  flashIsbn(decodedText);
-                }}
               />
             </div>
           </>
